@@ -7,7 +7,6 @@ import Home from './Home';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import NewComparison from './NewComparison';
 
 const navItems = [{
   exact: true,
@@ -40,7 +39,6 @@ class App extends Component {
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
-              <Route path="/new" location={location} component={NewComparison} />
               <Route path="/page-1" location={location} component={Page1} />
               <Route path="/page-2" location={location} component={Page2} />
               <Route path="/page-3" location={location} component={Page3} />
