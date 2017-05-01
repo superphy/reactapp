@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import Button from 'react-md/lib/Buttons/Button';
-import Divider from 'react-md/lib/Dividers';
-import TextField from 'react-md/lib/TextFields';
 import Paper from 'react-md/lib/Papers';
+import Group from './Group';
 
 export default class Home extends PureComponent {
   render() {
@@ -11,29 +10,10 @@ export default class Home extends PureComponent {
         <div className="paper-container">
           <form>
             <Paper>
-                <TextField
-                  id="eventEmail"
-                  placeholder="Email"
-                  defaultValue="heyfromjonathan@gmail.com"
-                  block
-                  paddedBlock
-                />
-                <Divider />
-                <TextField
-                  id="eventName"
-                  placeholder="Event name"
-                  block
-                  paddedBlock
-                />
-                <Divider />
-                <TextField
-                  id="eventDescription"
-                  placeholder="Description"
-                  block
-                  paddedBlock
-                  rows={4}
-                  defaultValue="asdlafkjewflaksejflakjskl"
-                />
+                <Group></Group>
+            </Paper>
+            <Paper>
+                <Group></Group>
             </Paper>
           </form>
         </div>
