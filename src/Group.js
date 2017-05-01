@@ -8,9 +8,12 @@ export default class Group extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-
+      value: 'VA'
     };
   }
+  _handleChange = (value, index, event) => { // eslint-disable-line no-unused-vars
+    this.setState({ value });
+  };
   render() {
     return (
       <section className="md-grid">
