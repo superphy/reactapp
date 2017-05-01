@@ -13,7 +13,7 @@ export default class Group extends PureComponent {
   }
   render() {
     return (
-      <div>
+      <section className="md-grid">
         <SelectField
           id="groups"
           label="Groups"
@@ -25,30 +25,19 @@ export default class Group extends PureComponent {
           helpOnFocus
           helpText="Select some group for me"
         />
-        <TextField
-          id="eventEmail"
-          placeholder="Email"
-          defaultValue="heyfromjonathan@gmail.com"
-          block
-          paddedBlock
+        <SelectField
+          id="attributes"
+          label="Attributes"
+          placeholder="Select an Attribute"
+          menuItems={this.props.attributes}
+          itemLabel="name"
+          itemValue="abbreviation"
+          className="md-cell"
+          helpOnFocus
+          helpText="Select some attribute for me"
         />
         <Divider />
-        <TextField
-          id="eventName"
-          placeholder="Event name"
-          block
-          paddedBlock
-        />
-        <Divider />
-        <TextField
-          id="eventDescription"
-          placeholder="Description"
-          block
-          paddedBlock
-          rows={4}
-          defaultValue="asdlafkjewflaksejflakjskl"
-        />
-      </div>
+      </section>
     );
   }
 }
