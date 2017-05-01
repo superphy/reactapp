@@ -1,24 +1,12 @@
 import React, { PureComponent } from 'react';
 import Button from 'react-md/lib/Buttons/Button';
-import Paper from 'react-md/lib/Papers';
-import Group from './Group';
-// Temporary to display fields in class Group
-import {groups, attributes} from './constants';
+import GroupsForm from './GroupsForm'
 
 export default class Home extends PureComponent {
   render() {
     return (
       <div className="md-grid">
-        <div className="paper-container">
-          <form>
-            <Paper>
-                <Group groups={groups} attributes={attributes}></Group>
-            </Paper>
-            <Paper>
-                <Group groups={groups} attributes={attributes}></Group>
-            </Paper>
-          </form>
-        </div>
+        <GroupsForm />
       </div>
     );
   }

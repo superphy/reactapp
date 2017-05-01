@@ -7,13 +7,13 @@ import SelectField from 'react-md/lib/SelectFields';
 export default class Group extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 'VA'
-    };
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
   }
-  _handleChange = (value, index, event) => { // eslint-disable-line no-unused-vars
-    this.setState({ value });
-  };
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
   render() {
     return (
       <section className="md-grid">
