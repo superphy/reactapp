@@ -29,10 +29,10 @@ export default class Home extends PureComponent {
         <div className="paper-container">
           <form>
             <Paper>
-                <Group></Group>
+                <Group groups={groups}></Group>
             </Paper>
             <Paper>
-                <Group></Group>
+                <Group groups={groups}></Group>
             </Paper>
           </form>
         </div>

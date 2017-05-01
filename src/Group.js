@@ -14,6 +14,17 @@ export default class Group extends PureComponent {
   render() {
     return (
       <div>
+        <SelectField
+          id="groups"
+          label="Groups"
+          placeholder="Select a Group"
+          menuItems={this.props.groups}
+          itemLabel="name"
+          itemValue="abbreviation"
+          className="md-cell"
+          helpOnFocus
+          helpText="Select some group for me"
+        />
         <TextField
           id="eventEmail"
           placeholder="Email"
