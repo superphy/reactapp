@@ -21,6 +21,7 @@ export default class Group extends PureComponent {
           id="groups"
           label="Groups"
           placeholder="Select a Group"
+          position={SelectField.Positions.BELOW}
           menuItems={this.props.groups}
           itemLabel="name"
           itemValue="abbreviation"
@@ -32,6 +33,7 @@ export default class Group extends PureComponent {
           id="attributes"
           label="Attributes"
           placeholder="Select an Attribute"
+          position={SelectField.Positions.BELOW}
           menuItems={this.props.attributes}
           itemLabel="name"
           itemValue="abbreviation"
