@@ -12,11 +12,13 @@
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-md": "*",
+    "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^0.9.5",
+    "redux-devtools": "^3.4.0"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
