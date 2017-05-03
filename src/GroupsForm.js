@@ -21,9 +21,9 @@ export default class GroupsForm extends PureComponent {
   componentDidMount() {
     axios.get(`http://10.139.14.156:8000/api/v0/get_all_attribute_types`)
       .then(res => {
-        const groups = res.data.data.children.map(obj => obj.data);
+        const groups = res.data;
         this.setState({ groups });
-        console.log(groups)
+        console.log(this.state.groups)
       });
   }
   render() {
