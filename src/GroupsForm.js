@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Paper from 'react-md/lib/Papers';
+import Button from 'react-md/lib/Buttons/Button';
 import Group from './Group';
 // Temporary to display fields in class Group
 import attributes from './constants';
@@ -16,6 +17,7 @@ export default class GroupsForm extends PureComponent {
   }
   handleSubmit(event) {
     alert('A name was submitted: ');
+    console.log(this.children.state)
     event.preventDefault();
   }
   componentDidMount() {
@@ -23,7 +25,6 @@ export default class GroupsForm extends PureComponent {
       .then(res => {
         const groups = res.data;
         this.setState({ groups });
-        console.log(this.state.groups)
       });
   }
   render() {
@@ -36,6 +37,7 @@ export default class GroupsForm extends PureComponent {
           <Paper>
               <Group groups={this.state.groups} attributes={attributes}></Group>
           </Paper>
+          <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>
       </form>
     );
