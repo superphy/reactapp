@@ -1,13 +1,16 @@
 import React, { PureComponent } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as GCFormActions from '../actions/gcform';
 import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
-import Group from './Group';
+import Group from '../components/Group';
 // Temporary to display fields in class Group
-import attributes from './constants';
+import attributes from '../constants';
 // axios is a http client lib
 import axios from 'axios'
 
-export default class GroupsForm extends PureComponent {
+class GroupsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,3 +46,16 @@ export default class GroupsForm extends PureComponent {
     );
   }
 }
+
+/// Setting up redux
+function mapStateToProps(state) {
+  return {
+    gcform: state.gcform
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(GCFormActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroupsForm);

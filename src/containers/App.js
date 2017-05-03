@@ -1,28 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+
+// Components from react-md
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
-import NavLink from './NavLink';
+import NavLink from '../containers/NavLink';
 
-import Home from './Home';
-import Page1 from './Page1';
-import Page2 from './Page2';
-import Page3 from './Page3';
-
-// Create a Redux store holding the state of your app.
-// Its API is { subscribe, dispatch, getState }.
-const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(...middleware),
-  // other store enhancers if any
-));
-// You can use subscribe() to update the UI in response to state changes.
-// Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
-// However it can also be handy to persist the current state in the localStorage.
-
-store.subscribe(() =>
-  console.log(store.getState())
-)
+import Home from '../containers/Home';
+import Page1 from '../containers/Page1';
+import Page2 from '../containers/Page2';
+import Page3 from '../containers/Page3';
 
 const navItems = [{
   exact: true,
