@@ -3,6 +3,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
 import AddAttribute from './AddAttribute';
+import Button from 'react-md/lib/Buttons/Button';
+
+const i = 0;
 
 export default class Group extends PureComponent {
   constructor(props) {
@@ -11,12 +14,12 @@ export default class Group extends PureComponent {
       selections: [
         {
           groupid: this.props.groupid,
-          key: 0
+          key: i
         }
       ]
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -24,11 +27,23 @@ export default class Group extends PureComponent {
   componentDidMount() {
     console.log(this.state)
   }
+  onClick(){
+    this.setState({
+        selections: this.state.selections.concat([{
+          groupid: this.props.groupid,
+          key: i+1
+        }])
+      })
+    i = i + 1;
+  }
   render() {
     return (
       <div>
       {this.state.selections.map(selection =>
-        <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>
+        <div className="md-grid" key={this.props.groupid + selection.key}>
+          <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>
+          <Button icon secondary onClick={this.onClick}>add</Button>
+        </div>
       )}
     </div>
     );
