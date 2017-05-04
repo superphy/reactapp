@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import invariant from 'redux-immutable-state-invariant';
 import reducer from '../reducers';
-import * as actionCreators from '../actions/gcform';
+import * as actionCreators from '../actions';
 
 export let isMonitorAction;
 export default function configureStore(preloadedState) {

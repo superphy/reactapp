@@ -1,6 +1,6 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/gcform';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/groupsform';
 
-export default function gcform(state = 0, action) {
+export default function groupsform(state = 0, action) {
   switch (action.type) {
   case INCREMENT_COUNTER:
     return state + 1;

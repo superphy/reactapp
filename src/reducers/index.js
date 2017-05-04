@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import gcform from './gcform';
+import groupsform from './groupsform';
 
 const rootReducer = combineReducers({
-  gcform
+  groupsform
 });
 
 export default rootReducer;
