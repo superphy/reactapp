@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import NavigationDrawer from 'react-md/lib/NavigationDrawers';
-import NavLink from './NavLink';
 
-import Home from './Home';
-import Page1 from './Page1';
-import Page2 from './Page2';
-import Page3 from './Page3';
-import NewComparison from './NewComparison';
+// Components from react-md
+import NavigationDrawer from 'react-md/lib/NavigationDrawers';
+import NavLink from '../containers/NavLink';
+
+import Home from '../containers/Home';
+import Page1 from '../containers/Page1';
+import Page2 from '../containers/Page2';
+import Page3 from '../containers/Page3';
 
 const navItems = [{
   exact: true,
@@ -40,7 +41,6 @@ class App extends Component {
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
-              <Route path="/new" location={location} component={NewComparison} />
               <Route path="/page-1" location={location} component={Page1} />
               <Route path="/page-2" location={location} component={Page2} />
               <Route path="/page-3" location={location} component={Page3} />

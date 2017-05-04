@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import App from './containers/App';
 import './index.css';
 
 import WebFontLoader from 'webfontloader';
+
+// init the one and only redux store for the entire app
+const store = configureStore();
 
 WebFontLoader.load({
   google: {
@@ -13,6 +18,6 @@ WebFontLoader.load({
 });
 
 ReactDOM.render(
-  <Router><App /></Router>,
+    <Router><Provider store={store}><App /></Provider></Router>,
   document.getElementById('root')
 );
