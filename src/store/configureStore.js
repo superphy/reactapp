@@ -7,7 +7,7 @@ import * as actionCreators from '../actions';
 export let isMonitorAction;
 export default function configureStore(preloadedState) {
   const composeEnhancers = composeWithDevTools({ actionCreators });
-  const store = createStore(reducer, preloadedState, composeEnhancers(
+  const store = createStore(reducer, preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), composeEnhancers(
     applyMiddleware(invariant())
   ));
 
