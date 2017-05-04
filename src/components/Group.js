@@ -11,7 +11,7 @@ export default class Group extends PureComponent {
       selections: [
         {
           groupid: this.props.groupid,
-          selectionid: 0
+          key: 0
         }
       ]
     };
@@ -28,7 +28,7 @@ export default class Group extends PureComponent {
     return (
       <div>
       {this.state.selections.map(selection =>
-        <AddAttribute groupid={selection.groupid} selectionid={selection.selectionid} relations={this.props.relations} attributes={this.props.attributes}/>
+        <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>
       )}
     </div>
     );
