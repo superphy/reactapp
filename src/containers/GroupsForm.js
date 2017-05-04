@@ -36,10 +36,10 @@ class GroupsForm extends PureComponent {
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
           <Paper>
-              <Group relations={this.state.relations} attributes={attributes}></Group>
+              <Group groupid='group1' relations={this.state.relations} attributes={attributes}></Group>
           </Paper>
           <Paper>
-              <Group relations={this.state.relations} attributes={attributes}></Group>
+              <Group groupid='group2' relations={this.state.relations} attributes={attributes}></Group>
           </Paper>
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>

@@ -47,6 +47,7 @@ class AddAttribute extends PureComponent {
           helpOnFocus
           helpText="Relations are descriptors about specific attributes."
           onChange={this.setRelation}
+          required
         />
         <SelectField
           id="attributes"
@@ -58,6 +59,7 @@ class AddAttribute extends PureComponent {
           helpOnFocus
           helpText="An attribute is a specific instance of a relation type. For example, O157 is an attribute of relation O-Type."
           onChange={this.setAttribute}
+          required
         />
         <Divider />
       </section>

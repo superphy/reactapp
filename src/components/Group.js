@@ -8,7 +8,12 @@ export default class Group extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      selections: [
+        {
+          groupid: this.props.groupid,
+          selectionid: 0
+        }
+      ]
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +26,11 @@ export default class Group extends PureComponent {
   }
   render() {
     return (
-    <AddAttribute relations={this.props.relations} attributes={this.props.attributes}/>
+      <div>
+      {this.state.selections.map(selection =>
+        <AddAttribute groupid={selection.groupid} selectionid={selection.selectionid} relations={this.props.relations} attributes={this.props.attributes}/>
+      )}
+    </div>
     );
   }
 }
