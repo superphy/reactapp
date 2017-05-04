@@ -18,6 +18,6 @@ WebFontLoader.load({
 });
 
 ReactDOM.render(
-  <Router><App /></Router>,
+    <Router><Provider store={store}><App /></Provider></Router>,
   document.getElementById('root')
 );

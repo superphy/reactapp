@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { Link as RouterLink, Route } from 'react-router-dom';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
@@ -31,4 +32,3 @@ NavLink.propTypes = {
   icon: PropTypes.node,
 };
 export default NavLink;
-
