@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
 import SelectField from 'react-md/lib/SelectFields';
 import Divider from 'react-md/lib/Dividers';
+import axios from 'axios'
 
 class AddAttribute extends PureComponent {
   constructor(props) {
     super(props);
+    // Note: the state of this component is not considered 'fixed' until it is submitted to the redux store
     this.state = {
       relation: '',
       attribute: ''
@@ -17,6 +19,8 @@ class AddAttribute extends PureComponent {
     console.log(newValue, newActiveIndex, event);
     const relation = newValue;
     this.setState({ relation })
+    // With the relation type set, we can query the backend
+
   }
   setAttribute(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);

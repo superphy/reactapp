@@ -9,6 +9,7 @@ import Group from '../components/Group';
 import { attributes } from '../constants';
 // axios is a http client lib
 import axios from 'axios'
+import { API_ROOT } from '../middleware/api';
 
 class GroupsForm extends PureComponent {
   constructor(props) {
@@ -24,7 +25,7 @@ class GroupsForm extends PureComponent {
     event.preventDefault();
   }
   componentDidMount() {
-    axios.get(`http://10.139.14.156:8000/api/v0/get_all_attribute_types`)
+    axios.get(API_ROOT + `get_all_attribute_types`)
       .then(res => {
         const relations = res.data;
         this.setState({ relations });
