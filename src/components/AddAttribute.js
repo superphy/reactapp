@@ -10,10 +10,18 @@ class AddAttribute extends PureComponent {
       relation: '',
       attribute: ''
     };
-    this.onChange = this.onChange.bind(this);
+    this.setRelation = this.setRelation.bind(this);
+    this.setAttribute = this.setAttribute.bind(this);
   }
-  onChange(newValue, newActiveIndex, event) {
+  setRelation(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
+    const relation = newValue;
+    this.setState({ relation })
+  }
+  setAttribute(newValue, newActiveIndex, event) {
+    console.log(newValue, newActiveIndex, event);
+    const attribute = newValue;
+    this.setState({ attribute })
   }
   render(){
     return (
@@ -27,7 +35,7 @@ class AddAttribute extends PureComponent {
           className="md-cell"
           helpOnFocus
           helpText="Relations are descriptors about specific attributes."
-          onChange={this.onChange}
+          onChange={this.setRelation}
         />
         <SelectField
           id="attributes"
@@ -38,7 +46,7 @@ class AddAttribute extends PureComponent {
           className="md-cell"
           helpOnFocus
           helpText="An attribute is a specific instance of a relation type. For example, O157 is an attribute of relation O-Type."
-          onChange={this.onChange}
+          onChange={this.setAttribute}
         />
         <Divider />
       </section>
