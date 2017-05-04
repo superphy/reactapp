@@ -14,7 +14,7 @@ class GroupsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      groups: []
+      relations: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,8 +26,8 @@ class GroupsForm extends PureComponent {
   componentDidMount() {
     axios.get(`http://10.139.14.156:8000/api/v0/get_all_attribute_types`)
       .then(res => {
-        const groups = res.data;
-        this.setState({ groups });
+        const relations = res.data;
+        this.setState({ relations });
       });
   }
   render() {
@@ -35,10 +35,10 @@ class GroupsForm extends PureComponent {
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
           <Paper>
-              <Group groups={this.state.groups} attributes={attributes}></Group>
+              <Group relations={this.state.relations} attributes={attributes}></Group>
           </Paper>
           <Paper>
-              <Group groups={this.state.groups} attributes={attributes}></Group>
+              <Group relations={this.state.relations} attributes={attributes}></Group>
           </Paper>
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>

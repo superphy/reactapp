@@ -21,7 +21,7 @@ export default class Group extends PureComponent {
   }
   render() {
     return (
-    <AddAttribute groups={this.props.groups} attributes={this.props.attributes}/>
+    <AddAttribute relations={this.props.relations} attributes={this.props.attributes}/>
     );
   }
 }

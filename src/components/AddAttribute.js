@@ -7,28 +7,27 @@ class AddAttribute extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      group: '',
+      relation: '',
       attribute: ''
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  onChange(newValue, newActiveIndex, event) {
+    console.log(newValue, newActiveIndex, event);
   }
   render(){
     return (
       <section className="md-grid">
         <SelectField
-          id="groups"
-          label="Groups"
-          placeholder="Select a Group"
+          id="relations"
+          label="Relations"
+          placeholder="Select a Relation"
           position={SelectField.Positions.BELOW}
-          menuItems={this.props.groups}
-          itemLabel="name"
-          itemValue="abbreviation"
+          menuItems={this.props.relations}
           className="md-cell"
           helpOnFocus
-          helpText="Select some group for me"
+          helpText="Relations are descriptors about specific attributes."
+          onChange={this.onChange}
         />
         <SelectField
           id="attributes"
@@ -36,11 +35,10 @@ class AddAttribute extends PureComponent {
           placeholder="Select an Attribute"
           position={SelectField.Positions.BELOW}
           menuItems={this.props.attributes}
-          itemLabel="name"
-          itemValue="abbreviation"
           className="md-cell"
           helpOnFocus
-          helpText="Select some attribute for me"
+          helpText="An attribute is a specific instance of a relation type. For example, O157 is an attribute of relation O-Type."
+          onChange={this.onChange}
         />
         <Divider />
       </section>
