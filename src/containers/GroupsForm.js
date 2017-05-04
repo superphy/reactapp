@@ -6,7 +6,7 @@ import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
 import Group from '../components/Group';
 // Temporary to display fields in class Group
-import attributes from '../constants';
+import { attributes } from '../constants';
 // axios is a http client lib
 import axios from 'axios'
 

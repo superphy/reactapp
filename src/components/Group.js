@@ -16,6 +16,9 @@ export default class Group extends PureComponent {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
+  componentDidMount() {
+    console.log(this.state)
+  }
   render() {
     return (
     <AddAttribute groups={this.props.groups} attributes={this.props.attributes}/>
