@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import * as group from './group';
+import undoableAttribute from './group';
 
 const rootReducer = combineReducers({
-  group
+  undoableAttribute
 });
 
 export default rootReducer;

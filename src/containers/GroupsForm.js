@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as GCFormActions from '../actions/group';
 import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
 import Group from '../components/Group';
@@ -48,15 +46,4 @@ class GroupsForm extends PureComponent {
   }
 }
 
-/// Setting up redux
-function mapStateToProps(state) {
-  return {
-    gcform: state.gcform
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(GCFormActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GroupsForm);
+export default GroupsForm;

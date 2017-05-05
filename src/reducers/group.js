@@ -23,4 +23,6 @@ const attribute = (state = initialStateAttribute, action) => {
   }
 }
 
-export const undoableAttribute = undoable(attribute)
+const undoableAttribute = undoable(attribute);
+
+export default undoableAttribute;
