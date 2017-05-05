@@ -37,19 +37,15 @@ const App = (groups, actions) => (
   </div>
 )
 
-function mapStateToProps(state) {
-  return {
+const mapStateToProps = state => ({
     groups: state.groups
-  };
-}
+})
 
-function mapDispatchToProps(dispatch) {
-  return {
+const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(GroupActions, dispatch)
-  };
-}
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import App from './containers/App';
 import './index.css';
-
 import WebFontLoader from 'webfontloader';
 
 // init the one and only redux store for the entire app
