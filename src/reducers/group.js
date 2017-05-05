@@ -1,5 +1,5 @@
 import undoable from 'redux-undo'
-import { SET_RELATION, SET_ATTRIBUTE } from '../actions/group'
+import { SET_RELATION, SET_ATTRIBUTE } from '../constants/ActionTypes'
 
 const initialStateAttribute = {
   relation: "",

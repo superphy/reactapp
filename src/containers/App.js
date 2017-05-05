@@ -7,7 +7,7 @@ import Home from '../containers/Home'
 // Redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as GroupActions from '../actions/group'
+import * as actions from '../actions'
 
 const navItems = [{
   exact: true,
@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(GroupActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
 })
 
 export default connect(
