@@ -1,1 +1,1 @@
-export * from './groupsform';
+export * from './group';

@@ -1,0 +1,2 @@
+export const SET_RELATION = 'SET_RELATION'
+export const SET_ATTRIBUTE = 'SET_ATTRIBUTE'
