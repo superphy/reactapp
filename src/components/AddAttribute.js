@@ -26,12 +26,6 @@ class AddAttribute extends PureComponent {
     // With the relation type chosen, we can query the backend
     console.log(relation)
 
-    // redux
-    this.context.dispatch({
-      type: SET_RELATION,
-      relation: relation
-    })
-
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
         const attributes = res.data;
