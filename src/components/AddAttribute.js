@@ -8,7 +8,6 @@ import { API_ROOT } from '../middleware/api';
 class AddAttribute extends Component {
   constructor(props) {
     super(props);
-    // Note: the state of this component is not considered 'fixed' until it is submitted to the redux store
     this.state = {
       relation: '',
       attribute: '',
