@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as GCFormActions from '../actions/groupsform';
 import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
 import Group from '../components/Group';
-// Temporary to display fields in class Group
-import { attributes } from '../constants';
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
@@ -15,7 +10,8 @@ class GroupsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      relations: []
+      relations: [],
+      attributes: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -36,10 +32,10 @@ class GroupsForm extends PureComponent {
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
           <Paper>
-              <Group groupid='group1' relations={this.state.relations} attributes={attributes}></Group>
+              <Group groupid='group1' relations={this.state.relations} attributes={this.state.ttributes}></Group>
           </Paper>
           <Paper>
-              <Group groupid='group2' relations={this.state.relations} attributes={attributes}></Group>
+              <Group groupid='group2' relations={this.state.relations} attributes={this.state.attributes}></Group>
           </Paper>
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>
@@ -48,15 +44,4 @@ class GroupsForm extends PureComponent {
   }
 }
 
-/// Setting up redux
-function mapStateToProps(state) {
-  return {
-    gcform: state.gcform
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(GCFormActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GroupsForm);
+export default GroupsForm;

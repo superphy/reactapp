@@ -1,14 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import SelectField from 'react-md/lib/SelectFields';
 import Divider from 'react-md/lib/Dividers';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
 
-class AddAttribute extends PureComponent {
+class AddAttribute extends Component {
   constructor(props) {
     super(props);
-    // Note: the state of this component is not considered 'fixed' until it is submitted to the redux store
     this.state = {
       relation: '',
       attribute: '',
@@ -23,6 +22,7 @@ class AddAttribute extends PureComponent {
     this.setState({ relation })
     // With the relation type chosen, we can query the backend
     console.log(relation)
+
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
         const attributes = res.data;

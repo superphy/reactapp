@@ -11,5 +11,10 @@
 
 # misc
 .DS_Store
-.env
-npm-debug.log
+# the fork of create-react-scripts (which we use for default webpack builds) req a .env file at root
+#.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+*.css
