@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
 import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
 import Group from '../components/Group';

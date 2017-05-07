@@ -4,10 +4,6 @@ import { Route, Switch } from 'react-router-dom'
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
 import Home from '../containers/Home'
-// Redux
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as actions from '../actions'
 
 const navItems = [{
   exact: true,
@@ -37,15 +33,4 @@ const App = (groups, actions) => (
   </div>
 )
 
-const mapStateToProps = state => ({
-    groups: state.groups
-})
-
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(actions, dispatch)
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default App
