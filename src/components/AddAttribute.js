@@ -4,7 +4,6 @@ import SelectField from 'react-md/lib/SelectFields';
 import Divider from 'react-md/lib/Dividers';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
-import { SET_RELATION, SET_ATTRIBUTE } from '../constants/ActionTypes'
 
 class AddAttribute extends Component {
   constructor(props) {

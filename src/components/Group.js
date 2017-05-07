@@ -12,6 +12,7 @@ export default class Group extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      // selections represent a list of selected relation-attribute pairs specific to a single group
       selections: [
         {
           groupid: this.props.groupid,
