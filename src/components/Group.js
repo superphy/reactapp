@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
 import AddAttribute from './AddAttribute';
 import Button from 'react-md/lib/Buttons/Button';
+import Subheader from 'react-md/lib/Subheaders';
 
 let i = 0;
 
@@ -39,6 +40,7 @@ export default class Group extends PureComponent {
   render() {
     return (
       <div>
+        <Subheader primary primaryText={this.props.groupid} />
       {this.state.selections.map(selection =>
         <div className="md-grid" key={this.props.groupid + selection.key}>
           <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>

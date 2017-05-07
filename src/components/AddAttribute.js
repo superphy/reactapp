@@ -1,13 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import SelectField from 'react-md/lib/SelectFields';
 import Divider from 'react-md/lib/Dividers';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
 import { SET_RELATION, SET_ATTRIBUTE } from '../constants/ActionTypes'
 
-class AddAttribute extends PureComponent {
+class AddAttribute extends Component {
   constructor(props) {
     super(props);
     // Note: the state of this component is not considered 'fixed' until it is submitted to the redux store
@@ -69,7 +68,5 @@ class AddAttribute extends PureComponent {
     )
   }
 }
-
-AddAttribute = connect()(AddAttribute)
 
 export default AddAttribute;
