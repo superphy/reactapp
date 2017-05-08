@@ -36,8 +36,8 @@ class GroupsForm extends PureComponent {
     console.log(this.state)
     event.preventDefault();
   }
-  handleChange(value, event) {
-    console.log(value, event)
+  handleChange(value, event, groupIndex, attributeIndex) {
+    console.log(value, event, groupIndex, attributeIndex)
   }
   componentDidMount() {
     axios.get(API_ROOT + `get_all_attribute_types`)

@@ -44,7 +44,7 @@ class AddAttribute extends Component {
  }
  _handleChangeNegated = (negated, event) => {
     this.setState({ negated });
-    this.props.handleChange(negated, event);
+    this.props.handleChange(negated, event, this.props.groupIndex, this.props.attributeIndex);
   };
   render(){
     const { inlineValue, negated } = this.state;
