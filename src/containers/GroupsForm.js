@@ -45,7 +45,7 @@ class GroupsForm extends PureComponent {
     this.handleChangeAddRelation = this.handleChangeAddRelation.bind(this);
   }
   handleSubmit(event) {
-    alert('A name was submitted: ');
+    alert('Submitting: ' + JSON.stringify(this.state.groups));
     console.log(this.state)
     event.preventDefault();
 
