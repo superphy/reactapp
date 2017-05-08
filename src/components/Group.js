@@ -28,7 +28,6 @@ class Group extends PureComponent {
   onClick(){
     this.setState({
         selections: this.state.selections.concat([{
-          groupid: this.props.groupid,
           key: i+1
         }])
       })
@@ -37,11 +36,11 @@ class Group extends PureComponent {
   render() {
     return (
       <div>
-        <Subheader primary primaryText={this.props.groupid} />
+        <Subheader primary primaryText={"Group: " + this.props.groupIndex} />
         <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
       {this.state.selections.map((selection, index) =>
         <div className="md-grid" key={index}>
-          <AddAttribute groupIndex={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.props.handleChange} attributeIndex={index}/>
+          <AddAttribute groupIndex={this.props.groupIndex} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.props.handleChange} attributeIndex={index}/>
         </div>
       )}
     </div>

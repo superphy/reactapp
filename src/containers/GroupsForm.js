@@ -50,12 +50,11 @@ class GroupsForm extends PureComponent {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
-          <Paper>
-              <Group groupid='group1' relations={this.state.relations}  handleChange={this.handleChange}></Group>
-          </Paper>
-          <Paper>
-              <Group groupid='group2' relations={this.state.relations}  handleChange={this.handleChange}></Group>
-          </Paper>
+          {this.state.groups.map((group, index) =>
+            <Paper key={index}>
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}></Group>
+            </Paper>
+          )}
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>
       </form>
