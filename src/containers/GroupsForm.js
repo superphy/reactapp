@@ -6,18 +6,33 @@ import Group from '../components/Group';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
 
+const initialState = {
+  groups: [
+    {
+      negated: false,
+      relation: "",
+      attribute: "",
+      logical: null
+    },
+    {
+      negated: false,
+      relation: "",
+      attribute: "",
+      logical: null
+    }
+  ],
+  relations:[] // a list of possible relations from spfy
+}
+
 class GroupsForm extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      relations: [],
-      attributes: []
-    };
+    this.state = initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
     alert('A name was submitted: ');
-    console.log(this.children.state)
+    console.log(this.state)
     event.preventDefault();
   }
   componentDidMount() {

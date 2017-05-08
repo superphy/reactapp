@@ -24,7 +24,7 @@ export default class Group extends PureComponent {
     this.onClick = this.onClick.bind(this);
   }
   handleChange(event) {
-    this.setState({value: event.target.value});
+    console.log(event)
   }
   componentDidMount() {
     console.log(this.state)
