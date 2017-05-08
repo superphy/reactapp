@@ -48,6 +48,14 @@ class GroupsForm extends PureComponent {
     alert('A name was submitted: ');
     console.log(this.state)
     event.preventDefault();
+
+    axios.post(API_ROOT + 'newgroupcomparison', this.state.groups)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   // this handles updating state for any change in form fields
   handleChange(value, event, groupIndex, attributeIndex, property) {
