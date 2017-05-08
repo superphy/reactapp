@@ -45,10 +45,7 @@ export default class Group extends PureComponent {
       {this.state.selections.map(selection =>
         <div className="md-grid" key={this.props.groupid + selection.key}>
           <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>
-          <Button flat label="AND" secondary onClick={this.onClick}>add</Button>
-          <Button flat label="OR" secondary onClick={this.onClick}>swap_horiz</Button>
-          <Button flat label="NOT" secondary onClick={this.onClick}>block</Button>
-          <Button flat label="Remove" secondary onClick={this.onClick}>clear</Button>
+          <Button flat label="Add a relation to this group" secondary onClick={this.onClick}>add</Button>
         </div>
       )}
     </div>
