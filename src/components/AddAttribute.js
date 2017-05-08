@@ -47,6 +47,11 @@ class AddAttribute extends Component {
   _handleInlineChange(e) {
    // Basically how the `SelectionControlGroup` works
    this.setState({ inlineValue: e.target.value });
+   console.log(e)
+   console.log(e.target.id)
+
+   // callback
+   this.props.handleChange(e.target.id, event, this.props.groupIndex, this.props.attributeIndex, "logical");
  }
  _handleChangeNegated = (negated, event) => {
     this.setState({ negated });
@@ -92,7 +97,7 @@ class AddAttribute extends Component {
           <fieldset onChange={this._handleInlineChange}>
             <legend className="md-subheading-1">Linked By:</legend>
             <Radio
-              id="inlineRadio1"
+              id="AND"
               inline
               name="inlineRadios"
               value="A"
@@ -100,7 +105,7 @@ class AddAttribute extends Component {
               checked={inlineValue === 'A'}
             />
             <Radio
-              id="inlineRadio2"
+              id="OR"
               inline
               name="inlineRadios"
               value="B"
