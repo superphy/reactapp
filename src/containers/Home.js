@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import GroupsForm from './GroupsForm'
+import GroupsForm from '../containers/GroupsForm'
+import DataTable from '../components/DataTable'
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -8,14 +9,9 @@ export default class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      results: null
     }
     this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
-  }
-  handleResponse(response) {
-    const results = response;
-    this.setState({results})
   }
   handleChangeSubmit(groups, target){
     axios.post(API_ROOT + 'newgroupcomparison', {
@@ -24,7 +20,8 @@ export default class Home extends PureComponent {
     })
       .then(response => {
         console.log(response);
-        this.handleResponse(response);
+        const results = response.data;
+        this.setState({results})
       })
       .catch(function (error) {
         console.log(error);
@@ -33,7 +30,8 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div className="md-grid">
-        <GroupsForm handleChangeSubmit={this.handleChangeSubmit} />
+        {!this.state.results && <GroupsForm handleChangeSubmit={this.handleChangeSubmit} />}
+        {this.state.results && <DataTable />}
       </div>
     );
   }
