@@ -1,11 +1,12 @@
-import React, { PureComponent } from 'react';
-import update from 'immutability-helper';
-import Paper from 'react-md/lib/Papers';
-import Button from 'react-md/lib/Buttons/Button';
-import Group from '../components/Group';
+import React, { PureComponent } from 'react'
+import update from 'immutability-helper'
+import Paper from 'react-md/lib/Papers'
+import Button from 'react-md/lib/Buttons/Button'
+import Group from '../components/Group'
+import AddTarget from '../components/AddTarget'
 // axios is a http client lib
 import axios from 'axios'
-import { API_ROOT } from '../middleware/api';
+import { API_ROOT } from '../middleware/api'
 
 const initialStateRelation = {
     negated: false,
@@ -34,7 +35,8 @@ const initialState = {
     ]
   ],
   relations:[], // a list of possible relations from spfy
-  targets: []
+  targets: [],
+  target: "" // the chosen target to compare against
 }
 
 class GroupsForm extends PureComponent {
@@ -44,6 +46,7 @@ class GroupsForm extends PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeAddRelation = this.handleChangeAddRelation.bind(this);
+    this.handleChangeTarget = this.handleChangeTarget.bind(this);
   }
   handleSubmit(event) {
     alert('Submitting: ' + JSON.stringify(this.state.groups));
@@ -83,6 +86,10 @@ class GroupsForm extends PureComponent {
       })
     })
   }
+  handleChangeTarget(value){
+    const target = value;
+    this.setState({target})
+  }
   componentDidMount() {
     // get possible relations for user to build groups
     axios.get(API_ROOT + `get_all_attribute_types`)
@@ -103,9 +110,12 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation}></Group>
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} />
             </Paper>
           )}
+          <Paper>
+            <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
+          </Paper>
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>
       </form>
