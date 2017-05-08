@@ -33,7 +33,8 @@ const initialState = {
       }
     ]
   ],
-  relations:[] // a list of possible relations from spfy
+  relations:[], // a list of possible relations from spfy
+  targets: []
 }
 
 class GroupsForm extends PureComponent {
@@ -83,10 +84,17 @@ class GroupsForm extends PureComponent {
     })
   }
   componentDidMount() {
+    // get possible relations for user to build groups
     axios.get(API_ROOT + `get_all_attribute_types`)
       .then(res => {
         const relations = res.data;
         this.setState({ relations });
+      });
+    // get possible targets to compare groups against
+    axios.get(API_ROOT + `get_all_types`)
+      .then(res => {
+        const targets = res.data;
+        this.setState({ targets });
       });
   }
   render() {
