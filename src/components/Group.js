@@ -32,6 +32,9 @@ class Group extends PureComponent {
         }])
       })
     i += 1;
+
+    // callback
+    this.props.handleChangeAddRelation(this.props.groupIndex)
   }
   render() {
     return (
