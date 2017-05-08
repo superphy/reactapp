@@ -4,14 +4,20 @@ import TableHeader from 'react-md/lib/DataTables/TableHeader';
 import TableBody from 'react-md/lib/DataTables/TableBody';
 import TableRow from 'react-md/lib/DataTables/TableRow';
 import TableColumn from 'react-md/lib/DataTables/TableColumn';
-import loremIpsum from 'lorem-ipsum';
 
-export default class PlainTableExample extends PureComponent {
+class ResultsTable extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    console.log(this.props)
+  }
   render() {
-    const rows = [...new Array(10)].map((_, i) => (
+    const rows = this.props.data.map((row, i) => (
       <TableRow key={i}>
-        <TableColumn>{loremIpsum({ count: 5, units: 'words' })}</TableColumn>
-        <TableColumn>{loremIpsum({ count: 5, units: 'words' })}</TableColumn>
+        {row.map((value, ci) => (
+          <TableColumn key={ci}>{value}</TableColumn>
+        ))}
       </TableRow>
     ));
 
@@ -19,8 +25,9 @@ export default class PlainTableExample extends PureComponent {
       <DataTable plain>
         <TableHeader>
           <TableRow>
-            <TableColumn>Lorem 1</TableColumn>
-            <TableColumn>Lorem 2</TableColumn>
+            {this.props.columns.map((value, i) => (
+              <TableColumn>{value}</TableColumn>
+            ))}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -30,3 +37,5 @@ export default class PlainTableExample extends PureComponent {
     );
   }
 }
+
+export default ResultsTable
