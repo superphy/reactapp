@@ -7,6 +7,13 @@ import Group from '../components/Group';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
 
+const initialStateRelation = {
+    negated: false,
+    relation: "",
+    attribute: "",
+    logical: null
+}
+
 const initialState = {
   groups: [
     [
@@ -35,12 +42,14 @@ class GroupsForm extends PureComponent {
     this.state = initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeAddRelation = this.handleChangeAddRelation.bind(this);
   }
   handleSubmit(event) {
     alert('A name was submitted: ');
     console.log(this.state)
     event.preventDefault();
   }
+  // this handles updating state for any change in form fields
   handleChange(value, event, groupIndex, attributeIndex, property) {
     console.log(value, event, groupIndex, attributeIndex, property)
     this.setState({
@@ -56,6 +65,15 @@ class GroupsForm extends PureComponent {
       )
     })
   }
+  handleChangeAddRelation(groupIndex) {
+    this.setState({
+      groups: update(this.state.groups, {
+        [groupIndex]: {
+          $push: [initialStateRelation]
+        }
+      })
+    })
+  }
   componentDidMount() {
     axios.get(API_ROOT + `get_all_attribute_types`)
       .then(res => {
@@ -69,7 +87,7 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}></Group>
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation}></Group>
             </Paper>
           )}
           <Button raised label="Submit" onClick={this.handleSubmit}/>
