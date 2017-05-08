@@ -24,19 +24,25 @@ class AddAttribute extends Component {
     console.log(newValue, newActiveIndex, event);
     const relation = newValue;
     this.setState({ relation })
+
     // With the relation type chosen, we can query the backend
     console.log(relation)
-
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
         const attributes = res.data;
         this.setState({ attributes });
       });
+
+    // callback to set state in upper level
+    this.props.handleChange(relation, event, this.props.groupIndex, this.props.attributeIndex, "relation");
   }
   setAttribute(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
     const attribute = newValue;
     this.setState({ attribute })
+
+    // callback to set state in upper level
+    this.props.handleChange(attribute, event, this.props.groupIndex, this.props.attributeIndex, "attribute");
   }
   _handleInlineChange(e) {
    // Basically how the `SelectionControlGroup` works
@@ -44,7 +50,7 @@ class AddAttribute extends Component {
  }
  _handleChangeNegated = (negated, event) => {
     this.setState({ negated });
-    this.props.handleChange(negated, event, this.props.groupIndex, this.props.attributeIndex);
+    this.props.handleChange(negated, event, this.props.groupIndex, this.props.attributeIndex, "negated");
   };
   render(){
     const { inlineValue, negated } = this.state;

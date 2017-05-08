@@ -41,13 +41,13 @@ class GroupsForm extends PureComponent {
     console.log(this.state)
     event.preventDefault();
   }
-  handleChange(value, event, groupIndex, attributeIndex) {
-    console.log(value, event, groupIndex, attributeIndex)
+  handleChange(value, event, groupIndex, attributeIndex, property) {
+    console.log(value, event, groupIndex, attributeIndex, property)
     this.setState({
       groups: update(this.state.groups, {
           [groupIndex]: {
             [attributeIndex]: {
-              negated: {
+              [property]: {
                 $set: value
               }
             }
