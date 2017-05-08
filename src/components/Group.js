@@ -8,7 +8,7 @@ import Subheader from 'react-md/lib/Subheaders';
 
 let i = 0;
 
-export default class Group extends PureComponent {
+class Group extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,11 +20,7 @@ export default class Group extends PureComponent {
         }
       ]
     };
-    this.handleChange = this.handleChange.bind(this);
     this.onClick = this.onClick.bind(this);
-  }
-  handleChange(event) {
-    console.log(event)
   }
   componentDidMount() {
     console.log(this.state)
@@ -45,10 +41,16 @@ export default class Group extends PureComponent {
         <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
       {this.state.selections.map(selection =>
         <div className="md-grid" key={this.props.groupid + selection.key}>
-          <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.handleChange}/>
+          <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.props.handleChange}/>
         </div>
       )}
     </div>
     );
   }
 }
+
+Group.propTypes = {
+  handleChange: PropTypes.func
+}
+
+export default Group;

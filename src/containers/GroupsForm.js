@@ -29,11 +29,15 @@ class GroupsForm extends PureComponent {
     super(props);
     this.state = initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(event) {
     alert('A name was submitted: ');
     console.log(this.state)
     event.preventDefault();
+  }
+  handleChange(value, event) {
+    console.log(value, event)
   }
   componentDidMount() {
     axios.get(API_ROOT + `get_all_attribute_types`)
@@ -47,10 +51,10 @@ class GroupsForm extends PureComponent {
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
           <Paper>
-              <Group groupid='group1' relations={this.state.relations} attributes={this.state.ttributes}></Group>
+              <Group groupid='group1' relations={this.state.relations}  handleChange={this.handleChange}></Group>
           </Paper>
           <Paper>
-              <Group groupid='group2' relations={this.state.relations} attributes={this.state.attributes}></Group>
+              <Group groupid='group2' relations={this.state.relations}  handleChange={this.handleChange}></Group>
           </Paper>
           <Button raised label="Submit" onClick={this.handleSubmit}/>
         </div>

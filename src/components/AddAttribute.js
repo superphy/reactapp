@@ -42,8 +42,9 @@ class AddAttribute extends Component {
    // Basically how the `SelectionControlGroup` works
    this.setState({ inlineValue: e.target.value });
  }
- _handleChangeNegated = (negated) => {
+ _handleChangeNegated = (negated, event) => {
     this.setState({ negated });
+    this.props.handleChange(negated, event);
   };
   render(){
     const { inlineValue, negated } = this.state;
@@ -106,6 +107,10 @@ class AddAttribute extends Component {
       </section>
     )
   }
+}
+
+AddAttribute.propTypes = {
+  handleChange: PropTypes.func
 }
 
 export default AddAttribute;
