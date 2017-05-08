@@ -5,6 +5,7 @@
   "description": "An example usage of react-md and create-react-app.",
   "dependencies": {
     "axios": "^0.16.1",
+    "immutability-helper": "^2.2.0",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.8",

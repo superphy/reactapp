@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import update from 'immutability-helper';
 import Paper from 'react-md/lib/Papers';
 import Button from 'react-md/lib/Buttons/Button';
 import Group from '../components/Group';
@@ -8,18 +9,22 @@ import { API_ROOT } from '../middleware/api';
 
 const initialState = {
   groups: [
-    {
-      negated: false,
-      relation: "",
-      attribute: "",
-      logical: null
-    },
-    {
-      negated: false,
-      relation: "",
-      attribute: "",
-      logical: null
-    }
+    [
+      {
+        negated: false,
+        relation: "",
+        attribute: "",
+        logical: null
+      }
+    ],
+    [
+      {
+        negated: false,
+        relation: "",
+        attribute: "",
+        logical: null
+      }
+    ]
   ],
   relations:[] // a list of possible relations from spfy
 }
@@ -38,6 +43,18 @@ class GroupsForm extends PureComponent {
   }
   handleChange(value, event, groupIndex, attributeIndex) {
     console.log(value, event, groupIndex, attributeIndex)
+    this.setState({
+      groups: update(this.state.groups, {
+          [groupIndex]: {
+            [attributeIndex]: {
+              negated: {
+                $set: value
+              }
+            }
+          }
+        }
+      )
+    })
   }
   componentDidMount() {
     axios.get(API_ROOT + `get_all_attribute_types`)
