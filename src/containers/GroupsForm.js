@@ -49,20 +49,9 @@ class GroupsForm extends PureComponent {
     this.handleChangeTarget = this.handleChangeTarget.bind(this);
   }
   handleSubmit(event) {
-    alert('Submitting: ' + JSON.stringify(this.state.groups));
-    console.log(this.state)
+    console.log(event)
     event.preventDefault();
-
-    axios.post(API_ROOT + 'newgroupcomparison', {
-      groups: this.state.groups,
-      target: this.state.target
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    this.props.handleChangeSubmit(this.state.groups, this.state.target)
   }
   // this handles updating state for any change in form fields
   handleChange(value, event, groupIndex, attributeIndex, property) {
