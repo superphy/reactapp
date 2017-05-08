@@ -53,7 +53,10 @@ class GroupsForm extends PureComponent {
     console.log(this.state)
     event.preventDefault();
 
-    axios.post(API_ROOT + 'newgroupcomparison', this.state.groups)
+    axios.post(API_ROOT + 'newgroupcomparison', {
+      groups: this.state.groups,
+      target: this.state.target
+    })
       .then(function (response) {
         console.log(response);
       })

@@ -14,7 +14,7 @@ class AddTarget extends PureComponent {
   render(){
     return (
       <div>
-        <Subheader primary primaryText={"Target:"} />
+        <Subheader primary primaryText="Target:" />
         <fieldset>
           <legend className="md-subheading-1">Select a Target:</legend>
           <SelectField
