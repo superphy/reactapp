@@ -42,10 +42,11 @@ export default class Group extends PureComponent {
     return (
       <div>
         <Subheader primary primaryText={this.props.groupid} />
+        <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
       {this.state.selections.map(selection =>
         <div className="md-grid" key={this.props.groupid + selection.key}>
           <AddAttribute groupid={selection.groupid} key={selection.key} relations={this.props.relations} attributes={this.props.attributes}/>
-          <Button flat label="Add a relation to this group" secondary onClick={this.onClick}>add</Button>
+
         </div>
       )}
     </div>
