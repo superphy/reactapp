@@ -5,11 +5,11 @@ import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
 import Home from '../containers/Home'
 
-const navItems = [{
+var navItems = [{
   exact: true,
-  label: 'Home',
+  label: 'New Comparison',
   to: '/',
-  icon: 'home',
+  icon: 'add_box',
 }];
 
 const App = (groups, actions) => (

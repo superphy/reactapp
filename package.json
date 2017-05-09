@@ -18,6 +18,7 @@
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {
+    "lorem-ipsum": "^1.0.4",
     "react-scripts": "^0.9.5"
   },
   "scripts": {
