@@ -13,7 +13,7 @@ class ResultsTable extends PureComponent {
     console.log(this.props)
   }
   render() {
-    const rows = this.props.data.map((row, i) => (
+    const rows = this.props.results.data.map((row, i) => (
       <TableRow key={i}>
         {row.map((value, ci) => (
           <TableColumn key={ci}>{value}</TableColumn>
@@ -25,8 +25,8 @@ class ResultsTable extends PureComponent {
       <DataTable plain>
         <TableHeader>
           <TableRow>
-            {this.props.columns.map((value, i) => (
-              <TableColumn>{value}</TableColumn>
+            {this.props.results.columns.map((value, i) => (
+              <TableColumn key={i}>{value}</TableColumn>
             ))}
           </TableRow>
         </TableHeader>
