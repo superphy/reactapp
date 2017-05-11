@@ -86,13 +86,13 @@ class GroupsForm extends PureComponent {
     // get possible relations for user to build groups
     axios.get(API_ROOT + `get_all_attribute_types`)
       .then(res => {
-        const relations = res.data;
+        const relations = res.data.sort();
         this.setState({ relations });
       });
     // get possible targets to compare groups against
     axios.get(API_ROOT + `get_all_types`)
       .then(res => {
-        const targets = res.data;
+        const targets = res.data.sort();
         this.setState({ targets });
       });
   }
@@ -102,13 +102,13 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} />
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group} />
             </Paper>
           )}
           <Paper>
             <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
           </Paper>
-          <Button raised label="Submit" onClick={this.handleSubmit}/>
+          <Button floating secondary onClick={this.handleSubmit}>directions_run</Button>
         </div>
       </form>
     );

@@ -6,33 +6,12 @@ import AddAttribute from './AddAttribute';
 import Button from 'react-md/lib/Buttons/Button';
 import Subheader from 'react-md/lib/Subheaders';
 
-let i = 0;
-
 class Group extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      // selections represent a list of selected relation-attribute pairs specific to a single group
-      selections: [
-        {
-          groupid: this.props.groupid,
-          key: i
-        }
-      ]
-    };
     this.onClick = this.onClick.bind(this);
   }
-  componentDidMount() {
-    console.log(this.state)
-  }
   onClick(){
-    this.setState({
-        selections: this.state.selections.concat([{
-          key: i+1
-        }])
-      })
-    i += 1;
-
     // callback
     this.props.handleChangeAddRelation(this.props.groupIndex)
   }
@@ -41,7 +20,7 @@ class Group extends PureComponent {
       <div>
         <Subheader primary primaryText={"Group: " + this.props.groupIndex} />
         <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
-      {this.state.selections.map((selection, index) =>
+      {this.props.group.map((selection, index) =>
         <div className="md-grid" key={index}>
           <AddAttribute groupIndex={this.props.groupIndex} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.props.handleChange} attributeIndex={index}/>
         </div>

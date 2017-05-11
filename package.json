@@ -14,6 +14,7 @@
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-md": "*",
+    "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1",
     "webfontloader": "^1.6.27"
   },

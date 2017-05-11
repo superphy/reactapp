@@ -11,10 +11,7 @@ class AddAttribute extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      relation: '',
-      attribute: '',
       attributes: [],
-      negated: false
     };
     this.setRelation = this.setRelation.bind(this);
     this.setAttribute = this.setAttribute.bind(this);
@@ -23,13 +20,12 @@ class AddAttribute extends Component {
   setRelation(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
     const relation = newValue;
-    this.setState({ relation })
 
     // With the relation type chosen, we can query the backend
     console.log(relation)
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
-        const attributes = res.data;
+        const attributes = res.data.sort();
         this.setState({ attributes });
       });
 
@@ -39,7 +35,6 @@ class AddAttribute extends Component {
   setAttribute(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
     const attribute = newValue;
-    this.setState({ attribute })
 
     // callback to set state in upper level
     this.props.handleChange(attribute, event, this.props.groupIndex, this.props.attributeIndex, "attribute");
@@ -54,7 +49,6 @@ class AddAttribute extends Component {
    this.props.handleChange(e.target.id, event, this.props.groupIndex, this.props.attributeIndex, "logical");
  }
  _handleChangeNegated = (negated, event) => {
-    this.setState({ negated });
     this.props.handleChange(negated, event, this.props.groupIndex, this.props.attributeIndex, "negated");
   };
   render(){
