@@ -11,9 +11,6 @@ class Group extends PureComponent {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
-  componentDidMount() {
-    console.log(this.state)
-  }
   onClick(){
     // callback
     this.props.handleChangeAddRelation(this.props.groupIndex)
