@@ -86,13 +86,13 @@ class GroupsForm extends PureComponent {
     // get possible relations for user to build groups
     axios.get(API_ROOT + `get_all_attribute_types`)
       .then(res => {
-        const relations = res.data;
+        const relations = res.data.sort();
         this.setState({ relations });
       });
     // get possible targets to compare groups against
     axios.get(API_ROOT + `get_all_types`)
       .then(res => {
-        const targets = res.data;
+        const targets = res.data.sort();
         this.setState({ targets });
       });
   }

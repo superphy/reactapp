@@ -6,9 +6,6 @@ import TableRow from 'react-md/lib/DataTables/TableRow';
 import TableColumn from 'react-md/lib/DataTables/TableColumn';
 
 class ResultsTable extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     console.log(this.props)
   }

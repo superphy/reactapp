@@ -29,7 +29,7 @@ class AddAttribute extends Component {
     console.log(relation)
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
-        const attributes = res.data;
+        const attributes = res.data.sort();
         this.setState({ attributes });
       });
 
