@@ -102,7 +102,7 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} />
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group} />
             </Paper>
           )}
           <Paper>
