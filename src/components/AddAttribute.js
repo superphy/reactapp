@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import SelectField from 'react-md/lib/SelectFields';
 import Radio from 'react-md/lib/SelectionControls/Radio';
 import Switch from 'react-md/lib/SelectionControls/Switch';
-import Divider from 'react-md/lib/Dividers';
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api';
 
