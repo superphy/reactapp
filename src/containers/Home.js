@@ -30,7 +30,6 @@ export default class Home extends PureComponent {
     for(let i in groups){
       for(let j in groups[i]){
         let relation = groups[i][j]
-        console.log(relation)
         // check that all attributes are set (which req all relations to be set)
         if(!relation.attribute > 0){
           console.log('Form failed valid for attribute: ' + relation.attribute)
@@ -40,19 +39,26 @@ export default class Home extends PureComponent {
           valid = false
         }
         // check that all necessary joining operators are set
-        console.log("length of groups " + groups[i].length)
         // only check logical operators for joining relations
         if(j < groups[i].length-1){
           if(!relation.logical){
             console.log('Form failed valid for logical: ' + relation.logical)
             this.setState({
-              msg: "Please select an logical operator for Group " + i + " Relation " + j
+              msg: "Please select a logical operator for Group " + i + " Relation " + j
             });
             valid = false
           }
         }
       }
     }
+    // check that a target was set
+    if(!target > 0){
+      valid = false
+      this.setState({
+        msg: "Please select a target"
+      });
+    }
+    // form validation complete
     console.log(valid)
     if(valid){
       this.setState({
