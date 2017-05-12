@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect, PromiseState } from 'react-refetch'
+import { connect } from 'react-refetch'
 import DataTable from 'react-md/lib/DataTables/DataTable';
 import TableHeader from 'react-md/lib/DataTables/TableHeader';
 import TableBody from 'react-md/lib/DataTables/TableBody';
@@ -45,7 +45,7 @@ class ResultsTable extends Component {
       } else {
         return <div><LinearProgress key="progress" id='contentLoadingProgress' /></div>
       }
-      
+
     }
   }
 }
