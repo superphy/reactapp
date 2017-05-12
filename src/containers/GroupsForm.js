@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import update from 'immutability-helper'
 import Paper from 'react-md/lib/Papers'
 import Button from 'react-md/lib/Buttons/Button'
+// reactapp's components
 import Group from '../components/Group'
 import AddTarget from '../components/AddTarget'
 // axios is a http client lib
