@@ -55,6 +55,7 @@ class AddAttribute extends Component {
     const { inlineValue, negated } = this.state;
     return (
       <section className="md-grid">
+        <fieldset style={{border: 0}}>
         <fieldset>
             <legend className="md-subheading-1">Define a relation:</legend>
             <Switch id="switch3" name="controlledSwitch" label="Negate" checked={negated} onChange={this._handleChangeNegated} />
@@ -104,6 +105,7 @@ class AddAttribute extends Component {
               />
             </fieldset> : <div></div>
           }
+        </fieldset>
           <Divider />
       </section>
     )
