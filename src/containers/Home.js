@@ -25,23 +25,40 @@ export default class Home extends PureComponent {
   }
   handleChangeSubmit(groups, target){
     // form validation
-
-
-    this.setState({
-      open: true,
-      msg: "Comparison was submitted"
-    });
-    axios.post(API_ROOT + 'newgroupcomparison', {
-      groups: groups,
-      target: target
-    })
-      .then(response => {
-        console.log(response);
-        const jobId = response.data;
-        const hasResult = true;
-        this.setState({jobId})
-        this.setState({hasResult})
+    let valid = false
+    //console.log(groups)
+    for(let i in groups){
+      //console.log(groups[i])
+      for(let j in groups[i]){
+        //console.log(groups[i][j])
+        let relation = groups[i][j]
+        console.log(relation)
+        relation.attribute ? valid = true : valid = false
+      }
+    }
+    console.log(valid)
+    if(valid){
+      this.setState({
+        open: true,
+        msg: "Comparison was submitted"
       });
+      axios.post(API_ROOT + 'newgroupcomparison', {
+        groups: groups,
+        target: target
+      })
+        .then(response => {
+          console.log(response);
+          const jobId = response.data;
+          const hasResult = true;
+          this.setState({jobId})
+          this.setState({hasResult})
+        });
+    } else {
+      this.setState({
+        open: true,
+        msg: "Form is invalid"
+      });
+    }
   }
   // Snackbar
   handleRequestClose = () => {

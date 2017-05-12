@@ -32,7 +32,7 @@ class Group extends PureComponent {
 
 Group.propTypes = {
   handleChange: PropTypes.func,
-  numberAttributes: PropTypes.int
+  numberAttributes: PropTypes.number
 }
 
 export default Group;

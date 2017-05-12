@@ -118,7 +118,7 @@ class AddAttribute extends Component {
 
 AddAttribute.propTypes = {
   handleChange: PropTypes.func,
-  moreThanOneAttribute: PropTypes.bool
+  numberAttributes: PropTypes.number
 }
 
 export default AddAttribute;
