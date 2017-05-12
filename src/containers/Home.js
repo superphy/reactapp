@@ -24,16 +24,27 @@ export default class Home extends PureComponent {
     this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
   }
   handleChangeSubmit(groups, target){
-    // form validation
-    let valid = false
-    //console.log(groups)
+    // form validations
+    let valid = true
+    // check groups
     for(let i in groups){
-      //console.log(groups[i])
       for(let j in groups[i]){
-        //console.log(groups[i][j])
         let relation = groups[i][j]
         console.log(relation)
-        relation.attribute ? valid = true : valid = false
+        // check that all attributes are set (which req all relations to be set)
+        if(!relation.attribute > 0){
+          console.log('Form failed valid for attribute: ' + relation.attribute)
+          valid = false
+        }
+        // check that all necessary joining operators are set
+        console.log("length of groups " + groups[i].length)
+        // only check logical operators for joining relations
+        if(j < groups[i].length-1){
+          if(!relation.logical){
+            console.log('Form failed valid for logical: ' + relation.logical)
+            valid = false
+          }
+        }
       }
     }
     console.log(valid)
