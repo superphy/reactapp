@@ -88,7 +88,7 @@ class AddAttribute extends Component {
               required
             />
           </fieldset>
-          {this.props.moreThanOneAttribute ?
+          {this.props.attributeIndex < this.props.numberAttributes-1 ?
             <fieldset onChange={this._handleInlineChange}>
               <legend className="md-subheading-1">Linked By:</legend>
               <Radio

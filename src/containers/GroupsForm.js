@@ -104,7 +104,7 @@ class GroupsForm extends PureComponent {
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
                 <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
-                moreThanOneAttribute={group.length > 1}/>
+                numberAttributes={group.length}/>
             </Paper>
           )}
           <Paper>
