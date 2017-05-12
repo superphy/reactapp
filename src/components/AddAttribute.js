@@ -88,25 +88,27 @@ class AddAttribute extends Component {
               required
             />
           </fieldset>
-          <fieldset onChange={this._handleInlineChange}>
-            <legend className="md-subheading-1">Linked By:</legend>
-            <Radio
-              id="AND"
-              inline
-              name="inlineRadios"
-              value="A"
-              label="AND"
-              checked={inlineValue === 'A'}
-            />
-            <Radio
-              id="OR"
-              inline
-              name="inlineRadios"
-              value="B"
-              label="OR"
-              checked={inlineValue === 'B'}
-            />
-          </fieldset>
+          {this.props.moreThanOneAttribute ?
+            <fieldset onChange={this._handleInlineChange}>
+              <legend className="md-subheading-1">Linked By:</legend>
+              <Radio
+                id="OR"
+                inline
+                name="inlineRadios"
+                value="B"
+                label="OR"
+                checked={inlineValue === 'B'}
+              />
+              <Radio
+                id="AND"
+                inline
+                name="inlineRadios"
+                value="A"
+                label="AND"
+                checked={inlineValue === 'A'}
+              />
+            </fieldset> : <div></div>
+          }
           <Divider />
         </fieldset>
       </section>
@@ -115,7 +117,8 @@ class AddAttribute extends Component {
 }
 
 AddAttribute.propTypes = {
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  moreThanOneAttribute: PropTypes.bool
 }
 
 export default AddAttribute;

@@ -30,8 +30,7 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div className="md-grid">
-        {!this.state.hasResult && <GroupsForm handleChangeSubmit={this.handleChangeSubmit} />}
-        {this.state.hasResult && <ResultsTable jobId={this.state.jobId} />}
+        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <ResultsTable jobId={this.state.jobId} />}
       </div>
     );
   }

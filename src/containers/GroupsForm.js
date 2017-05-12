@@ -102,13 +102,14 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group} />
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
+                moreThanOneAttribute={group.length > 1}/>
             </Paper>
           )}
           <Paper>
             <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
           </Paper>
-          <Button floating secondary onClick={this.handleSubmit}>directions_run</Button>
+          <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
         </div>
       </form>
     );
