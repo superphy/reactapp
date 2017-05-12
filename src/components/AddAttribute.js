@@ -56,13 +56,8 @@ class AddAttribute extends Component {
     return (
       <section className="md-grid">
         <fieldset>
-          <fieldset>
-            <legend className="md-subheading-1">Negation:</legend>
+            <legend className="md-subheading-1">Define a relation:</legend>
             <Switch id="switch3" name="controlledSwitch" label="Negate" checked={negated} onChange={this._handleChangeNegated} />
-          </fieldset>
-          <legend className="md-subheading-1">Define a relation:</legend>
-          <fieldset>
-            <legend className="md-subheading-1">Select Attribute:</legend>
             <SelectField
               id="relations"
               label="Relations"
@@ -110,7 +105,6 @@ class AddAttribute extends Component {
             </fieldset> : <div></div>
           }
           <Divider />
-        </fieldset>
       </section>
     )
   }
