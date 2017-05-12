@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import update from 'immutability-helper'
 import Paper from 'react-md/lib/Papers'
 import Button from 'react-md/lib/Buttons/Button'
+// reactapp's components
 import Group from '../components/Group'
 import AddTarget from '../components/AddTarget'
 // axios is a http client lib
@@ -102,13 +103,14 @@ class GroupsForm extends PureComponent {
         <div className="paper-container">
           {this.state.groups.map((group, index) =>
             <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group} />
+                <Group groupIndex={index} relations={this.state.relations}  handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
+                numberAttributes={group.length}/>
             </Paper>
           )}
           <Paper>
             <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
           </Paper>
-          <Button floating secondary onClick={this.handleSubmit}>directions_run</Button>
+          <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
         </div>
       </form>
     );

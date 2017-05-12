@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "immutability-helper": "^2.2.0",
+    "material-ui": "^0.18.0",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.8",
@@ -16,6 +17,7 @@
     "react-md": "*",
     "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {
