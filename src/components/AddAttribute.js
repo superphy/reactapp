@@ -56,33 +56,33 @@ class AddAttribute extends Component {
     return (
       <section className="md-grid">
         <fieldset style={{border: 0}}>
-        <fieldset>
-            <legend className="md-subheading-1">Define a relation:</legend>
-            <Switch id="switch3" name="controlledSwitch" label="Negate" checked={negated} onChange={this._handleChangeNegated} />
-            <SelectField
-              id="relations"
-              label="Relations"
-              placeholder="Select a Relation"
-              position={SelectField.Positions.BELOW}
-              menuItems={this.props.relations}
-              className="md-cell"
-              helpOnFocus
-              helpText="Relations are descriptors about specific attributes."
-              onChange={this.setRelation}
-              required
-            />
-            <SelectField
-              id="attributes"
-              label="Attributes"
-              placeholder="Select an Attribute"
-              position={SelectField.Positions.BELOW}
-              menuItems={this.state.attributes}
-              className="md-cell"
-              helpOnFocus
-              helpText="An attribute is a specific instance of a relation type. For example, O157 is an attribute of relation O-Type."
-              onChange={this.setAttribute}
-              required
-            />
+          <fieldset>
+              <legend className="md-subheading-1">Define a relation:</legend>
+              <Switch id="switch3" name="controlledSwitch" label="Negate" checked={negated} onChange={this._handleChangeNegated} />
+              <SelectField
+                id="relations"
+                label="Relations"
+                placeholder="Select a Relation"
+                position={SelectField.Positions.BELOW}
+                menuItems={this.props.relations}
+                className="md-cell"
+                helpOnFocus
+                helpText="Relations are descriptors about specific attributes."
+                onChange={this.setRelation}
+                required
+              />
+              <SelectField
+                id="attributes"
+                label="Attributes"
+                placeholder="Select an Attribute"
+                position={SelectField.Positions.BELOW}
+                menuItems={this.state.attributes}
+                className="md-cell"
+                helpOnFocus
+                helpText="An attribute is a specific instance of a relation type. For example, O157 is an attribute of relation O-Type."
+                onChange={this.setAttribute}
+                required
+              />
           </fieldset>
           {this.props.attributeIndex < this.props.numberAttributes-1 ?
             <fieldset onChange={this._handleInlineChange}>
@@ -106,7 +106,6 @@ class AddAttribute extends Component {
             </fieldset> : <div></div>
           }
         </fieldset>
-          <Divider />
       </section>
     )
   }
