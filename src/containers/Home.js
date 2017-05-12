@@ -34,6 +34,9 @@ export default class Home extends PureComponent {
         // check that all attributes are set (which req all relations to be set)
         if(!relation.attribute > 0){
           console.log('Form failed valid for attribute: ' + relation.attribute)
+          this.setState({
+            msg: "Please select an attribute for Group " + i + " Relation " + j
+          });
           valid = false
         }
         // check that all necessary joining operators are set
@@ -42,6 +45,9 @@ export default class Home extends PureComponent {
         if(j < groups[i].length-1){
           if(!relation.logical){
             console.log('Form failed valid for logical: ' + relation.logical)
+            this.setState({
+              msg: "Please select an logical operator for Group " + i + " Relation " + j
+            });
             valid = false
           }
         }
@@ -66,8 +72,7 @@ export default class Home extends PureComponent {
         });
     } else {
       this.setState({
-        open: true,
-        msg: "Form is invalid"
+        open: true
       });
     }
   }
