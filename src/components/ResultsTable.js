@@ -6,9 +6,6 @@ import TableBody from 'react-md/lib/DataTables/TableBody';
 import TableRow from 'react-md/lib/DataTables/TableRow';
 import TableColumn from 'react-md/lib/DataTables/TableColumn';
 // progress bar
-import Card from 'react-md/lib/Cards/Card';
-import CardTitle from 'react-md/lib/Cards/CardTitle';
-import Media, { MediaOverlay } from 'react-md/lib/Media';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 // requests
@@ -21,7 +18,7 @@ class ResultsTable extends Component {
   render() {
     const { results } = this.props
     if (results.pending){
-      return <div>Waiting for server response... <CircularProgress key="progress" id='contentLoadingProgress' /></div>
+      return <div>Waiting for server response...<CircularProgress key="progress" id='contentLoadingProgress' /></div>
     } else if (results.rejected){
       return <div>{this.props.jobId}</div>
     } else if (results.fulfilled){
@@ -50,12 +47,11 @@ class ResultsTable extends Component {
         );
       } else {
         return (
-          <div>Loading...
+          <div>Server is crunching away...
               <LinearProgress key="progress" id='contentLoadingProgress' />
-        </div>
+          </div>
         )
       }
-
     }
   }
 }
