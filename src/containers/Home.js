@@ -18,13 +18,18 @@ export default class Home extends PureComponent {
     this.state = {
       jobId: "",
       hasResult: false,
-      open: false //for the snackbar
+      open: false, //for the snackbar
+      msg: ""
     }
     this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
   }
   handleChangeSubmit(groups, target){
+    // form validation
+
+
     this.setState({
       open: true,
+      msg: "Comparison was submitted"
     });
     axios.post(API_ROOT + 'newgroupcomparison', {
       groups: groups,
@@ -51,7 +56,7 @@ export default class Home extends PureComponent {
         <MuiThemeProvider>
           <Snackbar
             open={this.state.open}
-            message="Comparison was submitted"
+            message={this.state.msg}
             autoHideDuration={4000}
             onRequestClose={this.handleRequestClose}
           />
