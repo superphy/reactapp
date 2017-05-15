@@ -1,1 +1,1 @@
-export const API_ROOT = 'http://10.139.14.156:8000/api/v0/'
+export const API_ROOT = 'http://reactapp:5000/api/v0/'
