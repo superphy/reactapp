@@ -5,6 +5,7 @@
   "description": "An example usage of react-md and create-react-app.",
   "dependencies": {
     "axios": "^0.16.1",
+    "history": "^4.6.1",
     "immutability-helper": "^2.2.0",
     "material-ui": "^0.18.0",
     "node-sass": "^4.5.2",
@@ -15,9 +16,11 @@
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-md": "*",
+    "react-redux": "^5.0.5",
     "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {

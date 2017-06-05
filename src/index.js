@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+import createBrowserHistory from 'history/createBrowserHistory'
 import App from './containers/App';
 import './index.css';
 import WebFontLoader from 'webfontloader';
@@ -11,9 +14,14 @@ WebFontLoader.load({
   },
 });
 
+let store = createStore(spfyApp)
+const history = createBrowserHistory()
+
 render(
-      <Router history={history}>
-        <App />
-      </Router>,
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
