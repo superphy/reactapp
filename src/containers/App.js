@@ -7,9 +7,13 @@ import Home from '../containers/Home'
 
 var navItems = [{
   exact: true,
-  label: 'New Comparison',
+  label: 'Tasks',
   to: '/',
-  icon: 'add_box',
+  icon: 'dashboard'
+}, {
+  label: 'Results',
+  to: '/results',
+  icon: 'bubble_chart'
 }];
 
 const App = () => (
