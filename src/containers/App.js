@@ -12,12 +12,9 @@ var navItems = [{
   icon: 'add_box',
 }];
 
-const App = (groups, actions) => (
+const App = () => (
   <div>
       <Route
-        // passing groups & actions to every route as props
-        groups={groups}
-        actions={actions}
         render={({ location }) => (
           <NavigationDrawer
             drawerTitle="spfy"
