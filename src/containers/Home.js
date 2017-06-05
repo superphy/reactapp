@@ -8,11 +8,14 @@ import { API_ROOT } from '../middleware/api'
 import Snackbar from 'material-ui/Snackbar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// redux
+import { connect } from 'react-redux'
+import { addJob } from '../actions'
 
 // Snackbar
 injectTapEventPlugin();
 
-export default class Home extends PureComponent {
+class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,6 +68,7 @@ export default class Home extends PureComponent {
         open: true,
         msg: "Comparison was submitted"
       });
+      // submit the form
       axios.post(API_ROOT + 'newgroupcomparison', {
         groups: groups,
         target: target
@@ -75,6 +79,8 @@ export default class Home extends PureComponent {
           const hasResult = true;
           this.setState({jobId})
           this.setState({hasResult})
+          // add jobid to redux store
+          this.props.dispatch(addJob(jobId))
         });
     } else {
       this.setState({
@@ -104,3 +110,7 @@ export default class Home extends PureComponent {
     );
   }
 }
+
+Home = connect()(Home)
+
+export default Home
