@@ -15,7 +15,7 @@ WebFontLoader.load({
   },
 });
 
-let store = createStore(spfyApp)
+let store = createStore(spfyApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 const history = createBrowserHistory()
 
 render(
