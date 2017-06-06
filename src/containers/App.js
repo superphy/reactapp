@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
 import Home from '../containers/Home'
+import Results from '../containers/Results'
 
 var navItems = [{
   exact: true,
@@ -22,11 +23,12 @@ const App = () => (
         render={({ location }) => (
           <NavigationDrawer
             drawerTitle="spfy"
-            toolbarTitle="Group Comparisons"
+            toolbarTitle="quick, predictive genomics"
             navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
+              <Route path="/results" location={location} component={Results} />
             </Switch>
           </NavigationDrawer>
         )}
