@@ -80,7 +80,11 @@ class Home extends PureComponent {
           this.setState({jobId})
           this.setState({hasResult})
           // add jobid to redux store
-          this.props.dispatch(addJob(jobId))
+          this.props.dispatch(addJob(jobId,
+            'fishers',
+            new Date().toLocaleTimeString(),
+            String(groups[0][0].attribute + ' vs ' + groups[1][0].attribute + ' for ' + target)
+          ))
         });
     } else {
       this.setState({
