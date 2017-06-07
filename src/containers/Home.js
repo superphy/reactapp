@@ -11,6 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
+import { fishersDescription } from '../middleware/fishers'
 
 // Snackbar
 injectTapEventPlugin();
@@ -83,7 +84,7 @@ class Home extends PureComponent {
           this.props.dispatch(addJob(jobId,
             'fishers',
             new Date().toLocaleTimeString(),
-            String(groups[0][0].attribute + ' vs ' + groups[1][0].attribute + ' for ' + target)
+            fishersDescription(groups, target)
           ))
         });
     } else {

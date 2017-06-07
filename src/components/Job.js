@@ -2,8 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-refetch'
 import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
+import CardText from 'react-md/lib/Cards/CardText';
 import Avatar from 'react-md/lib/Avatars';
-import FontIcon from 'react-md/lib/FontIcons';
 // requests
 import { API_ROOT } from '../middleware/api'
 
@@ -23,10 +23,13 @@ class Job extends Component {
     return (
       <Card style={{ maxWidth: 600 }} className="md-block-centered">
         <CardTitle
-          avatar={<Avatar icon={<FontIcon iconClassName="fa fa-rocket" />} random />}
-          title={this.props.hash}
-          subtitle={complete ? 'Complete':'Pending'}
+          avatar={<Avatar random >{this.props.analysis.substring(0,2)}</Avatar>}
+          title={this.props.description}
+          subtitle={String('Submitted: ' + this.props.date + ', Status: ' + (complete ? 'Complete':'Pending'))}
         />
+        <CardText>
+          {'JobId: ' + this.props.hash}
+        </CardText>
       </Card>
     )
   }
