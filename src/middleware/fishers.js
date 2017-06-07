@@ -1,4 +1,5 @@
 export const fishersDescription = (groups, target) => {
+  // parses groups to generate a human-readable description
   let s = ''
   for(let i in groups){
     for(let j in groups[i]){
