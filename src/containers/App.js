@@ -5,6 +5,8 @@ import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
 import Home from '../containers/Home'
 import Results from '../containers/Results'
+import Avatar from 'react-md/lib/Avatars';
+import logo from '../spfy.png'
 
 var navItems = [{
   exact: true,
@@ -23,7 +25,10 @@ const App = () => (
         render={({ location }) => (
           <NavigationDrawer
             drawerTitle="spfy"
-            toolbarTitle="quick, predictive genomics"
+            drawerHeaderChildren={
+              <Avatar src={logo} alt="logo" />
+            }
+            toolbarStyle={{'visibility':'hidden'}}
             navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
           >
             <Switch key={location.key}>
