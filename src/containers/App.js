@@ -35,7 +35,7 @@ const App = () => (
             <Switch key={location.key}>
               {console.log(location)}
               <Route exact path="/" location={location} component={Home} />
-              <Route path="/results" location={location} component={Results} />
+              <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={ResultsTemplates} />
             </Switch>
           </NavigationDrawer>
