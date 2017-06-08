@@ -5,6 +5,7 @@ import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
 import Home from '../containers/Home'
 import Results from '../containers/Results'
+import ResultsTemplates from '../containers/ResultsTemplates'
 import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
 
@@ -32,8 +33,10 @@ const App = () => (
             navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
           >
             <Switch key={location.key}>
+              {console.log(location)}
               <Route exact path="/" location={location} component={Home} />
               <Route path="/results" location={location} component={Results} />
+              <Route path="/results/:hash" location={location} component={ResultsTemplates} />
             </Switch>
           </NavigationDrawer>
         )}

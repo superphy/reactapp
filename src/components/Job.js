@@ -22,7 +22,6 @@ class Job extends Component {
         complete = false
       }
     }
-    console.log(this.props.onClick)
     // actual card
     return (
       <Card style={{ maxWidth: 600 }} className="md-block-centered">
