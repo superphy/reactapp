@@ -7,7 +7,7 @@ const JobsList = ({ jobs, onJobClick }) => (
       <Job
         key={job.id}
         {...job}
-        onClick={() => onJobClick(job.id)}
+        onClick={onJobClick}
       />
     )}
   </ul>

@@ -3,6 +3,8 @@ import { connect } from 'react-refetch'
 import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardText from 'react-md/lib/Cards/CardText';
+import CardActions from 'react-md/lib/Cards/CardActions';
+import Button from 'react-md/lib/Buttons/Button';
 import Avatar from 'react-md/lib/Avatars';
 // requests
 import { API_ROOT } from '../middleware/api'
@@ -19,6 +21,7 @@ class Job extends Component {
         complete = false
       }
     }
+    console.log(this.props.onClick)
     // actual card
     return (
       <Card style={{ maxWidth: 600 }} className="md-block-centered">
@@ -30,6 +33,13 @@ class Job extends Component {
         <CardText>
           {'JobId: ' + this.props.hash}
         </CardText>
+        <CardActions>
+          {
+            complete ?
+              <Button flat primary label="See Result">input</Button> :
+              ''
+          }
+        </CardActions>
       </Card>
     )
   }
