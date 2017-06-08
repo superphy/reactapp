@@ -1,11 +1,12 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-refetch'
-import Card from 'react-md/lib/Cards/Card';
-import CardTitle from 'react-md/lib/Cards/CardTitle';
-import CardText from 'react-md/lib/Cards/CardText';
-import CardActions from 'react-md/lib/Cards/CardActions';
-import Button from 'react-md/lib/Buttons/Button';
-import Avatar from 'react-md/lib/Avatars';
+import Card from 'react-md/lib/Cards/Card'
+import CardTitle from 'react-md/lib/Cards/CardTitle'
+import CardText from 'react-md/lib/Cards/CardText'
+import CardActions from 'react-md/lib/Cards/CardActions'
+import Button from 'react-md/lib/Buttons/Button'
+import Avatar from 'react-md/lib/Avatars'
+import { Link } from 'react-router-dom'
 // requests
 import { API_ROOT } from '../middleware/api'
 
@@ -36,8 +37,9 @@ class Job extends Component {
         <CardActions>
           {
             complete ?
-              <Button flat primary label="See Result">input</Button> :
-              ''
+              <Link to={'/results/' + this.props.hash}>
+                <Button flat primary label="See Result">input</Button>
+              </Link> : ''
           }
         </CardActions>
       </Card>
@@ -46,8 +48,10 @@ class Job extends Component {
 }
 
 Job.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  hash: PropTypes.string.isRequired
+  hash: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  analysis: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 }
 
 export default connect(props => ({
