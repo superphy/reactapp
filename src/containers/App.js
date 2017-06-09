@@ -3,9 +3,10 @@ import { Route, Switch } from 'react-router-dom'
 // Components from react-md
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
+// Actual Code
+import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
 import Results from '../containers/Results'
-// import ResultsTemplates from '../containers/ResultsTemplates'
 import VisibleResult from './VisibleResult'
 import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
@@ -34,7 +35,8 @@ const App = () => (
             navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
           >
             <Switch key={location.key}>
-              <Route exact path="/" location={location} component={Fishers} />
+              <Route exact path="/" location={location} component={Home} />
+              <Route path="/fishers" location={location} component={Fishers} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>
