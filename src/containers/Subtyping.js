@@ -62,13 +62,11 @@ class Subtyping extends PureComponent {
       data.append('file', f)
     })
     // append options
-    var options = {
-      pi: this.state.pi,
-      amr: this.state.amr,
-      serotype: this.state.serotype,
-      vf: this.state.vf
-    }
-    data.append('options', options)
+    // to match spfy(angular)'s format, we dont use a dict
+    data.append('options.pi', this.state.pi)
+    data.append('options.amr', this.state.amr)
+    data.append('options.serotype', this.state.serotype)
+    data.append('options.vf', this.state.vf)
     // put
     axios.post(API_ROOT + 'upload', data, config)
       .then(response => {
