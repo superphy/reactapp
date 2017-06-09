@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { addJob } from '../actions'
 // axios
 import axios from 'axios'
-import { OLD_API } from '../middleware/api'
+import { API_ROOT } from '../middleware/api'
 
 class Subtyping extends PureComponent {
   constructor(props) {
@@ -50,7 +50,7 @@ class Subtyping extends PureComponent {
       open: true,
       msg: "Genomes were submitted"
     });
-    axios.post(OLD_API + 'upload', {
+    axios.post(API_ROOT + 'upload', {
       file: this.state.file,
       options: {
         pi: this.state.pi,
