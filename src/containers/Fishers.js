@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import GroupsForm from '../containers/GroupsForm'
-import ResultsTable from '../components/ResultsTable'
+import Loading from '../components/Loading'
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -8,11 +8,15 @@ import { API_ROOT } from '../middleware/api'
 import Snackbar from 'material-ui/Snackbar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// redux
+import { connect } from 'react-redux'
+import { addJob } from '../actions'
+import { fishersDescription } from '../middleware/fishers'
 
 // Snackbar
 injectTapEventPlugin();
 
-export default class Home extends PureComponent {
+class Fishers extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,6 +69,7 @@ export default class Home extends PureComponent {
         open: true,
         msg: "Comparison was submitted"
       });
+      // submit the form
       axios.post(API_ROOT + 'newgroupcomparison', {
         groups: groups,
         target: target
@@ -75,6 +80,12 @@ export default class Home extends PureComponent {
           const hasResult = true;
           this.setState({jobId})
           this.setState({hasResult})
+          // add jobid to redux store
+          this.props.dispatch(addJob(jobId,
+            'fishers',
+            new Date().toLocaleTimeString(),
+            fishersDescription(groups, target)
+          ))
         });
     } else {
       this.setState({
@@ -91,7 +102,7 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div className="md-grid">
-        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <ResultsTable jobId={this.state.jobId} />}
+        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <Loading jobId={this.state.jobId} />}
         <MuiThemeProvider>
           <Snackbar
             open={this.state.open}
@@ -104,3 +115,7 @@ export default class Home extends PureComponent {
     );
   }
 }
+
+Fishers = connect()(Fishers)
+
+export default Fishers
