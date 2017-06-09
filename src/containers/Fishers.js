@@ -16,7 +16,7 @@ import { fishersDescription } from '../middleware/fishers'
 // Snackbar
 injectTapEventPlugin();
 
-class Home extends PureComponent {
+class Fishers extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -116,6 +116,6 @@ class Home extends PureComponent {
   }
 }
 
-Home = connect()(Home)
+Fishers = connect()(Fishers)
 
-export default Home
+export default Fishers

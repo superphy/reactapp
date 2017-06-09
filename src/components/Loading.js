@@ -1,3 +1,6 @@
+// a generic loading object to check status of currently submitted job
+// redirects to corresponding results page when done
+
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import { connect } from 'react-refetch'
