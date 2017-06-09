@@ -34,7 +34,6 @@ const App = () => (
             navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
           >
             <Switch key={location.key}>
-              {console.log(location)}
               <Route exact path="/" location={location} component={Fishers} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
