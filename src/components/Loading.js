@@ -7,7 +7,7 @@ import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 // requests
 import { API_ROOT } from '../middleware/api'
 
-class ResultsTable extends Component {
+class Loading extends Component {
   render() {
     const { results } = this.props
     if (results.pending){
@@ -33,4 +33,4 @@ class ResultsTable extends Component {
 
 export default connect(props => ({
   results: {url: API_ROOT + `results/${props.jobId}`, refreshInterval: 5000 }
-}))(ResultsTable)
+}))(Loading)

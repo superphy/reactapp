@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import GroupsForm from '../containers/GroupsForm'
-import ResultsTable from '../components/ResultsTable'
+import Loading from '../components/Loading'
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -102,7 +102,7 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="md-grid">
-        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <ResultsTable jobId={this.state.jobId} />}
+        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <Loading jobId={this.state.jobId} />}
         <MuiThemeProvider>
           <Snackbar
             open={this.state.open}
