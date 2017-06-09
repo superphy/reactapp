@@ -8,6 +8,11 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import App from './containers/App';
 import './index.css';
 import WebFontLoader from 'webfontloader';
+// for Snackbar / Material-Ui
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Snackbar
+injectTapEventPlugin();
 
 WebFontLoader.load({
   google: {
@@ -21,7 +26,7 @@ const history = createBrowserHistory()
 render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+        <App />
     </Router>
   </Provider>,
   document.getElementById('root')
