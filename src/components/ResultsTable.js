@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import { connect } from 'react-refetch'
-import DataTable from 'react-md/lib/DataTables/DataTable';
-import TableHeader from 'react-md/lib/DataTables/TableHeader';
-import TableBody from 'react-md/lib/DataTables/TableBody';
-import TableRow from 'react-md/lib/DataTables/TableRow';
-import TableColumn from 'react-md/lib/DataTables/TableColumn';
 // progress bar
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import LinearProgress from 'react-md/lib/Progress/LinearProgress';
@@ -18,7 +13,7 @@ class ResultsTable extends Component {
     if (results.pending){
       return <div>Waiting for server response...<CircularProgress key="progress" id='contentLoadingProgress' /></div>
     } else if (results.rejected){
-      return <div>{this.props.jobId}</div>
+      return <div>Couldn't retrieve job: {this.props.jobId}</div>
     } else if (results.fulfilled){
       console.log(results)
       if (results.value){
