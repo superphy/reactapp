@@ -8,16 +8,7 @@ import CardText from 'react-md/lib/Cards/CardText'
 import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
-
-const analyses = [{
-  'analysis':'subtyping',
-  'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
-  'text':'Upload genome files & determine associated subtypes.'
-},{
-  'analysis':'fishers',
-  'description':"Group comparisons using Fisher's Exact Test",
-  'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
-}]
+import { analyses } from '../middleware/api'
 
 const Home = () => (
   <div>

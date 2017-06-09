@@ -24,7 +24,7 @@ class Job extends Component {
     }
     // actual card
     return (
-      <Card style={{ maxWidth: 600 }} className="md-block-centered">
+      <Card style={{ maxWidth: 600 }}>
         <CardTitle
           avatar={<Avatar random >{this.props.analysis.substring(0,2)}</Avatar>}
           title={this.props.description}

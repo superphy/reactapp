@@ -6,6 +6,7 @@ import NavLink from '../containers/NavLink'
 // Actual Code
 import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
+import Subtyping from '../containers/Subtyping'
 import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
 import Avatar from 'react-md/lib/Avatars';
@@ -37,6 +38,7 @@ const App = () => (
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
               <Route path="/fishers" location={location} component={Fishers} />
+              <Route path="/subtyping" location={location} component={Subtyping} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>
