@@ -50,17 +50,30 @@ class Subtyping extends PureComponent {
       open: true,
       msg: "Genomes were submitted"
     });
-    axios.post(API_ROOT + 'upload', {
-      file: this.state.file,
-      options: {
-        pi: this.state.pi,
-        amr: this.state.amr,
-        serotype: this.state.serotype,
-        vf: this.state.vf
+    // configure a progress for axios
+    var config = {
+      onUploadProgress: function(progressEvent) {
+        var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
       }
-    }).then(response => {
-      console.log(response)
+    };
+    // create form data with files
+    var data = new FormData()
+    this.state.file.map((f) => {
+      data.append('file', f)
     })
+    // append options
+    var options = {
+      pi: this.state.pi,
+      amr: this.state.amr,
+      serotype: this.state.serotype,
+      vf: this.state.vf
+    }
+    data.append('options', options)
+    // put
+    axios.post(API_ROOT + 'upload', data, config)
+      .then(response => {
+        console.log(response)
+      })
   };
   // Snackbar
   _handleRequestClose = () => {
