@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import { connect } from 'react-refetch'
 import DataTable from 'react-md/lib/DataTables/DataTable';
 import TableHeader from 'react-md/lib/DataTables/TableHeader';
@@ -12,9 +13,6 @@ import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 import { API_ROOT } from '../middleware/api'
 
 class ResultsTable extends Component {
-  componentDidMount() {
-    console.log(this.props)
-  }
   render() {
     const { results } = this.props
     if (results.pending){
@@ -24,26 +22,8 @@ class ResultsTable extends Component {
     } else if (results.fulfilled){
       console.log(results)
       if (results.value){
-        const rows = results.value.data.map((row, i) => (
-          <TableRow key={i}>
-            {row.map((value, ci) => (
-              <TableColumn key={ci}>{value}</TableColumn>
-            ))}
-          </TableRow>
-        ));
         return (
-          <DataTable plain>
-            <TableHeader>
-              <TableRow>
-                {results.value.columns.map((value, i) => (
-                  <TableColumn key={i}>{value}</TableColumn>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {rows}
-            </TableBody>
-          </DataTable>
+          <Redirect to={'/results/' + this.props.jobId} />
         );
       } else {
         return (
