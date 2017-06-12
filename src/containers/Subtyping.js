@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
+import { subtypingDescription } from '../middleware/subtyping'
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -71,6 +72,24 @@ class Subtyping extends PureComponent {
     axios.post(API_ROOT + 'upload', data, config)
       .then(response => {
         console.log(response)
+        let jobs = response.data
+        for(let job in jobs){
+          console.log(job)
+          console.log(jobs[job].analysis)
+          if(jobs[job].analysis === "Antimicrobial Resistance"){
+            this.props.dispatch(addJob(job,
+              "Antimicrobial Resistance",
+              new Date().toLocaleTimeString(),
+              subtypingDescription(this.state.file, this.state.pi, false, false, this.state.amr)
+            ))
+          } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
+            this.props.dispatch(addJob(job,
+              "Virulence Factors and Serotype",
+              new Date().toLocaleTimeString(),
+              subtypingDescription(this.state.file, this.state.pi, this.state.serotype, this.state.vf, false)
+            ))
+          }
+        }
       })
   };
   // Snackbar
