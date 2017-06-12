@@ -19,13 +19,6 @@ class ResultFishers extends Component {
       return <div>Couldn't retrieve job: {this.props.jobId}</div>
     } else if (results.fulfilled){
       console.log(results)
-      // const rows = results.value.data.map((row, i) => (
-      //   <TableRow key={i}>
-      //     {row.map((value, ci) => (
-      //       <TableColumn key={ci}>{value}</TableColumn>
-      //     ))}
-      //   </TableRow>
-      // ));
       return (
         <BootstrapTable data={results.value.data} exportCSV search options={options}>
           <TableHeaderColumn  isKey dataField='0' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400' csvHeader='Target'>Target</TableHeaderColumn>
@@ -38,18 +31,6 @@ class ResultFishers extends Component {
           <TableHeaderColumn  dataField='7' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='P-Value'>P-Value</TableHeaderColumn>
           <TableHeaderColumn  dataField='8' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Odds Ratio'>Odds Ratio</TableHeaderColumn>
         </BootstrapTable>
-        // <DataTable plain>
-        //   <TableHeader>
-        //     <TableRow>
-        //       {results.value.columns.map((value, i) => (
-        //         <TableColumn key={i}>{value}</TableColumn>
-        //       ))}
-        //     </TableRow>
-        //   </TableHeader>
-        //   <TableBody>
-        //     {rows}
-        //   </TableBody>
-        // </DataTable>
       );
     }
   }

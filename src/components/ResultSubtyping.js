@@ -19,18 +19,6 @@ class ResultSubtyping extends Component {
       return <div>Couldn't retrieve job: {this.props.jobId}</div>
     } else if (results.fulfilled){
       console.log(results)
-      // const rows = results.value.map((row, i) => (
-      //   <TableRow key={i}>
-      //     <TableColumn key='filename'>{row.filename}</TableColumn>
-      //     <TableColumn key='contigid'>{row.contigid}</TableColumn>
-      //     <TableColumn key='analysis'>{row.analysis}</TableColumn>
-      //     <TableColumn key='hitname'>{row.hitname}</TableColumn>
-      //     <TableColumn key='orientation'>{row.hitorientation}</TableColumn>
-      //     <TableColumn key='start'>{row.hitstart}</TableColumn>
-      //     <TableColumn key='stop'>{row.hitstop}</TableColumn>
-      //     <TableColumn key='cutoff'>{row.hitcutoff}</TableColumn>
-      //   </TableRow>
-      // ));
       return (
         <BootstrapTable data={results.value} exportCSV search options={options}>
           <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400' csvHeader='Filename'>Filename</TableHeaderColumn>
@@ -42,19 +30,6 @@ class ResultSubtyping extends Component {
           <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Stop'>Stop</TableHeaderColumn>
           <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Cutoff'>Cutoff</TableHeaderColumn>
         </BootstrapTable>
-
-        // <DataTable plain>
-        //   <TableHeader>
-        //     <TableRow>
-        //       {headers.map((value, i) => (
-        //         <TableColumn key={i}>{value}</TableColumn>
-        //       ))}
-        //     </TableRow>
-        //   </TableHeader>
-        //   <TableBody>
-        //     {rows}
-        //   </TableBody>
-        // </DataTable>
       );
     }
   }
