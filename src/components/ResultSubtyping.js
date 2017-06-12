@@ -26,6 +26,9 @@ const headers = [
 class ResultSubtyping extends Component {
   render() {
     const { results } = this.props
+    const options = {
+      searchPosition: 'left'
+    };
     if (results.pending){
       return <div>Waiting for server response...<CircularProgress key="progress" id='contentLoadingProgress' /></div>
     } else if (results.rejected){
@@ -45,15 +48,15 @@ class ResultSubtyping extends Component {
       //   </TableRow>
       // ));
       return (
-        <BootstrapTable data={results.value} exportCSV={true}>
-          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={400}>Filename</TableHeaderColumn>
-          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={180}>Contig ID</TableHeaderColumn>
+        <BootstrapTable data={results.value} exportCSV search options={options}>
+          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400'>Filename</TableHeaderColumn>
+          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='180'>Contig ID</TableHeaderColumn>
           <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>Analysis</TableHeaderColumn>
           <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>Hit</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={100}>Orientation</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={140}>Start</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={140}>Stop</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={80}>Cutoff</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100'>Orientation</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>Start</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>Stop</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80'>Cutoff</TableHeaderColumn>
         </BootstrapTable>
 
         // <DataTable plain>
