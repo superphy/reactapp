@@ -74,19 +74,29 @@ class Subtyping extends PureComponent {
         console.log(response)
         let jobs = response.data
         for(let job in jobs){
-          console.log(job)
-          console.log(jobs[job].analysis)
+          // console.log(job)
+          // console.log(jobs[job].analysis)
+          // check filename
+          let f = ''
+          for (let i in this.state.file){
+            // recall that we incl the file path in response
+            // console.log(jobs[job].file)
+            // console.log(this.state.file[i])
+            if(jobs[job].file.includes(this.state.file[i].name)){
+              f = this.state.file[i].name
+            }
+          }
           if(jobs[job].analysis === "Antimicrobial Resistance"){
             this.props.dispatch(addJob(job,
               "Antimicrobial Resistance",
               new Date().toLocaleTimeString(),
-              subtypingDescription(this.state.file, this.state.pi, false, false, this.state.amr)
+              subtypingDescription(f, this.state.pi, false, false, this.state.amr)
             ))
           } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
             this.props.dispatch(addJob(job,
               "Virulence Factors and Serotype",
               new Date().toLocaleTimeString(),
-              subtypingDescription(this.state.file, this.state.pi, this.state.serotype, this.state.vf, false)
+              subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
             ))
           }
         }
