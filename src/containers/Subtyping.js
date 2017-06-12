@@ -96,8 +96,12 @@ class Subtyping extends PureComponent {
               subtypingDescription(f, this.state.pi, false, false, this.state.amr)
             ))
           } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
+            let descrip = ''
+            if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
+            else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
+            else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
             this.props.dispatch(addJob(job,
-              "Virulence Factors and Serotype",
+              descrip,
               new Date().toLocaleTimeString(),
               subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
             ))

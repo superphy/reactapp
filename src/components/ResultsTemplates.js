@@ -9,6 +9,10 @@ const ResultsTemplates = ({ job }) => {
       return <ResultFishers jobId={job.hash} />
     case "Virulence Factors and Serotype":
       return <ResultSubtyping jobId={job.hash} />
+    case "Virulence Factors":
+      return <ResultSubtyping jobId={job.hash} />
+    case "Serotype":
+      return <ResultSubtyping jobId={job.hash} />
     case "Antimicrobial Resistance":
       return <ResultSubtyping jobId={job.hash} />
     default:
