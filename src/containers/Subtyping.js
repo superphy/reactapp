@@ -167,6 +167,14 @@ class Subtyping extends PureComponent {
                 onClick={this._handleSubmit}
               />
             </div>
+            <div className="md-cell md-cell--12">
+              {this.state.file ? this.state.file.map(f => (
+                <TextField
+                  key={f.name}
+                  defaultValue={f.name}
+                />
+              )) : ''}
+            </div>
           </form> :
           <Redirect to='/results' />
         }
