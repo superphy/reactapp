@@ -10,6 +10,9 @@ import './index.css';
 import WebFontLoader from 'webfontloader';
 // for Snackbar / Material-Ui
 import injectTapEventPlugin from 'react-tap-event-plugin';
+// BootstrapTable
+import 'bootstrap/dist/css/bootstrap.css';
+import './react-bootstrap-table.min.css';
 
 // Snackbar
 injectTapEventPlugin();

@@ -5,6 +5,7 @@
   "description": "An example usage of react-md and create-react-app.",
   "dependencies": {
     "axios": "^0.16.1",
+    "bootstrap": "4.0.0-alpha.6",
     "history": "^4.6.1",
     "immutability-helper": "^2.2.0",
     "material-ui": "^0.18.0",
@@ -14,6 +15,7 @@
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",
+    "react-bootstrap-table": "^3.4.0",
     "react-dom": "^15.5.4",
     "react-md": "*",
     "react-redux": "^5.0.5",
