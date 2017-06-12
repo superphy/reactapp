@@ -1,27 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-refetch'
-import DataTable from 'react-md/lib/DataTables/DataTable';
-import TableHeader from 'react-md/lib/DataTables/TableHeader';
-import TableBody from 'react-md/lib/DataTables/TableBody';
-import TableRow from 'react-md/lib/DataTables/TableRow';
-import TableColumn from 'react-md/lib/DataTables/TableColumn';
 // progress bar
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // requests
 import { API_ROOT } from '../middleware/api'
 // Table
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-
-const headers = [
-  "Filename",
-  "Contig ID",
-  "Analysis",
-  "Hit",
-  "Orientation",
-  "Start",
-  "Stop",
-  "Cutoff"
-]
 
 class ResultSubtyping extends Component {
   render() {
