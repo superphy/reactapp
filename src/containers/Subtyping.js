@@ -14,6 +14,8 @@ import { subtypingDescription } from '../middleware/subtyping'
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
+// router
+import { Redirect } from 'react-router'
 
 class Subtyping extends PureComponent {
   constructor(props) {
@@ -25,7 +27,8 @@ class Subtyping extends PureComponent {
       serotype: true,
       vf: true,
       open: false,
-      msg: ''
+      msg: '',
+      hasResult: false
     }
   }
   _selectFile = (file) => {
@@ -100,6 +103,8 @@ class Subtyping extends PureComponent {
             ))
           }
         }
+        const hasResult = true
+        this.setState({hasResult})
       })
   };
   // Snackbar
@@ -112,52 +117,55 @@ class Subtyping extends PureComponent {
     const { file, pi, amr, serotype, vf } = this.state
     return (
       <div>
-        <form className="md-text-container md-grid">
-          <div className="md-cell md-cell--12">
-            <FileInput
-              id="inputFile"
-              secondary
-              label="Select File(s)"
-              onChange={this._selectFile}
-              multiple
-            />
-            <Checkbox
-              id="serotype"
-              name="check serotype"
-              checked={serotype}
-              onChange={this._updateSerotype}
-              label="Serotype"
-            />
-            <Checkbox
-              id="vf"
-              name="check vf"
-              checked={vf}
-              onChange={this._updateVf}
-              label="Virulence Factors"
-            />
-            <Checkbox
-              id="amr"
-              name="check amr"
-              checked={amr}
-              onChange={this._updateAmr}
-              label="Antimicrobial Resistance"
-            />
-            <TextField
-              id="pi"
-              value={pi}
-              onChange={this._updatePi}
-              helpText="Percent Identity for BLAST"
-            />
-            <Button
-              raised
-              secondary
-              type="submit"
-              label="Submit"
-              disabled={!file}
-              onClick={this._handleSubmit}
-            />
-          </div>
-        </form>
+        {!this.state.hasResult ?
+          <form className="md-text-container md-grid">
+            <div className="md-cell md-cell--12">
+              <FileInput
+                id="inputFile"
+                secondary
+                label="Select File(s)"
+                onChange={this._selectFile}
+                multiple
+              />
+              <Checkbox
+                id="serotype"
+                name="check serotype"
+                checked={serotype}
+                onChange={this._updateSerotype}
+                label="Serotype"
+              />
+              <Checkbox
+                id="vf"
+                name="check vf"
+                checked={vf}
+                onChange={this._updateVf}
+                label="Virulence Factors"
+              />
+              <Checkbox
+                id="amr"
+                name="check amr"
+                checked={amr}
+                onChange={this._updateAmr}
+                label="Antimicrobial Resistance"
+              />
+              <TextField
+                id="pi"
+                value={pi}
+                onChange={this._updatePi}
+                helpText="Percent Identity for BLAST"
+              />
+              <Button
+                raised
+                secondary
+                type="submit"
+                label="Submit"
+                disabled={!file}
+                onClick={this._handleSubmit}
+              />
+            </div>
+          </form> :
+          <Redirect to='/results' />
+        }
         <MuiThemeProvider>
           <Snackbar
             open={this.state.open}
