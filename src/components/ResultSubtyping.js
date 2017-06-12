@@ -32,10 +32,14 @@ class ResultSubtyping extends Component {
       console.log(results)
       const rows = results.value.map((row, i) => (
         <TableRow key={i}>
-          {console.log(row)}
-          {Object.keys(row).map((value, ci) => (
-            <TableColumn key={ci}>{row[value]}</TableColumn>
-          ))}
+          <TableColumn key='filename'>{row.filename}</TableColumn>
+          <TableColumn key='contigid'>{row.contigid}</TableColumn>
+          <TableColumn key='analysis'>{row.analysis}</TableColumn>
+          <TableColumn key='hitname'>{row.hitname}</TableColumn>
+          <TableColumn key='orientation'>{row.hitorientation}</TableColumn>
+          <TableColumn key='start'>{row.hitstart}</TableColumn>
+          <TableColumn key='stop'>{row.hitstop}</TableColumn>
+          <TableColumn key='cutoff'>{row.hitcutoff}</TableColumn>
         </TableRow>
       ));
       return (
