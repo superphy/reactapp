@@ -33,15 +33,15 @@ class ResultFishers extends Component {
       // ));
       return (
         <BootstrapTable data={results.value.data} exportCSV search options={options}>
-          <TableHeaderColumn  isKey dataField='0' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400'>Target</TableHeaderColumn>
-          <TableHeaderColumn  dataField='1' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>QueryA</TableHeaderColumn>
-          <TableHeaderColumn  dataField='2' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>QueryBt</TableHeaderColumn>
-          <TableHeaderColumn  dataField='3' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>#Present QueryA</TableHeaderColumn>
-          <TableHeaderColumn  dataField='4' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>#Absent QueryA</TableHeaderColumn>
-          <TableHeaderColumn  dataField='5' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>#Present QueryB</TableHeaderColumn>
-          <TableHeaderColumn  dataField='6' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>#Absent QueryB</TableHeaderColumn>
-          <TableHeaderColumn  dataField='7' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>P-Value</TableHeaderColumn>
-          <TableHeaderColumn  dataField='8' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>Odds Ratio</TableHeaderColumn>
+          <TableHeaderColumn  isKey dataField='0' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400' csvHeader='Target'>Target</TableHeaderColumn>
+          <TableHeaderColumn  dataField='1' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='QueryA'>QueryA</TableHeaderColumn>
+          <TableHeaderColumn  dataField='2' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='QueryB'>QueryB</TableHeaderColumn>
+          <TableHeaderColumn  dataField='3' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='#Present QueryA'>#Present QueryA</TableHeaderColumn>
+          <TableHeaderColumn  dataField='4' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='#Absent QueryA'>#Absent QueryA</TableHeaderColumn>
+          <TableHeaderColumn  dataField='5' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='#Present QueryB'>#Present QueryB</TableHeaderColumn>
+          <TableHeaderColumn  dataField='6' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='#Absent QueryB'>#Absent QueryB</TableHeaderColumn>
+          <TableHeaderColumn  dataField='7' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='P-Value'>P-Value</TableHeaderColumn>
+          <TableHeaderColumn  dataField='8' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Odds Ratio'>Odds Ratio</TableHeaderColumn>
         </BootstrapTable>
         // <DataTable plain>
         //   <TableHeader>

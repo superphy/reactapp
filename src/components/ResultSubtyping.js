@@ -49,14 +49,14 @@ class ResultSubtyping extends Component {
       // ));
       return (
         <BootstrapTable data={results.value} exportCSV search options={options}>
-          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400'>Filename</TableHeaderColumn>
-          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='180'>Contig ID</TableHeaderColumn>
-          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>Analysis</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } }>Hit</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100'>Orientation</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>Start</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140'>Stop</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80'>Cutoff</TableHeaderColumn>
+          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400' csvHeader='Filename'>Filename</TableHeaderColumn>
+          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='180' csvHeader='Contig ID'>Contig ID</TableHeaderColumn>
+          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='Analysis'>Analysis</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='Hit'>Hit</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100' csvHeader='Orientation'>Orientation</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Start'>Start</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Stop'>Stop</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Cutoff'>Cutoff</TableHeaderColumn>
         </BootstrapTable>
 
         // <DataTable plain>
