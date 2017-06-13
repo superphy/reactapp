@@ -25,7 +25,7 @@ class Subtyping extends PureComponent {
     this.state = {
       file: null,
       pi: 90,
-      amr: true,
+      amr: false,
       serotype: true,
       vf: true,
       open: false,
@@ -180,6 +180,9 @@ class Subtyping extends PureComponent {
                 onChange={this._updateAmr}
                 label="Antimicrobial Resistance"
               />
+              {amr ?
+                <Subheader primaryText="(Note: AMR increases run-time by several minutes per file)" inset />
+              : ''}
               <TextField
                 id="pi"
                 value={pi}
