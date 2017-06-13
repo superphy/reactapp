@@ -118,7 +118,10 @@ class Subtyping extends PureComponent {
             this.props.dispatch(addJob(job,
               "Subtyping",
               new Date().toLocaleTimeString(),
-              subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
+              subtypingDescription(
+                (this.state.file.length > 1 ?
+                String(this.state.file.length + ' Files')
+                :f), this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
             ))
           }
         }
