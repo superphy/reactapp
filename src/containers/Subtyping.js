@@ -6,6 +6,7 @@ import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
 import Subheader from 'react-md/lib/Subheaders';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -29,6 +30,7 @@ class Subtyping extends PureComponent {
       amr: false,
       serotype: true,
       vf: true,
+      submitted: false,
       open: false,
       msg: '',
       jobId: "",
@@ -58,9 +60,12 @@ class Subtyping extends PureComponent {
   }
   _handleSubmit = (e) => {
     e.preventDefault() // disable default HTML form behavior
+    // open and msg are for Snackbar
+    // uploading is to notify users
     this.setState({
       open: true,
-      msg: "Genomes were submitted"
+      msg: "Genomes were submitted",
+      submitted: true
     });
     // configure a progress for axios
     var config = {
@@ -86,6 +91,10 @@ class Subtyping extends PureComponent {
     axios.post(API_ROOT + 'upload', data, config)
       .then(response => {
         console.log(response)
+        // no longer uploading
+        this.setState({
+          uploading: false
+        })
         let jobs = response.data
         // handle the return
         for(let job in jobs){
@@ -143,10 +152,19 @@ class Subtyping extends PureComponent {
     });
   };
   render(){
-    const { file, pi, amr, serotype, vf, groupresults } = this.state
+    const { file, pi, amr, serotype, vf, groupresults, uploading, hasResult } = this.state
     return (
       <div>
-        {!this.state.hasResult ?
+        {/* uploading bar */}
+        {(uploading && !hasResult) ?
+          <div>
+            <CircularProgress key="progress" id="loading" />
+            Uploading...
+          </div>
+          : ""
+        }
+        {/* actual form */}
+        {!hasResult ?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
               <FileInput
