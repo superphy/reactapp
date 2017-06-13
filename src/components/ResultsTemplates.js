@@ -15,6 +15,8 @@ const ResultsTemplates = ({ job }) => {
       return <ResultSubtyping jobId={job.hash} />
     case "Antimicrobial Resistance":
       return <ResultSubtyping jobId={job.hash} />
+    case "Subtyping":
+      return <ResultSubtyping jobId={job.hash} />
     default:
       return <div>ERROR: no matching analysis view found.</div>
   }

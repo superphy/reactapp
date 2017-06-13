@@ -114,6 +114,12 @@ class Subtyping extends PureComponent {
               new Date().toLocaleTimeString(),
               subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
             ))
+          } else if (jobs[job].analysis === "Subtyping") {
+            this.props.dispatch(addJob(job,
+              "Subtyping",
+              new Date().toLocaleTimeString(),
+              subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
+            ))
           }
         }
         const hasResult = true
