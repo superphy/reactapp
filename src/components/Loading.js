@@ -25,8 +25,9 @@ class Loading extends Component {
         );
       } else {
         return (
-          <div>Server is crunching away...
+          <div>
               <LinearProgress key="progress" id='contentLoadingProgress' />
+              Server is crunching away...
           </div>
         )
       }

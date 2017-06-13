@@ -18,6 +18,7 @@ import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
+import Loading from '../components/Loading'
 
 class Subtyping extends PureComponent {
   constructor(props) {
@@ -30,6 +31,7 @@ class Subtyping extends PureComponent {
       vf: true,
       open: false,
       msg: '',
+      jobId: "",
       hasResult: false,
       groupresults: true
     }
@@ -85,6 +87,7 @@ class Subtyping extends PureComponent {
       .then(response => {
         console.log(response)
         let jobs = response.data
+        // handle the return
         for(let job in jobs){
           // console.log(job)
           // console.log(jobs[job].analysis)
@@ -115,6 +118,10 @@ class Subtyping extends PureComponent {
               subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
             ))
           } else if (jobs[job].analysis === "Subtyping") {
+            // set the jobId state so we can use Loading
+            const jobId = job
+            this.setState({jobId})
+            // dispatch
             this.props.dispatch(addJob(job,
               "Subtyping",
               new Date().toLocaleTimeString(),
@@ -207,7 +214,12 @@ class Subtyping extends PureComponent {
               )) : ''}
             </div>
           </form> :
-          <Redirect to='/results' />
+          // if results are grouped, display the Loading page
+          // else, results are separate and display the JobsList cards page
+          (!groupresults?
+            <Redirect to='/results' />:
+            <Loading jobId={this.state.jobId} />
+          )
         }
         <MuiThemeProvider>
           <Snackbar
