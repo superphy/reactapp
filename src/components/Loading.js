@@ -27,7 +27,14 @@ class Loading extends Component {
         return (
           <div>
               <LinearProgress key="progress" id='contentLoadingProgress' />
-              Server is crunching away...
+              <p>
+                Server is crunching away...
+              </p>
+              <p>
+                You can go to "Tasks" to submit new jobs and simply return
+                afterwards by going to "Results". Just leave the website itself
+                open.
+              </p>
           </div>
         )
       }
