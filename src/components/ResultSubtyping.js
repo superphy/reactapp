@@ -21,9 +21,9 @@ class ResultSubtyping extends Component {
       console.log(results)
       return (
         <BootstrapTable data={results.value} exportCSV search options={options}>
-          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='400' csvHeader='Filename'>Filename</TableHeaderColumn>
+          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='360' csvHeader='Filename'>Filename</TableHeaderColumn>
           <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='180' csvHeader='Contig ID'>Contig ID</TableHeaderColumn>
-          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='Analysis'>Analysis</TableHeaderColumn>
+          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100' csvHeader='Analysis'>Analysis</TableHeaderColumn>
           <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='Hit'>Hit</TableHeaderColumn>
           <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100' csvHeader='Orientation'>Orientation</TableHeaderColumn>
           <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Start'>Start</TableHeaderColumn>
