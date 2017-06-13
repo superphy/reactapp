@@ -4,6 +4,7 @@ import FileInput from 'react-md/lib/FileInputs';
 import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
+import Switch from 'react-md/lib/SelectionControls/Switch';
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -28,7 +29,8 @@ class Subtyping extends PureComponent {
       vf: true,
       open: false,
       msg: '',
-      hasResult: false
+      hasResult: false,
+      groupresults: true
     }
   }
   _selectFile = (file) => {
@@ -47,6 +49,9 @@ class Subtyping extends PureComponent {
   }
   _updateVf = (value) => {
     this.setState({ vf: value })
+  }
+  _updateGroupResults = (groupresults) => {
+    this.setState({ groupresults })
   }
   _handleSubmit = (e) => {
     e.preventDefault() // disable default HTML form behavior
@@ -71,6 +76,9 @@ class Subtyping extends PureComponent {
     data.append('options.amr', this.state.amr)
     data.append('options.serotype', this.state.serotype)
     data.append('options.vf', this.state.vf)
+    // new option added in 4.2.0, group all files into a single result
+    // this means polling in handled server-side
+    data.append('options.groupresults', this.state.groupresults)
     // put
     axios.post(API_ROOT + 'upload', data, config)
       .then(response => {
@@ -118,7 +126,7 @@ class Subtyping extends PureComponent {
     });
   };
   render(){
-    const { file, pi, amr, serotype, vf } = this.state
+    const { file, pi, amr, serotype, vf, groupresults } = this.state
     return (
       <div>
         {!this.state.hasResult ?
@@ -130,6 +138,13 @@ class Subtyping extends PureComponent {
                 label="Select File(s)"
                 onChange={this._selectFile}
                 multiple
+              />
+              <Switch
+                id="groupResults"
+                name="groupResults"
+                label="Group files into a single result"
+                checked={groupresults}
+                onChange={this._updateGroupResults}
               />
               <Checkbox
                 id="serotype"
