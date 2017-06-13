@@ -5,6 +5,7 @@ import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
+import Subheader from 'react-md/lib/Subheaders';
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -146,6 +147,9 @@ class Subtyping extends PureComponent {
                 checked={groupresults}
                 onChange={this._updateGroupResults}
               />
+              {!groupresults ?
+                <Subheader primaryText="(Will split files & subtyping methods into separate results)" inset />
+              : ''}
               <Checkbox
                 id="serotype"
                 name="check serotype"
