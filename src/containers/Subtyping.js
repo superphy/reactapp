@@ -6,7 +6,7 @@ import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
 import Subheader from 'react-md/lib/Subheaders';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -35,7 +35,8 @@ class Subtyping extends PureComponent {
       msg: '',
       jobId: "",
       hasResult: false,
-      groupresults: true
+      groupresults: true,
+      progress: 0
     }
   }
   _selectFile = (file) => {
@@ -58,6 +59,9 @@ class Subtyping extends PureComponent {
   _updateGroupResults = (groupresults) => {
     this.setState({ groupresults })
   }
+  _updateUploadProgress = ( progress ) => {
+    this.setState({progress})
+  }
   _handleSubmit = (e) => {
     e.preventDefault() // disable default HTML form behavior
     // open and msg are for Snackbar
@@ -68,11 +72,15 @@ class Subtyping extends PureComponent {
       uploading: true
     });
     // configure a progress for axios
-    var config = {
-      onUploadProgress: function(progressEvent) {
-        var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+    const createConfig = (_updateUploadProgress) => {
+      var config = {
+        onUploadProgress: function(progressEvent) {
+          var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+          _updateUploadProgress(percentCompleted)
+        }
       }
-    };
+      return config
+    }
     // create form data with files
     var data = new FormData()
     this.state.file.map((f) => {
@@ -88,7 +96,7 @@ class Subtyping extends PureComponent {
     // this means polling in handled server-side
     data.append('options.groupresults', this.state.groupresults)
     // put
-    axios.post(API_ROOT + 'upload', data, config)
+    axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
       .then(response => {
         console.log(response)
         // no longer uploading
@@ -152,7 +160,7 @@ class Subtyping extends PureComponent {
     });
   };
   render(){
-    const { file, pi, amr, serotype, vf, groupresults, uploading, hasResult } = this.state
+    const { file, pi, amr, serotype, vf, groupresults, uploading, hasResult, progress } = this.state
     return (
       <div>
         {/* uploading bar */}
@@ -166,8 +174,8 @@ class Subtyping extends PureComponent {
                 onRequestClose={this.handleRequestClose}
               />
             </MuiThemeProvider>
-            <CircularProgress key="progress" id="loading" />
-            Uploading...
+            <LinearProgress key="progress" id="loading" value ={progress} />
+            Uploading... {progress} %
           </div>
           : ""
         }
