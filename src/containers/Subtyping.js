@@ -6,7 +6,7 @@ import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
 import Subheader from 'react-md/lib/Subheaders';
-import LinearProgress from 'react-md/lib/Progress/LinearProgress';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -174,7 +174,7 @@ class Subtyping extends PureComponent {
                 onRequestClose={this.handleRequestClose}
               />
             </MuiThemeProvider>
-            <LinearProgress key="progress" id="loading" value ={progress} />
+            <CircularProgress key="progress" id="loading" value={progress} centered={false} />
             Uploading... {progress} %
           </div>
           : ""
