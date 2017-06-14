@@ -65,7 +65,7 @@ class Subtyping extends PureComponent {
     this.setState({
       open: true,
       msg: "Genomes were submitted",
-      submitted: true
+      uploading: true
     });
     // configure a progress for axios
     var config = {
@@ -158,13 +158,21 @@ class Subtyping extends PureComponent {
         {/* uploading bar */}
         {(uploading && !hasResult) ?
           <div>
+            <MuiThemeProvider>
+              <Snackbar
+                open={this.state.open}
+                message={this.state.msg}
+                autoHideDuration={4000}
+                onRequestClose={this.handleRequestClose}
+              />
+            </MuiThemeProvider>
             <CircularProgress key="progress" id="loading" />
             Uploading...
           </div>
           : ""
         }
         {/* actual form */}
-        {!hasResult ?
+        {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
               <FileInput
@@ -234,19 +242,11 @@ class Subtyping extends PureComponent {
           </form> :
           // if results are grouped, display the Loading page
           // else, results are separate and display the JobsList cards page
-          (!groupresults?
+          (!uploading?(!groupresults?
             <Redirect to='/results' />:
             <Loading jobId={this.state.jobId} />
-          )
+          ):"")
         }
-        <MuiThemeProvider>
-          <Snackbar
-            open={this.state.open}
-            message={this.state.msg}
-            autoHideDuration={4000}
-            onRequestClose={this.handleRequestClose}
-          />
-        </MuiThemeProvider>
       </div>
     )
   }
