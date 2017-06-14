@@ -9,34 +9,50 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 // requests
 import { API_ROOT } from '../middleware/api'
+// msg defaults
+import { createErrorMessage } from '../middleware/api'
 
 class Loading extends Component {
   render() {
     const { results } = this.props
     if (results.pending){
+      // this means flask is doing something and hasnt responded yet
       return <div>Waiting for server response...<CircularProgress key="progress" id='contentLoadingProgress' /></div>
     } else if (results.rejected){
-      return <div>Couldn't retrieve job: {this.props.jobId}</div>
+      // this means flask rejected it
+      return <div>Error with job: {this.props.jobId}</div>
     } else if (results.fulfilled){
       console.log(results)
-      if (results.value){
+      // then flask responded with a string
+      // in which case, the job either failed of is still pending
+      // actual results are in the form of an array
+      if (typeof(results.value) === 'string'){
+        if (results.value == "pending"){
+          return (
+            <div>
+                <LinearProgress key="progress" id='contentLoadingProgress' />
+                <p>
+                  Server is crunching away...
+                </p>
+                <p>
+                  You can go to "Tasks" to submit new jobs and simply return
+                  afterwards by going to "Results". Just leave the website itself
+                  open.
+                </p>
+            </div>
+          )
+        } else {
+            // some error message was received
+            return (
+              <div>
+                {createErrorMessage(this.props.jobId)}
+              </div>
+            )
+          }
+        } else {
         return (
           <Redirect to={'/results/' + this.props.jobId} />
         );
-      } else {
-        return (
-          <div>
-              <LinearProgress key="progress" id='contentLoadingProgress' />
-              <p>
-                Server is crunching away...
-              </p>
-              <p>
-                You can go to "Tasks" to submit new jobs and simply return
-                afterwards by going to "Results". Just leave the website itself
-                open.
-              </p>
-          </div>
-        )
       }
     }
   }

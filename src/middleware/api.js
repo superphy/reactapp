@@ -12,3 +12,8 @@ export const analyses = [{
   'description':"Group comparisons using Fisher's Exact Test",
   'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
 }]
+
+export const createErrorMessage = (jobId) => {
+  const msg = 'ERROR WITH JOB: ' + jobId
+  return msg
+}
