@@ -27,7 +27,7 @@ class Loading extends Component {
       // in which case, the job either failed of is still pending
       // actual results are in the form of an array
       if (typeof(results.value) === 'string'){
-        if (results.value == "pending"){
+        if (results.value === "pending"){
           return (
             <div>
                 <LinearProgress key="progress" id='contentLoadingProgress' />
