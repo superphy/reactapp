@@ -7,7 +7,14 @@ export const OLD_API = ROOT
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
-  'text':'Upload genome files & determine associated subtypes.'
+  'text':(
+    <p>
+      Upload genome files & determine associated subtypes.
+      <br></br>
+      Subtyping is powered by <a href="https://github.com/phac-nml/ecoli_serotyping">ECTyper</a>.
+      AMR is powered by <a href="https://card.mcmaster.ca/analyze/rgi">CARD</a>.
+    </p>
+  )
 },{
   'analysis':'fishers',
   'description':"Group comparisons using Fisher's Exact Test",
