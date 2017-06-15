@@ -1,13 +1,20 @@
 import React from 'react'
-const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
-//const ROOT = 'http://10.139.14.212:8000/'
+//const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
+const ROOT = 'http://10.139.14.212:8000/'
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
-  'text':'Upload genome files & determine associated subtypes.'
+  'text':(
+    <p>
+      Upload genome files & determine associated subtypes.
+      <br></br>
+      Subtyping is powered by <a href="https://github.com/phac-nml/ecoli_serotyping">ECTyper</a>.
+      AMR is powered by <a href="https://card.mcmaster.ca/analyze/rgi">CARD</a>.
+    </p>
+  )
 },{
   'analysis':'fishers',
   'description':"Group comparisons using Fisher's Exact Test",

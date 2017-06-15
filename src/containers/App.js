@@ -50,10 +50,13 @@ const App = () => (
             </Switch>
             <p style={{
               'right': 20,
-              'bottom': 0,
-              'position': 'absolute'
+              'top': 20,
+              'position': 'absolute',
+              'textAlign': 'right'
             }}>
-              For Contact, Email: chadr.laing@canada.ca
+                For Contact, Email: chadr.laing@canada.ca
+                <br></br>
+                v.4.2.2 <a href="https://github.com/superphy/backend">superphy/backend</a>
             </p>
           </NavigationDrawer>
         )}
