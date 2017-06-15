@@ -83,6 +83,7 @@ class Subtyping extends PureComponent {
     }
     // create form data with files
     var data = new FormData()
+    // eslint-disable-next-line
     this.state.file.map((f) => {
       data.append('file', f)
     })

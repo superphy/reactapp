@@ -3,10 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 // Components from react-md
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
-// About
-import Subheader from 'react-md/lib/Subheaders';
-import List from 'react-md/lib/Lists/List';
-import ListItem from 'react-md/lib/Lists/ListItem';
 // Actual Code
 import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
