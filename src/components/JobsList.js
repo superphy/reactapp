@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react'
 import Job from './Job'
 
 const JobsList = ({ jobs }) => (
-  <ul>
+  <div>
     {jobs.map(job =>
       <Job
         key={job.id}
         {...job}
       />
     )}
-  </ul>
+  </div>
 )
 
 JobsList.propTypes = {

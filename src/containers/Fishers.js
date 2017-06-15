@@ -6,15 +6,11 @@ import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 // Snackbar
 import Snackbar from 'material-ui/Snackbar';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
 import { fishersDescription } from '../middleware/fishers'
-
-// Snackbar
-injectTapEventPlugin();
 
 class Fishers extends PureComponent {
   constructor(props) {

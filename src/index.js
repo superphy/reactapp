@@ -8,6 +8,14 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import App from './containers/App';
 import './index.css';
 import WebFontLoader from 'webfontloader';
+// for Snackbar / Material-Ui
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// BootstrapTable
+import 'bootstrap/dist/css/bootstrap.css';
+import './react-bootstrap-table.min.css';
+
+// Snackbar
+injectTapEventPlugin();
 
 WebFontLoader.load({
   google: {
