@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 4
+  - 6
+cache:
+  directories:
+  - node_modules
+script:
+  - yarn install
+  - yarn build
+notifications:
+  email: false
