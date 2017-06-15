@@ -16,7 +16,7 @@ export const analyses = [{
 
 export const createErrorMessage = (jobId, msg='') => {
   const message = <div>
-    <p>
+    <p style={{'color': 'red'}}>
       ERROR WITH JOB: {jobId}
     </p>
     <p>
