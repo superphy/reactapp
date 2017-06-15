@@ -1,3 +1,4 @@
+import React from 'react'
 //export const API_ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/api/v0/'
 const ROOT = 'http://10.139.14.212:8000/'
 export const API_ROOT = ROOT + 'api/v0/'
@@ -13,7 +14,14 @@ export const analyses = [{
   'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
 }]
 
-export const createErrorMessage = (jobId) => {
-  const msg = 'ERROR WITH JOB: ' + jobId
-  return msg
+export const createErrorMessage = (jobId, msg='') => {
+  const message = <div>
+    <p>
+      ERROR WITH JOB: {jobId}
+    </p>
+    <p>
+      {msg}
+    </p>
+  </div>
+  return message
 }

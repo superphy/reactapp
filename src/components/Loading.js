@@ -20,7 +20,7 @@ class Loading extends Component {
       return <div>Waiting for server response...<CircularProgress key="progress" id='contentLoadingProgress' /></div>
     } else if (results.rejected){
       // this means flask rejected it
-      return <div>Error with job: {this.props.jobId}</div>
+      return createErrorMessage(this.props.jobId, 'Upload was rejected by the server.')
     } else if (results.fulfilled){
       console.log(results)
       // then flask responded with a string
@@ -45,7 +45,7 @@ class Loading extends Component {
             // some error message was received
             return (
               <div>
-                {createErrorMessage(this.props.jobId)}
+                {createErrorMessage(this.props.jobId, results.value)}
               </div>
             )
           }

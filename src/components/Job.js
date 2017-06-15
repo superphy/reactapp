@@ -9,6 +9,8 @@ import Avatar from 'react-md/lib/Avatars'
 import { Link } from 'react-router-dom'
 // requests
 import { API_ROOT } from '../middleware/api'
+// error msg
+import { createErrorMessage } from '../middleware/api'
 
 class Job extends Component {
   render(){
@@ -49,7 +51,9 @@ class Job extends Component {
               :'FAILED'))}
         />
         <CardText>
-          {'JobId: ' + this.props.hash}
+          {!failed ? ('JobId: ' + this.props.hash):
+            createErrorMessage(this.props.hash, this.props.results.value)
+          }
         </CardText>
         <CardActions>
           {
