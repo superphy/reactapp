@@ -8,3 +8,5 @@ cache:
 script:
   - yarn install
   - yarn build
+notifications:
+  email: false
