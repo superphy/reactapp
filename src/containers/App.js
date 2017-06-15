@@ -40,11 +40,6 @@ const App = () => (
             navItems={
               navItems.map(props => <NavLink {...props} key={props.to} />)
             }
-            footer={
-                  <p style={{'text-align': 'right'}}>
-                    For Contact, Email: chadr.laing@canada.ca
-                  </p>
-            }
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
@@ -53,6 +48,13 @@ const App = () => (
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>
+            <p style={{
+              'right': 20,
+              'bottom': 0,
+              'position': 'absolute'
+            }}>
+              For Contact, Email: chadr.laing@canada.ca
+            </p>
           </NavigationDrawer>
         )}
       />
