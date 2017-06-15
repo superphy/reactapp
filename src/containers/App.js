@@ -3,6 +3,10 @@ import { Route, Switch } from 'react-router-dom'
 // Components from react-md
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
+// About
+import Subheader from 'react-md/lib/Subheaders';
+import List from 'react-md/lib/Lists/List';
+import ListItem from 'react-md/lib/Lists/ListItem';
 // Actual Code
 import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
@@ -33,7 +37,14 @@ const App = () => (
               <Avatar src={logo} alt="logo" />
             }
             toolbarStyle={{'visibility':'hidden'}}
-            navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
+            navItems={
+              navItems.map(props => <NavLink {...props} key={props.to} />)
+            }
+            footer={
+                  <p style={{'text-align': 'right'}}>
+                    For Contact, Email: chadr.laing@canada.ca
+                  </p>
+            }
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
