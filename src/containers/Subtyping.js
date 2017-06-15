@@ -7,9 +7,6 @@ import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
 import Subheader from 'react-md/lib/Subheaders';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-// Snackbar
-import Snackbar from 'material-ui/Snackbar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -67,8 +64,6 @@ class Subtyping extends PureComponent {
     // open and msg are for Snackbar
     // uploading is to notify users
     this.setState({
-      open: true,
-      msg: "Genomes were submitted",
       uploading: true
     });
     // configure a progress for axios
@@ -154,12 +149,6 @@ class Subtyping extends PureComponent {
         this.setState({hasResult})
       })
   };
-  // Snackbar
-  _handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
   render(){
     const { file, pi, amr, serotype, vf, groupresults, uploading, hasResult, progress } = this.state
     return (
@@ -167,14 +156,6 @@ class Subtyping extends PureComponent {
         {/* uploading bar */}
         {(uploading && !hasResult) ?
           <div>
-            <MuiThemeProvider>
-              <Snackbar
-                open={this.state.open}
-                message={this.state.msg}
-                autoHideDuration={4000}
-                onRequestClose={this.handleRequestClose}
-              />
-            </MuiThemeProvider>
             <CircularProgress key="progress" id="loading" value={progress} centered={false} />
             Uploading... {progress} %
           </div>
