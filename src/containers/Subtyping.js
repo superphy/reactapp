@@ -109,15 +109,17 @@ class Subtyping extends PureComponent {
           // console.log(job)
           // console.log(jobs[job].analysis)
           // check filename
-          let f = ''
-          for (let i in this.state.file){
-            // recall that we incl the file path in response
-            // console.log(jobs[job].file)
-            // console.log(this.state.file[i])
-            if(jobs[job].file.includes(this.state.file[i].name)){
-              f = this.state.file[i].name
-            }
-          }
+          let f = (this.state.file.length > 1 ?
+          String(this.state.file.length + ' Files')
+          :this.state.file[0].name)
+          // for (let i in this.state.file){
+          //   // recall that we incl the file path in response
+          //   // console.log(jobs[job].file)
+          //   // console.log(this.state.file[i])
+          //   if(jobs[job].file.includes(this.state.file[i].name)){
+          //     f = this.state.file[i].name
+          //   }
+          // }
           if(jobs[job].analysis === "Antimicrobial Resistance"){
             this.props.dispatch(addJob(job,
               "Antimicrobial Resistance",
@@ -143,9 +145,7 @@ class Subtyping extends PureComponent {
               "Subtyping",
               new Date().toLocaleTimeString(),
               subtypingDescription(
-                (this.state.file.length > 1 ?
-                String(this.state.file.length + ' Files')
-                :f), this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
+                f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
             ))
           }
         }
