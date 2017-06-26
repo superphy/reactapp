@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react'
 import ResultFishers from './ResultFishers'
 import ResultSubtyping from './ResultSubtyping'
+import ResultDatabase from './ResultDatabase'
 
 const ResultsTemplates = ({ job }) => {
   switch (job.analysis) {
@@ -17,6 +18,8 @@ const ResultsTemplates = ({ job }) => {
       return <ResultSubtyping jobId={job.hash} />
     case "Subtyping":
       return <ResultSubtyping jobId={job.hash} />
+      case "database":
+        return <ResultDatabase jobId={job.hash} />
     default:
       return <div>ERROR: no matching analysis view found.</div>
   }

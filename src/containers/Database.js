@@ -25,6 +25,7 @@ class Database extends PureComponent {
     // open and msg are for Snackbar
     // uploading is to notify users
     this.setState({
+      jobId: '',
       uploading: true
     });
     // create form data with files
@@ -37,9 +38,10 @@ class Database extends PureComponent {
         this.setState({
           uploading: false
         })
-        let job = response.data
+        let jobId = response.data
+        this.setState({jobId})
         // handle the return
-        this.props.dispatch(addJob(job,
+        this.props.dispatch(addJob(jobId,
           'database',
           new Date().toLocaleTimeString(),
           String('Status as of: ' + new Date().toLocaleTimeString())
