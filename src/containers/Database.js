@@ -44,7 +44,7 @@ class Database extends PureComponent {
         this.props.dispatch(addJob(jobId,
           'database',
           new Date().toLocaleTimeString(),
-          String('Status as of: ' + new Date().toLocaleTimeString())
+          String('Database status as of: ' + new Date().toLocaleTimeString())
         ))
         const hasResult = true
         this.setState({hasResult})
