@@ -11,6 +11,7 @@ import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
 import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
+import { version } from '../middleware/api'
 
 var navItems = [{
   exact: true,
@@ -41,6 +42,7 @@ const App = () => (
               <Route exact path="/" location={location} component={Home} />
               <Route path="/fishers" location={location} component={Fishers} />
               <Route path="/subtyping" location={location} component={Subtyping} />
+              <Route path="/database" location={location} component={Subtyping} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>
@@ -52,7 +54,7 @@ const App = () => (
             }}>
                 For Contact, Email: chadr.laing@canada.ca
                 <br></br>
-                v.4.2.2 <a href="https://github.com/superphy/backend">superphy/backend</a>
+                {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
             </p>
           </NavigationDrawer>
         )}

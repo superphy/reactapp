@@ -4,6 +4,8 @@ const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
+export const version = 'v.4.3.0'
+
 export const analyses = [{
   'analysis': 'database',
   'description': 'View all entries currently loaded into the database.',
