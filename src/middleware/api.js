@@ -5,6 +5,10 @@ export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
 export const analyses = [{
+  'analysis': 'database',
+  'description': 'View all entries currently loaded into the database.',
+  'text': ''
+},{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
   'text':(
