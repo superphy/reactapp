@@ -22,7 +22,14 @@ class Group extends PureComponent {
         <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
       {this.props.group.map((selection, index) =>
         <div className="md-grid" key={index}>
-          <AddAttribute groupIndex={this.props.groupIndex} key={selection.key} relations={this.props.relations} attributes={this.props.attributes} handleChange={this.props.handleChange} attributeIndex={index} numberAttributes={this.props.numberAttributes}/>
+          <AddAttribute
+            groupIndex={this.props.groupIndex}
+            key={selection.key}
+            relations={this.props.relations}
+            o_relations={this.props.o_relations}
+            handleChange={this.props.handleChange}
+            attributeIndex={index}
+            numberAttributes={this.props.numberAttributes}/>
         </div>
       )}
     </div>

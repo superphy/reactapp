@@ -11,6 +11,7 @@ class AddAttribute extends Component {
     super(props);
     this.state = {
       attributes: [],
+      o_attributes: {}
     };
     this.setRelation = this.setRelation.bind(this);
     this.setAttribute = this.setAttribute.bind(this);
@@ -18,14 +19,15 @@ class AddAttribute extends Component {
   }
   setRelation(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
-    const relation = newValue;
+    const relation = this.props.o_relations[newValue];
 
     // With the relation type chosen, we can query the backend
     console.log(relation)
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
-        const attributes = res.data.sort();
-        this.setState({ attributes });
+        const o_attributes = res.data;
+        const attributes = Object.keys(o_attributes).sort();
+        this.setState({ attributes, o_attributes });
       });
 
     // callback to set state in upper level
@@ -33,7 +35,7 @@ class AddAttribute extends Component {
   }
   setAttribute(newValue, newActiveIndex, event) {
     console.log(newValue, newActiveIndex, event);
-    const attribute = newValue;
+    const attribute = this.state.o_attributes[newValue];
 
     // callback to set state in upper level
     this.props.handleChange(attribute, event, this.props.groupIndex, this.props.attributeIndex, "attribute");
