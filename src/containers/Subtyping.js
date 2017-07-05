@@ -100,7 +100,10 @@ class Subtyping extends PureComponent {
     // new option added in 4.2.0, group all files into a single result
     // this means polling in handled server-side
     data.append('options.groupresults', this.state.groupresults)
-    // put
+    // new option added in 4.3.3, use bulk uploading where results are only
+    // stored and not returned (ie. don't run beautify.py on server-side)
+    data.append('options.bulk', this.state.bulk)
+    // POST
     axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
       .then(response => {
         console.log(response)
