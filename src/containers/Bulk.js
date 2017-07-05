@@ -4,7 +4,14 @@ import { Redirect } from 'react-router'
 class Bulk extends PureComponent {
   render(){
     return (
-      <Redirect to={'/database'} />
+      <div>
+        <p>
+          Bulk uploading & all selected subtyping tasks complete!
+        </p>
+        <p>
+          You can now proceed to run group comparisons tests or run a database status task to check results from subtyping.
+        </p>
+      </div>
     )
   }
 }
