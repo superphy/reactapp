@@ -49,6 +49,10 @@ class Database extends PureComponent {
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
               <TextField
+                id="title"
+                defaultValue="Check Database Status"
+              />
+              <TextField
                 key="descrip"
                 defaultValue="Note: Response can be quite large."
               />
