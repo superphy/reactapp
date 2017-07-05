@@ -33,6 +33,7 @@ class Subtyping extends PureComponent {
       jobId: "",
       hasResult: false,
       groupresults: true,
+      bulk: false,
       progress: 0
     }
   }
@@ -55,6 +56,14 @@ class Subtyping extends PureComponent {
   }
   _updateGroupResults = (groupresults) => {
     this.setState({ groupresults })
+  }
+  _updateBulk = (bulk) => {
+    this.setState({ bulk })
+    // if using bulk uploading, we use the `blob` id feature of superphy/backend
+    // to poll for completion of all jobs
+    if(bulk){
+      this.setState({ groupresults:true })
+    }
   }
   _updateUploadProgress = ( progress ) => {
     this.setState({progress})
@@ -108,41 +117,47 @@ class Subtyping extends PureComponent {
           let f = (this.state.file.length > 1 ?
           String(this.state.file.length + ' Files')
           :this.state.file[0].name)
-          // for (let i in this.state.file){
-          //   // recall that we incl the file path in response
-          //   // console.log(jobs[job].file)
-          //   // console.log(this.state.file[i])
-          //   if(jobs[job].file.includes(this.state.file[i].name)){
-          //     f = this.state.file[i].name
-          //   }
-          // }
-          if(jobs[job].analysis === "Antimicrobial Resistance"){
-            this.props.dispatch(addJob(job,
-              "Antimicrobial Resistance",
-              new Date().toLocaleTimeString(),
-              subtypingDescription(f, this.state.pi, false, false, this.state.amr)
-            ))
-          } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
-            let descrip = ''
-            if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
-            else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
-            else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
-            this.props.dispatch(addJob(job,
-              descrip,
-              new Date().toLocaleTimeString(),
-              subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
-            ))
-          } else if (jobs[job].analysis === "Subtyping") {
-            // set the jobId state so we can use Loading
+
+          // for bulk uploading
+          if(this.state.bulk){
             const jobId = job
             this.setState({jobId})
-            // dispatch
             this.props.dispatch(addJob(job,
-              "Subtyping",
+              "bulk",
               new Date().toLocaleTimeString(),
               subtypingDescription(
-                f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
+                'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
             ))
+          } else {
+            // regular subtyping uplods
+            if(jobs[job].analysis === "Antimicrobial Resistance"){
+              this.props.dispatch(addJob(job,
+                "Antimicrobial Resistance",
+                new Date().toLocaleTimeString(),
+                subtypingDescription(f, this.state.pi, false, false, this.state.amr)
+              ))
+            } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
+              let descrip = ''
+              if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
+              else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
+              else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
+              this.props.dispatch(addJob(job,
+                descrip,
+                new Date().toLocaleTimeString(),
+                subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
+              ))
+            } else if (jobs[job].analysis === "Subtyping") {
+              // set the jobId state so we can use Loading
+              const jobId = job
+              this.setState({jobId})
+              // dispatch
+              this.props.dispatch(addJob(job,
+                "Subtyping",
+                new Date().toLocaleTimeString(),
+                subtypingDescription(
+                  f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
+              ))
+            } // end of ifelse for non-bulk uploads
           }
         }
         const hasResult = true
@@ -150,7 +165,7 @@ class Subtyping extends PureComponent {
       })
   };
   render(){
-    const { file, pi, amr, serotype, vf, groupresults, uploading, hasResult, progress } = this.state
+    const { file, pi, amr, serotype, vf, groupresults, bulk, uploading, hasResult, progress } = this.state
     return (
       <div>
         {/* uploading bar */}
@@ -179,7 +194,14 @@ class Subtyping extends PureComponent {
                 checked={groupresults}
                 onChange={this._updateGroupResults}
               />
-              {!groupresults ?
+              <Switch
+                id="bulk"
+                name="bulk"
+                label="Use bulk uploading (don't display results)"
+                checked={bulk}
+                onChange={this._updateBulk}
+              />
+              {!groupresults && !bulk ?
                 <Subheader primaryText="(Will split files & subtyping methods into separate results)" inset />
               : ''}
               <Checkbox

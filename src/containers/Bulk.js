@@ -1,7 +1,4 @@
 import React, { PureComponent } from 'react';
-// react-md
-import TextField from 'react-md/lib/TextFields';
-import Button from 'react-md/lib/Buttons';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -11,7 +8,7 @@ import { API_ROOT } from '../middleware/api'
 // router
 import Loading from '../components/Loading'
 
-class Database extends PureComponent {
+class Bulk extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +17,7 @@ class Database extends PureComponent {
       hasResult: false
     }
   }
-  _handleSubmit = (e) => {
-    e.preventDefault() // disable default HTML form behavior
+  componentDidMount() {
     // create form data with files
     var data = new FormData()
     // post
@@ -39,28 +35,16 @@ class Database extends PureComponent {
         const hasResult = true
         this.setState({hasResult})
       })
-  };
+  }
   render(){
     const { hasResult } = this.state
     return (
       <div>
         {/* actual form */}
         {(!hasResult)?
-          <form className="md-text-container md-grid">
-            <div className="md-cell md-cell--12">
-              <TextField
-                key="descrip"
-                defaultValue="Note: Response can be quite large."
-              />
-              <Button
-                raised
-                secondary
-                type="submit"
-                label="Submit"
-                onClick={this._handleSubmit}
-              />
-            </div>
-          </form> :
+          <div>
+            Submitting request to display database status...
+          </div> :
           <Loading jobId={this.state.jobId} />
         }
       </div>
@@ -68,6 +52,6 @@ class Database extends PureComponent {
   }
 }
 
-Database = connect()(Database)
+Bulk = connect()(Bulk)
 
-export default Database
+export default Bulk
