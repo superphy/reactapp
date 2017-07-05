@@ -76,5 +76,5 @@ Job.propTypes = {
 }
 
 export default connect(props => ({
-  results: {url: API_ROOT + `results/${props.hash}`, refreshInterval: 5000 }
+  results: {url: API_ROOT + `results/${props.hash}`, refreshInterval: 15000 }
 }))(Job)
