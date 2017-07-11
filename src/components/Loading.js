@@ -10,7 +10,7 @@ import LinearProgress from 'react-md/lib/Progress/LinearProgress';
 // requests
 import { API_ROOT } from '../middleware/api'
 // msg defaults
-import { createErrorMessage } from '../middleware/api'
+import { createErrorMessage, dirpath } from '../middleware/api'
 
 class Loading extends Component {
   render() {
@@ -51,7 +51,7 @@ class Loading extends Component {
           }
         } else {
         return (
-          <Redirect to={'/results/' + this.props.jobId} />
+          <Redirect to={dirpath + '/results/' + this.props.jobId} />
         );
       }
     }

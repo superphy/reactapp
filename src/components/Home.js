@@ -8,7 +8,7 @@ import CardText from 'react-md/lib/Cards/CardText'
 import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
-import { analyses } from '../middleware/api'
+import { analyses, dirpath } from '../middleware/api'
 
 const Home = () => (
   <div>
@@ -20,7 +20,7 @@ const Home = () => (
           subtitle={analysis.description}
         />
         <CardActions expander>
-          <Link to={'/' + analysis.analysis}>
+          <Link to={dirpath + '/' + analysis.analysis}>
             <Button flat primary label="Go">input</Button>
           </Link>
         </CardActions>
