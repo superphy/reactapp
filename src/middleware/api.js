@@ -6,7 +6,6 @@ export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
 export const version = 'v.4.3.3'
-
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
@@ -26,6 +25,17 @@ export const analyses = [{
   'analysis': 'database',
   'description': 'View all entries currently loaded into the database.',
   'text': ''
+},{
+  'analysis': 'Panseq',
+  'description': 'Create a pan-genome.',
+  'text': (
+    <p>
+      Upload genomes & split into pan-genome regions.
+      <br></br>+
+
+      Pan-genome is created by <a href="https://lfz.corefacility.ca/panseq/">Panseq</a>.
+    </p>
+  )
 }]
 
 export const createErrorMessage = (jobId, msg='') => {
