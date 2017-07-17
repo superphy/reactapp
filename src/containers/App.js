@@ -47,7 +47,7 @@ const App = () => (
               <Route path="/fishers" location={location} component={Fishers} />
               <Route path="/subtyping" location={location} component={Subtyping} />
               <Route path="/database" location={location} component={Database} />
-              <Route path="/Panseq" location={location} component={Panseq} />
+              <Route path="/panseq" location={location} component={Panseq} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>

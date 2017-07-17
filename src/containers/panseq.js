@@ -70,7 +70,7 @@ class Panseq extends PureComponent {
     data.append('options.pi', this.state.pi)
 
     // POST
-    axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
+    axios.post(API_ROOT + 'panseq', data, createConfig(this._updateUploadProgress))
       .then(response => {
         console.log(response)
         // no longer uploading
