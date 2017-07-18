@@ -115,7 +115,7 @@ class Subtyping extends PureComponent {
         // handle the return
         for(let job in jobs){
           // console.log(job)
-          // console.log(jobs[job].analysis)
+          // console.log(jobs[job].analysis)-
           // check filename
           let f = (this.state.file.length > 1 ?
           String(this.state.file.length + ' Files')
