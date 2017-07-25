@@ -14,10 +14,11 @@ import d3 from 'd3';
 import jsonldVis from 'jsonld-vis';
 import data from '../middleware/example.json';
 
+
 class Schema extends Component {
   componentDidMount(){
     jsonldVis(d3)
-    d3.jsonldVis(data, this.el, { w: 800, h: 600, maxLabelWidth: 250 })
+    d3.jsonldVis(data, this.el, { w: '100%', h: 600, maxLabelWidth: 250 })
   }
   render(){
     return <div ref={el => this.el = el} />;
