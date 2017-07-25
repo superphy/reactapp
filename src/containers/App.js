@@ -9,6 +9,7 @@ import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
 import Database from '../containers/Database'
+import Schema from '../containers/Schema'
 // others
 import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/fishers" location={location} component={Fishers} />
               <Route path="/subtyping" location={location} component={Subtyping} />
               <Route path="/database" location={location} component={Database} />
+              <Route path="/schema" location={location} component={Schema} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>

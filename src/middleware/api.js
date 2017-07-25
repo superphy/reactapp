@@ -26,6 +26,10 @@ export const analyses = [{
   'analysis': 'database',
   'description': 'View all entries currently loaded into the database.',
   'text': ''
+},{
+  'analysis': 'schema',
+  'description': 'View the database schema.',
+  'text': ''
 }]
 
 export const createErrorMessage = (jobId, msg='') => {
