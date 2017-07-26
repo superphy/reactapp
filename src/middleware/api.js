@@ -19,6 +19,10 @@ export const analyses = [{
     </p>
   )
 },{
+  'analysis': 'metadata',
+  'description': 'Submit metadata in the form of a .csv for upload to the database.',
+  'text': ''
+},{
   'analysis':'fishers',
   'description':"Group comparisons using Fisher's Exact Test",
   'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
