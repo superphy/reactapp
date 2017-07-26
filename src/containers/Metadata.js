@@ -115,12 +115,11 @@ class Metadata extends PureComponent {
               />
             </div>
             <div className="md-cell md-cell--12">
-              {this.state.file ? this.state.file.map(f => (
+              {this.state.file ?
                 <TextField
-                  key={f.name}
-                  defaultValue={f.name}
-                />
-              )) : ''}
+                  key={this.state.file.name}
+                  defaultValue={this.state.file.name}
+                />: ''}
             </div>
           </form>:
           <Loading jobId={this.state.jobId} />
