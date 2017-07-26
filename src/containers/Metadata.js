@@ -24,7 +24,8 @@ class Metadata extends PureComponent {
       jobId: "",
       hasResult: false,
       bulk: false,
-      progress: 0
+      progress: 0,
+      uploading: false
     }
   }
   _selectFile = (file) => {
@@ -68,11 +69,11 @@ class Metadata extends PureComponent {
         // console.log(job)
         // console.log(jobs[job].analysis)
         // check filename
-        let f = this.state.file[0].name
+        let f = this.state.file.name
         const jobId = job
         this.setState({jobId})
         this.props.dispatch(addJob(job,
-          "bulk",
+          "metadata",
           new Date().toLocaleTimeString(),
           String('Metadata Upload: ' + f )
         ))
@@ -118,8 +119,11 @@ class Metadata extends PureComponent {
                   defaultValue={this.state.file.name}
                 />: ''}
             </div>
-          </form>:
-          <Loading jobId={this.state.jobId} />
+          </form>:(!uploading?
+            <Loading jobId={this.state.jobId} />
+            :""
+          )
+
         }
       </div>
     )

@@ -3,7 +3,8 @@ import React, { PropTypes } from 'react'
 import ResultFishers from './ResultFishers'
 import ResultSubtyping from './ResultSubtyping'
 import ResultDatabase from './ResultDatabase'
-import Bulk from '../containers/Bulk'
+import ResultBulk from './ResultBulk'
+import ResultMetadata from './ResultMetadata'
 
 const ResultsTemplates = ({ job }) => {
   switch (job.analysis) {
@@ -20,7 +21,9 @@ const ResultsTemplates = ({ job }) => {
     case "Subtyping":
       return <ResultSubtyping jobId={job.hash} />
     case "bulk":
-      return <Bulk />
+      return <ResultBulk />
+    case "metadata":
+      return <ResultMetadata />
     case "database":
       return <ResultDatabase jobId={job.hash} />
     default:
