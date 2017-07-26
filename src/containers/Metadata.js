@@ -54,10 +54,7 @@ class Metadata extends PureComponent {
     }
     // create form data with files
     var data = new FormData()
-    // eslint-disable-next-line
-    this.state.file.map((f) => {
-      data.append('file', f)
-    })
+    data.append('file', this.state.file)
     // POST
     axios.post(API_ROOT + 'uploadmetadata', data, createConfig(this._updateUploadProgress))
       .then(response => {
