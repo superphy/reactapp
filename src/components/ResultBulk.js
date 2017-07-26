@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class Bulk extends PureComponent {
+class ResultBulk extends PureComponent {
   render(){
     return (
       <div>
@@ -15,4 +15,4 @@ class Bulk extends PureComponent {
   }
 }
 
-export default Bulk
+export default ResultBulk
