@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import FileInput from 'react-md/lib/FileInputs';
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
-import Subheader from 'react-md/lib/Subheaders';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // redux
 import { connect } from 'react-redux'
@@ -11,8 +10,6 @@ import { addJob } from '../actions'
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
-// router
-import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
 
 class Metadata extends PureComponent {
