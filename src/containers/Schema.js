@@ -12,7 +12,7 @@ import { API_ROOT } from '../middleware/api'
 import Loading from '../components/Loading'
 import d3 from 'd3';
 import jsonldVis from 'jsonld-vis';
-import data from '../middleware/example.json';
+import data from '../middleware/GCA_001911305.1_ASM191130v1_genomic.fna_rgi.json';
 
 
 class Schema extends Component {
