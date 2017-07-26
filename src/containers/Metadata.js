@@ -59,7 +59,7 @@ class Metadata extends PureComponent {
       data.append('file', f)
     })
     // POST
-    axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
+    axios.post(API_ROOT + 'uploadmetadata', data, createConfig(this._updateUploadProgress))
       .then(response => {
         console.log(response)
         // no longer uploading
@@ -104,7 +104,6 @@ class Metadata extends PureComponent {
                 secondary
                 label="Select .CSV"
                 onChange={this._selectFile}
-                single
               />
               <Button
                 raised
