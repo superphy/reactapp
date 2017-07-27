@@ -1,0 +1,428 @@
+[
+  {
+    "@id": "http://www.biointerchange.org/gfvo#Description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "record.description"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Contig"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#End",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Position"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Region"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#position",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "the numerical location of a position"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Position"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://purl.org/dc/elements/1.1/license": [
+      {
+        "@id": "https://www.apache.org/licenses/LICENSE-2.0"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#ForwardStrandPosition",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#ExactPosition"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#ReverseStrandPosition",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#ExactPosition"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#AntimicrobialResistanceGene",
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "AMR_Gene"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://www.github.com/superphy#Marker"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0001065",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://www.github.com/superphy#spfyId"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#Begin",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Position"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Region"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.biointerchange.org/gfvo#DNASequence",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "a dna sequence"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Contig"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/elements/1.1/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "class descriptor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Genome"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.biointerchange.org/gfvo#Identifier",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "accession number ie. record.id"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Contig"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0001567",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "subject species"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://www.github.com/superphy#spfyId"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#Region",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#comment": [
+      {
+        "@value": "a region containing the start and the end positions"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "https://www.github.com/superphy#Marker"
+      }
+    ],
+    "https://www.github.com/superphy#isFoundIn": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#End"
+      },
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Begin"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#Position",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "https://www.github.com/superphy#isFoundIn": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Reference"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/SO_0001462",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "Bag_of_Contigs"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "bag of contigs"
+      }
+    ],
+    "https://www.github.com/superphy#isFoundIn": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Genome"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/elements/1.1/date",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "submission date"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Genome"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0001684",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "k-antigen"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://www.github.com/superphy#spfyId"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#spfyId",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "SpfyId"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": ":spfyid"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Genome"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.biointerchange.org/gfvo#Genome",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "genome instance"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "http://purl.obolibrary.org/obo/SO_0001462"
+      }
+    ],
+    "https://www.github.com/superphy#isFoundIn": [
+      {
+        "@id": "https://www.github.com/superphy#spfyId"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#VirulenceFactor",
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "Virulence_Factor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://www.github.com/superphy#Marker"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0001076",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "O-Type"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "o-antigen"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0001077",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "H-Type"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "h-antigen"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://www.github.com/superphy#spfyId"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#Marker",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "Any_Marker"
+      }
+    ],
+    "https://www.github.com/superphy#isFoundIn": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Region"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#Reference",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#comment": [
+      {
+        "@value": "a g:Contig that is referenced in some :Marker"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.biointerchange.org/gfvo#Contig"
+      }
+    ],
+    "https://www.github.com/superphy#hasPart": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Position"
+      }
+    ]
+  },
+  {
+    "@id": "http://biohackathon.org/resource/faldo#ExactPosition",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://biohackathon.org/resource/faldo#Position"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#isFoundIn",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.obolibrary.org/obo/GENEPIO_0000024",
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "Upload_Date"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.biointerchange.org/gfvo#Contig",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "a contig"
+      }
+    ]
+  },
+  {
+    "@id": "https://www.github.com/superphy#hasPart",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ]
+  }
+]

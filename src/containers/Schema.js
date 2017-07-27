@@ -12,13 +12,23 @@ import { API_ROOT } from '../middleware/api'
 import Loading from '../components/Loading'
 import d3 from 'd3';
 import jsonldVis from 'jsonld-vis';
-import data from '../middleware/GCA_001911305.1_ASM191130v1_genomic.fna_rgi.json';
+import '../middleware/jsonld-vis.css'
+import data from '../middleware/example_spfyid.json';
 
+const jsonldVisConfig = {
+  h: 600, // height
+  w: '100%', // width
+  maxLabelWidth: 250, // maximum label width
+  transitionDuration: 750, // transition duration, in ms
+  transitionEase: 'cubic-in-out', // transition easing function
+  minRadius: 5, // minimum node radius
+  scalingFactor: 2 // factor to scale node sizes
+}
 
 class Schema extends Component {
   componentDidMount(){
     jsonldVis(d3)
-    d3.jsonldVis(data, this.el, { w: '100%', h: 600, maxLabelWidth: 250 })
+    d3.jsonldVis(data, this.el, jsonldVisConfig)
   }
   render(){
     return <div ref={el => this.el = el} />;
