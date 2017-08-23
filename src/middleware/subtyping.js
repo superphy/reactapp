@@ -1,4 +1,4 @@
-export const subtypingDescription = (file, pi, serotype, vf, amr) => {
+export const subtypingDescription = (file, pi, serotype, vf, amr, pan) => {
   // parses files and options to generate a human-readable description
   let s = ''
   s += file
@@ -29,5 +29,6 @@ export const subtypingDescription = (file, pi, serotype, vf, amr) => {
   if(serotype){s+= ' Serotype'}
   if(vf){s+= ' VF'}
   if(amr){s+= ' AMR'}
+  if(pan){s+= ' pan'}
   return s;
 }

@@ -9,7 +9,7 @@ import Home from '../components/Home'
 import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
 import Database from '../containers/Database'
-import Panseq from '../containers/panseq'
+import Panseq from '../containers/Panseq'
 // others
 import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
