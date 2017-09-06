@@ -17,6 +17,8 @@ import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
+import { panseqDescription } from '../middleware/panseq'
+
 
 class Subtyping extends PureComponent {
   constructor(props) {
@@ -34,6 +36,7 @@ class Subtyping extends PureComponent {
       hasResult: false,
       groupresults: true,
       bulk: false,
+      pan: true,
       progress: 0
     }
   }
@@ -103,8 +106,72 @@ class Subtyping extends PureComponent {
     // new option added in 4.3.3, use bulk uploading where results are only
     // stored and not returned (ie. don't run beautify.py on server-side)
     data.append('options.bulk', this.state.bulk)
+    data.append('options.pan', this.state.pan)
     // POST
     axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
+      .then(response => {
+        console.log(response)
+        // no longer uploading
+        this.setState({
+          uploading: false
+        })
+        let jobs = response.data
+        // handle the return
+        for(let job in jobs){
+          // console.log(job)
+          // console.log(jobs[job].analysis)-
+          // check filename
+          let f = (this.state.file.length > 1 ?
+          String(this.state.file.length + ' Files')
+          :this.state.file[0].name)
+
+          // for bulk uploading
+          if(this.state.bulk){
+            const jobId = job
+            this.setState({jobId})
+            this.props.dispatch(addJob(job,
+              "bulk",
+              new Date().toLocaleTimeString(),
+              subtypingDescription(
+                'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan)
+            ))
+          } else {
+            // regular subtyping uplods
+            if(jobs[job].analysis === "Antimicrobial Resistance"){
+              this.props.dispatch(addJob(job,
+                "Antimicrobial Resistance",
+                new Date().toLocaleTimeString(),
+                subtypingDescription(f, this.state.pi, false, false, this.state.amr, this.state.pan)
+              ))
+            } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
+              let descrip = ''
+              if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
+              else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
+              else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
+              this.props.dispatch(addJob(job,
+                descrip,
+                new Date().toLocaleTimeString(),
+                subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false, this.state.pan)
+              ))
+            } else if (jobs[job].analysis === "Subtyping") {
+              // set the jobId state so we can use Loading
+              const jobId = job
+              this.setState({jobId})
+              // dispatch
+              this.props.dispatch(addJob(job,
+                "Subtyping",
+                new Date().toLocaleTimeString(),
+                subtypingDescription(
+                  f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan)
+              ))
+            }
+              // end of ifelse for non-bulk uploads
+          }
+        }
+        const hasResult = true
+        this.setState({hasResult})
+      })
+      axios.post(API_ROOT + 'panseq', data, createConfig(this._updateUploadProgress))
       .then(response => {
         console.log(response)
         // no longer uploading
@@ -121,47 +188,17 @@ class Subtyping extends PureComponent {
           String(this.state.file.length + ' Files')
           :this.state.file[0].name)
 
-          // for bulk uploading
-          if(this.state.bulk){
-            const jobId = job
-            this.setState({jobId})
-            this.props.dispatch(addJob(job,
-              "bulk",
-              new Date().toLocaleTimeString(),
-              subtypingDescription(
-                'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
-            ))
-          } else {
+
+
             // regular subtyping uplods
-            if(jobs[job].analysis === "Antimicrobial Resistance"){
+            if(jobs[jobs].analysis === "panseq"){
               this.props.dispatch(addJob(job,
-                "Antimicrobial Resistance",
-                new Date().toLocaleTimeString(),
-                subtypingDescription(f, this.state.pi, false, false, this.state.amr)
+              'panseq',
+              new Date().toLocaleTimeString(),
+              panseqDescription(f, this.state.pi, this.state.pan)
               ))
-            } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
-              let descrip = ''
-              if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
-              else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
-              else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
-              this.props.dispatch(addJob(job,
-                descrip,
-                new Date().toLocaleTimeString(),
-                subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false)
-              ))
-            } else if (jobs[job].analysis === "Subtyping") {
-              // set the jobId state so we can use Loading
-              const jobId = job
-              this.setState({jobId})
-              // dispatch
-              this.props.dispatch(addJob(job,
-                "Subtyping",
-                new Date().toLocaleTimeString(),
-                subtypingDescription(
-                  f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
-              ))
-            } // end of ifelse for non-bulk uploads
-          }
+              }
+
         }
         const hasResult = true
         this.setState({hasResult})
