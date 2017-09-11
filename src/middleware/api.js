@@ -1,7 +1,7 @@
 import React from 'react'
-const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
+// const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
 // const ROOT = 'http://10.139.14.212:8000/'
-// const ROOT = 'http://192.168.1.67:8000/'
+const ROOT = 'http://192.168.0.16:8000/'
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
@@ -30,6 +30,10 @@ export const analyses = [{
   'analysis': 'database',
   'description': 'View all entries currently loaded into the database.',
   'text': ''
+},{
+  'analysis': 'phylotyper',
+  'description': 'Perform Shiga-toxin or Intimin subtyping.',
+  'text': 'Predict Shiga-toxin or Intimin subtying from sequence data'
 }]
 
 export const createErrorMessage = (jobId, msg='') => {
