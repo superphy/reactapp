@@ -1,5 +1,5 @@
 import React from 'react'
-const IP = '10.139.14.212'
+const IP = 'localhost'
 const ROOT = window.location.protocol + '//' + IP + ':8000/'
 // const ROOT = 'http://10.139.14.212:8000/'
 // const ROOT = 'http://192.168.1.67:8000/'
