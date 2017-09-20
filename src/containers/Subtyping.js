@@ -181,7 +181,7 @@ class Subtyping extends PureComponent {
         let jobs = response.data
         // handle the return
         for(let job in jobs){
-          // console.log(job)
+          // console.log(job)s
           // console.log(jobs[job].analysis)
           // check filename
           let f = (this.state.file.length > 1 ?
@@ -191,9 +191,9 @@ class Subtyping extends PureComponent {
 
 
             // regular subtyping uplods
-            if(jobs[jobs].analysis === "panseq"){
+            if(jobs[jobs].analysis === "Panseq"){
               this.props.dispatch(addJob(job,
-              'panseq',
+              'Panseq',
               new Date().toLocaleTimeString(),
               panseqDescription(f, this.state.pi, this.state.pan)
               ))

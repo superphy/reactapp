@@ -92,9 +92,9 @@ class Panseq extends PureComponent {
 
 
             // regular subtyping uplods
-            if(job.analysis === "panseq"){
+            if(job.analysis === "Panseq"){
               this.props.dispatch(addJob(job,
-              'panseq',
+              'Panseq',
               new Date().toLocaleTimeString(),
               panseqDescription(f, this.state.pi, this.state.pan)
               ))
