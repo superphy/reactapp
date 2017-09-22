@@ -191,7 +191,7 @@ class Subtyping extends PureComponent {
 
 
             // regular subtyping uplods
-            if(jobs[jobs].analysis === "Panseq"){
+            if(job.analysis === "Panseq"){
               this.props.dispatch(addJob(job,
               'Panseq',
               new Date().toLocaleTimeString(),
