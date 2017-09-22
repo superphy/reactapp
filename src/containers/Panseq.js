@@ -82,7 +82,6 @@ class Panseq extends PureComponent {
         let jobs = response.data
         // handle the return
         for(let job in jobs){
-          console.log(job)
           // console.log(jobs[job].analysis)
           // check filename
           let f = (this.state.file.length > 1 ?
@@ -92,8 +91,7 @@ class Panseq extends PureComponent {
 
 
             // regular subtyping uplods
-            console.log(jobs[job].analysis)
-            if(jobs[job].analysis === "Panseq"){
+            if((jobs[job].analysis === "Panseq") && (jobs[job].file.includes('Results'))){
               this.props.dispatch(addJob(job,
               'Panseq',
               new Date().toLocaleTimeString(),
