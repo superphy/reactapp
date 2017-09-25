@@ -119,7 +119,7 @@ class Panseq extends PureComponent {
             <div className="md-cell md-cell--12">
               <TextField
                 id="title"
-                defaultValue="Upload genome files for Panseq run"
+                defaultValue="Upload Genome Files for Panseq Run"
               />
               <p>
                 Note: An initial upload of more than one
