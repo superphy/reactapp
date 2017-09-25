@@ -31,7 +31,7 @@ export const analyses = [{
   'text': ''
 },{
   'analysis': 'panseq',
-  'description': 'Create a pan-genome.',
+  'description': 'Load a pan-genome into the database for secondary analyses.',
   'text': (
     <p>
       Upload genomes & split into pan-genome regions.

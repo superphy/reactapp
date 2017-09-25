@@ -117,6 +117,18 @@ class Panseq extends PureComponent {
         {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
+              <TextField
+                id="title"
+                defaultValue="Upload genome files for Panseq run"
+              />
+              <p>
+                Note: An initial upload of more than one
+                genome files is required. Afterwards, the stored pan-genome
+                will be updated with any additional files submitted.
+              </p>
+              <p>
+                Ref: Pan-genome sequence analysis using Panseq: an online tool for the rapid analysis of core and accessory genomic regions. Laing, Chad, et al. https://www.ncbi.nlm.nih.gov/pubmed/20843356
+              </p>
               <FileInput
                 id="inputFile"
                 secondary
@@ -124,8 +136,6 @@ class Panseq extends PureComponent {
                 onChange={this._selectFile}
                 multiple
               />
-
-
               <Button
                 raised
                 secondary
