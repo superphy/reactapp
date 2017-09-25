@@ -3,12 +3,10 @@ import React, { PureComponent } from 'react';
 import FileInput from 'react-md/lib/FileInputs';
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
-import Subheader from 'react-md/lib/Subheaders';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
-import { subtypingDescription } from '../middleware/subtyping'
 import { panseqDescription } from '../middleware/panseq'
 
 // axios
@@ -23,7 +21,6 @@ class Panseq extends PureComponent {
     super(props);
     this.state = {
       file: null,
-      pi: 90,
       submitted: false,
       open: false,
       pan: true,
@@ -105,7 +102,7 @@ class Panseq extends PureComponent {
       })
   };
   render(){
-    const { file, pi, amr, serotype, vf, groupresults, bulk, uploading, hasResult, progress } = this.state
+    const { file, groupresults, uploading, hasResult, progress } = this.state
     return (
       <div>
         {/* uploading bar */}
