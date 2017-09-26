@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react'
 import ResultFishers from './ResultFishers'
 import ResultSubtyping from './ResultSubtyping'
+import ResultPhylotyper from './ResultPhylotyper'
 import ResultDatabase from './ResultDatabase'
 import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
@@ -12,6 +13,8 @@ const ResultsTemplates = ({ job }) => {
       return <ResultFishers jobId={job.hash} />
     case "Virulence Factors and Serotype":
       return <ResultSubtyping jobId={job.hash} />
+    case "Phylotyper":
+      return <ResultPhylotyper jobId={job.hash} />
     case "Virulence Factors":
       return <ResultSubtyping jobId={job.hash} />
     case "Serotype":

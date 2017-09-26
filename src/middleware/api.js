@@ -9,13 +9,14 @@ export const version = 'v.4.3.3'
 
 export const analyses = [{
   'analysis':'subtyping',
-  'description':'Serotype, Virulence Factors, Antimicrobial Resistance',
+  'description':'Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin',
   'text':(
     <p>
       Upload genome files & determine associated subtypes.
       <br></br>
-      Subtyping is powered by <a href="https://github.com/phac-nml/ecoli_serotyping">ECTyper</a>.
+      Serotyping is powered by <a href="https://github.com/phac-nml/ecoli_serotyping">ECTyper</a>.
       AMR is powered by <a href="https://card.mcmaster.ca/analyze/rgi">CARD</a>.
+      Shiga-toxin and Intimin is powered by <a href="https://github.com/superphy/insilico-subtyping/">Phylotyper</a>.
     </p>
   )
 },{
@@ -30,10 +31,6 @@ export const analyses = [{
   'analysis': 'database',
   'description': 'View all entries currently loaded into the database.',
   'text': ''
-},{
-  'analysis': 'phylotyper',
-  'description': 'Perform Shiga-toxin or Intimin subtyping.',
-  'text': 'Predict Shiga-toxin or Intimin subtying from sequence data'
 }]
 
 export const createErrorMessage = (jobId, msg='') => {

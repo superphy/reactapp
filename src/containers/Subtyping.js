@@ -6,11 +6,13 @@ import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import Switch from 'react-md/lib/SelectionControls/Switch';
 import Subheader from 'react-md/lib/Subheaders';
+//import Divider from 'react-md/lib/Dividers';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
 import { subtypingDescription } from '../middleware/subtyping'
+import { phylotyperDescription } from '../middleware/phylotyper'
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -34,7 +36,11 @@ class Subtyping extends PureComponent {
       hasResult: false,
       groupresults: true,
       bulk: false,
-      progress: 0
+      progress: 0,
+      prob: 90,
+      stx1: false,
+      stx2: false,
+      eae: false
     }
   }
   _selectFile = (file) => {
@@ -53,6 +59,18 @@ class Subtyping extends PureComponent {
   }
   _updateVf = (value) => {
     this.setState({ vf: value })
+  }
+  _updateStx1 = (value) => {
+    this.setState({ stx1: value })
+  }
+  _updateStx2 = (value) => {
+    this.setState({ stx2: value })
+  }
+  _updateEae = (value) => {
+    this.setState({ eae: value })
+  }
+  _updateProb = (value) => {
+    this.setState({ prob: value })
   }
   _updateGroupResults = (groupresults) => {
     this.setState({ groupresults })
@@ -97,6 +115,9 @@ class Subtyping extends PureComponent {
     data.append('options.amr', this.state.amr)
     data.append('options.serotype', this.state.serotype)
     data.append('options.vf', this.state.vf)
+    data.append('options.stx1', this.state.stx1)
+    data.append('options.stx2', this.state.stx2)
+    data.append('options.eae', this.state.eae)
     // new option added in 4.2.0, group all files into a single result
     // this means polling in handled server-side
     data.append('options.groupresults', this.state.groupresults)
@@ -106,6 +127,7 @@ class Subtyping extends PureComponent {
     // POST
     axios.post(API_ROOT + 'upload', data, createConfig(this._updateUploadProgress))
       .then(response => {
+        console.log("RESPONSE")
         console.log(response)
         // no longer uploading
         this.setState({
@@ -132,7 +154,7 @@ class Subtyping extends PureComponent {
                 'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
             ))
           } else {
-            // regular subtyping uplods
+            // regular subtyping uploads
             if(jobs[job].analysis === "Antimicrobial Resistance"){
               this.props.dispatch(addJob(job,
                 "Antimicrobial Resistance",
@@ -160,7 +182,18 @@ class Subtyping extends PureComponent {
                 subtypingDescription(
                   f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr)
               ))
-            } // end of ifelse for non-bulk uploads
+            } else if (jobs[job].analysis === "Phylotyper") {
+              // set the jobId state so we can use Loading
+              const jobId = job
+              this.setState({jobId})
+              // dispatch
+              this.props.dispatch(addJob(job,
+                "Phylotyper",
+                new Date().toLocaleTimeString(),
+                phylotyperDescription(
+                  f , this.state.prob, this.state.stx1, this.state.stx2, this.state.eae)
+              ))// end of ifelse for non-bulk uploads
+            }
           }
         }
         const hasResult = true
@@ -168,7 +201,7 @@ class Subtyping extends PureComponent {
       })
   };
   render(){
-    const { file, pi, amr, serotype, vf, groupresults, bulk, uploading, hasResult, progress } = this.state
+    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state
     return (
       <div>
         {/* uploading bar */}
@@ -190,11 +223,18 @@ class Subtyping extends PureComponent {
                 onChange={this._selectFile}
                 multiple
               />
+
+            </div>
+            <div className="md-cell md-cell--12">
+              
+              <h5>ECTyper Subtyping Analysis</h5>
+
               <Switch
                 id="groupResults"
                 name="groupResults"
                 label="Group files into a single result"
                 checked={groupresults}
+                disabled={stx1 || stx2 || eae}
                 onChange={this._updateGroupResults}
               />
               <Switch
@@ -237,6 +277,48 @@ class Subtyping extends PureComponent {
                 onChange={this._updatePi}
                 helpText="Percent Identity for BLAST"
               />
+
+            </div>
+            <div className="md-cell md-cell--12">
+              
+              <h5>Phylotyper Subtyping Analysis</h5>
+              
+              <Subheader primaryText="(Group files into single result is not possible with Phylotyper analysis)" inset/>
+
+              <Checkbox
+                id="stx1"
+                name="check stx1"
+                checked={stx1}
+                onChange={this._updateStx1}
+                label="Shiga-toxin 1 Subtype"
+              />
+            
+              <Checkbox
+                id="stx2"
+                name="check stx2"
+                checked={stx2}
+                onChange={this._updateStx2}
+                label="Shiga-toxin 2 Subtype"
+              />
+             
+              <Checkbox
+                id="eae"
+                name="check eae"
+                checked={eae}
+                onChange={this._updateEae}
+                label="Intimin Subtype"
+              />
+
+              <TextField
+                id="prob"
+                value={prob}
+                onChange={this._updateProb}
+                helpText="Probability threshold for subtype assignment in Phylotyper"
+              />
+
+            </div>
+            <div className="md-cell md-cell--12">
+
               <Button
                 raised
                 secondary
