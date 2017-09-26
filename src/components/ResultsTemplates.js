@@ -6,6 +6,8 @@ import ResultPhylotyper from './ResultPhylotyper'
 import ResultDatabase from './ResultDatabase'
 import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
+import ResultPanseq from './ResultsPanseq'
+
 
 const ResultsTemplates = ({ job }) => {
   switch (job.analysis) {
@@ -23,6 +25,8 @@ const ResultsTemplates = ({ job }) => {
       return <ResultSubtyping jobId={job.hash} />
     case "Subtyping":
       return <ResultSubtyping jobId={job.hash} />
+    case "Panseq":
+      return <ResultPanseq jobId={job.hash} />
     case "bulk":
       return <ResultBulk />
     case "metadata":
