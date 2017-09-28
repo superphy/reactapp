@@ -42,7 +42,7 @@ class Subtyping extends PureComponent {
       prob: 90,
       stx1: false,
       stx2: false,
-      eae: false
+      eae: false,
       pan: true,
     }
   }
@@ -262,7 +262,7 @@ class Subtyping extends PureComponent {
 
             </div>
             <div className="md-cell md-cell--12">
-              
+
               <h5>ECTyper Subtyping Analysis</h5>
 
               <Switch
@@ -316,9 +316,9 @@ class Subtyping extends PureComponent {
 
             </div>
             <div className="md-cell md-cell--12">
-              
+
               <h5>Phylotyper Subtyping Analysis</h5>
-              
+
               <Subheader primaryText="(Group files into single result is not possible with Phylotyper analysis)" inset/>
 
               <Checkbox
@@ -328,7 +328,7 @@ class Subtyping extends PureComponent {
                 onChange={this._updateStx1}
                 label="Shiga-toxin 1 Subtype"
               />
-            
+
               <Checkbox
                 id="stx2"
                 name="check stx2"
@@ -336,7 +336,7 @@ class Subtyping extends PureComponent {
                 onChange={this._updateStx2}
                 label="Shiga-toxin 2 Subtype"
               />
-             
+
               <Checkbox
                 id="eae"
                 name="check eae"
