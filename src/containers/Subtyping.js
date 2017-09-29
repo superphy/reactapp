@@ -65,12 +65,15 @@ class Subtyping extends PureComponent {
   }
   _updateStx1 = (value) => {
     this.setState({ stx1: value })
+    this.setState({groupresults: false})
   }
   _updateStx2 = (value) => {
     this.setState({ stx2: value })
+    this.setState({groupresults: false})
   }
   _updateEae = (value) => {
     this.setState({ eae: value })
+    this.setState({groupresults: false})
   }
   _updateProb = (value) => {
     this.setState({ prob: value })
