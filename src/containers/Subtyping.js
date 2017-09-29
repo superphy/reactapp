@@ -33,7 +33,6 @@ class Subtyping extends PureComponent {
       vf: true,
       submitted: false,
       open: false,
-      msg: '',
       jobId: "",
       hasResult: false,
       groupresults: true,
@@ -94,7 +93,6 @@ class Subtyping extends PureComponent {
   }
   _handleSubmit = (e) => {
     e.preventDefault() // disable default HTML form behavior
-    // open and msg are for Snackbar
     // uploading is to notify users
     this.setState({
       uploading: true
