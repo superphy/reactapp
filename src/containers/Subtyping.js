@@ -206,37 +206,12 @@ class Subtyping extends PureComponent {
         const hasResult = true
         this.setState({hasResult})
       })
+      // this is done just to trigger panseq to run in the background, doesn't
+      // store the job in redux
       axios.post(API_ROOT + 'panseq', data, createConfig(this._updateUploadProgress))
       .then(response => {
+        console.log('PANSEQ')
         console.log(response)
-        // no longer uploading
-        this.setState({
-          uploading: false
-        })
-        let jobs = response.data
-        // handle the return
-        for(let job in jobs){
-          // console.log(job)s
-          // console.log(jobs[job].analysis)
-          // check filename
-          let f = (this.state.file.length > 1 ?
-          String(this.state.file.length + ' Files')
-          :this.state.file[0].name)
-
-
-
-            // regular subtyping uplods
-            if(job.analysis === "Panseq"){
-              this.props.dispatch(addJob(job,
-              'Panseq',
-              new Date().toLocaleTimeString(),
-              panseqDescription(f, this.state.pi, this.state.pan)
-              ))
-              }
-
-        }
-        //const hasResult = true
-        //this.setState({hasResult})
       })
   };
   render(){
