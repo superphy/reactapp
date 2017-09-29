@@ -232,8 +232,8 @@ class Subtyping extends PureComponent {
               }
 
         }
-        const hasResult = true
-        this.setState({hasResult})
+        //const hasResult = true
+        //this.setState({hasResult})
       })
   };
   render(){
