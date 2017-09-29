@@ -19,8 +19,6 @@ import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
-import { panseqDescription } from '../middleware/panseq'
-
 
 class Subtyping extends PureComponent {
   constructor(props) {
