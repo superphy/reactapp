@@ -41,6 +41,7 @@ class Subtyping extends PureComponent {
       stx2: false,
       eae: false,
       pan: true,
+      progress: 0
     }
   }
   _selectFile = (file) => {
