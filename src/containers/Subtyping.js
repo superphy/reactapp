@@ -204,11 +204,11 @@ class Subtyping extends PureComponent {
       })
       // this is done just to trigger panseq to run in the background, doesn't
       // store the job in redux
-      axios.post(API_ROOT + 'panseq', data, createConfig(this._updateUploadProgress))
-      .then(response => {
-        console.log('PANSEQ')
-        console.log(response)
-      })
+      // axios.post(API_ROOT + 'panseq', data, createConfig(this._updateUploadProgress))
+      // .then(response => {
+      //   console.log('PANSEQ')
+      //   console.log(response)
+      // })
   };
   render(){
     const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state
