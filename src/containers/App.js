@@ -16,16 +16,16 @@ import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
 import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
-import { version } from '../middleware/api'
+import { version, dirpath } from '../middleware/api'
 
 var navItems = [{
   exact: true,
   label: 'Tasks',
-  to: '/',
+  to: dirpath,
   icon: 'dashboard'
 }, {
   label: 'Results',
-  to: '/results',
+  to: dirpath + '/results',
   icon: 'bubble_chart'
 }];
 
@@ -44,14 +44,14 @@ const App = () => (
             }
           >
             <Switch key={location.key}>
-              <Route exact path="/" location={location} component={Home} />
-              <Route path="/fishers" location={location} component={Fishers} />
-              <Route path="/subtyping" location={location} component={Subtyping} />
-              <Route path="/metadata" location={location} component={Metadata} />
-              <Route path="/database" location={location} component={Database} />
-              <Route path="/panseq" location={location} component={Panseq} />
-              <Route exact path="/results" location={location} component={Results} />
-              <Route path="/results/:hash" location={location} component={VisibleResult} />
+              <Route exact path={dirpath} location={location} component={Home} />
+              <Route path={dirpath + "/fishers"} location={location} component={Fishers} />
+              <Route path={dirpath + "/subtyping"} location={location} component={Subtyping} />
+              <Route path={dirpath + "/database"} location={location} component={Database} />
+              <Route path={dirpath + "/metadata"} location={location} component={Metadata} />
+              <Route path={dirpath + "/panseq"} location={location} component={Panseq} />
+              <Route exact path={dirpath + "/results"} location={location} component={Results} />
+              <Route path={dirpath + "/results/:hash"} location={location} component={VisibleResult} />
             </Switch>
             <p style={{
               'right': 20,
