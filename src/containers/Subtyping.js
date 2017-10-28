@@ -15,7 +15,7 @@ import { subtypingDescription } from '../middleware/subtyping'
 import { phylotyperDescription } from '../middleware/phylotyper'
 // axios
 import axios from 'axios'
-import { API_ROOT } from '../middleware/api'
+import { API_ROOT, dirpath } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
@@ -350,7 +350,7 @@ class Subtyping extends PureComponent {
           // if results are grouped, display the Loading page
           // else, results are separate and display the JobsList cards page
           (!uploading?(!groupresults?
-            <Redirect to='/results' />:
+            <Redirect to={dirpath + "/results"} />:
             <Loading jobId={this.state.jobId} />
           ):"")
         }
