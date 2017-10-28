@@ -2,8 +2,12 @@
 import React, { PropTypes } from 'react'
 import ResultFishers from './ResultFishers'
 import ResultSubtyping from './ResultSubtyping'
+import ResultPhylotyper from './ResultPhylotyper'
 import ResultDatabase from './ResultDatabase'
-import Bulk from '../containers/Bulk'
+import ResultBulk from './ResultBulk'
+import ResultMetadata from './ResultMetadata'
+import ResultPanseq from './ResultsPanseq'
+
 
 const ResultsTemplates = ({ job }) => {
   switch (job.analysis) {
@@ -11,6 +15,8 @@ const ResultsTemplates = ({ job }) => {
       return <ResultFishers jobId={job.hash} />
     case "Virulence Factors and Serotype":
       return <ResultSubtyping jobId={job.hash} />
+    case "Phylotyper":
+      return <ResultPhylotyper jobId={job.hash} />
     case "Virulence Factors":
       return <ResultSubtyping jobId={job.hash} />
     case "Serotype":
@@ -19,8 +25,12 @@ const ResultsTemplates = ({ job }) => {
       return <ResultSubtyping jobId={job.hash} />
     case "Subtyping":
       return <ResultSubtyping jobId={job.hash} />
+    case "Panseq":
+      return <ResultPanseq jobId={job.hash} />
     case "bulk":
-      return <Bulk />
+      return <ResultBulk />
+    case "metadata":
+      return <ResultMetadata />
     case "database":
       return <ResultDatabase jobId={job.hash} />
     default:

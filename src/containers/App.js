@@ -8,7 +8,9 @@ import Home from '../components/Home'
 // module
 import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
+import Metadata from '../containers/Metadata'
 import Database from '../containers/Database'
+import Panseq from '../containers/Panseq'
 // others
 import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
@@ -46,6 +48,8 @@ const App = () => (
               <Route path={dirpath + "/fishers"} location={location} component={Fishers} />
               <Route path={dirpath + "/subtyping"} location={location} component={Subtyping} />
               <Route path={dirpath + "/database"} location={location} component={Database} />
+              <Route path={dirpath + "/metadata"} location={location} component={Metadata} />
+              <Route path={dirpath + "/panseq"} location={location} component={Panseq} />
               <Route exact path={dirpath + "/results"} location={location} component={Results} />
               <Route path={dirpath + "/results/:hash"} location={location} component={VisibleResult} />
             </Switch>
