@@ -57,4 +57,4 @@ export const createErrorMessage = (jobId, msg='') => {
 }
 
 // this is used for the directory based names in corefacility
-export const dirpath = '/superphy/grouch'
+export const dirpath = '/superphy/spfy'
