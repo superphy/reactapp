@@ -10,6 +10,7 @@ import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
 import Metadata from '../containers/Metadata'
 import Database from '../containers/Database'
+import Panseq from '../containers/Panseq'
 // others
 import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/subtyping" location={location} component={Subtyping} />
               <Route path="/metadata" location={location} component={Metadata} />
               <Route path="/database" location={location} component={Database} />
+              <Route path="/panseq" location={location} component={Panseq} />
               <Route exact path="/results" location={location} component={Results} />
               <Route path="/results/:hash" location={location} component={VisibleResult} />
             </Switch>
