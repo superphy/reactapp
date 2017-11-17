@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 // requests
 import { API_ROOT } from '../middleware/api'
 // error msg
-import { createErrorMessage } from '../middleware/api'
+import { createErrorMessage, dirpath } from '../middleware/api'
 
 class Job extends Component {
   render(){
@@ -58,7 +58,7 @@ class Job extends Component {
         <CardActions>
           {
             complete ?
-              <Link to={'/results/' + this.props.hash}>
+              <Link to={dirpath + '/results/' + this.props.hash}>
                 <Button flat primary label="See Result">input</Button>
               </Link> : ''
           }
