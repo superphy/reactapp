@@ -55,3 +55,8 @@ export const createErrorMessage = (jobId, msg='') => {
   </div>
   return message
 }
+
+export const GOOGLE_ANALYTICS_CONFIG = {
+  trackingId: 'UA-000000-01',
+  debug: false
+};
