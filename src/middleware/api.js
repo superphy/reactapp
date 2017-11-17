@@ -56,5 +56,9 @@ export const createErrorMessage = (jobId, msg='') => {
   return message
 }
 
+export const GOOGLE_ANALYTICS_CONFIG = {
+  trackingId: 'UA-000000-01',
+  debug: false
+};
 // this is used for the directory based names in corefacility
 export const dirpath = '/superphy/spfy'

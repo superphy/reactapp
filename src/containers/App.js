@@ -16,7 +16,9 @@ import Results from '../containers/Results'
 import VisibleResult from './VisibleResult'
 import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
-import { version, dirpath } from '../middleware/api'
+import { version, dirpath, GOOGLE_ANALYTICS_CONFIG } from '../middleware/api'
+// Google Analytics
+import ReactGA from 'react-ga';
 
 var navItems = [{
   exact: true,
@@ -63,6 +65,10 @@ const App = () => (
                 <br></br>
                 {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
             </p>
+            <pre>
+              {ReactGA.initialize({GOOGLE_ANALYTICS_CONFIG})}
+              {ReactGA.pageview(window.location.pathname + window.location.search)}
+            </pre>
           </NavigationDrawer>
         )}
       />
