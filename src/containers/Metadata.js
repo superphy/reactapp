@@ -4,6 +4,7 @@ import FileInput from 'react-md/lib/FileInputs';
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import Subheader from 'react-md/lib/Subheaders';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -94,10 +95,20 @@ class Metadata extends PureComponent {
         {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
+              <TextField
+                id="title"
+                defaultValue="Example of Metadata Sheet:"
+              />
+                <a href='https://raw.githubusercontent.com/superphy/backend/master/app/static/example_metadata.xlsx' download='example_metadata.xlsx'>Download</a>
+              <TextField
+                id="title"
+                defaultValue="File Submission:"
+              />
+              <Subheader primaryText="(Note: Please submit the Subtyping tasks and wait for them to complete first.)" inset />
               <FileInput
                 id="inputFile"
                 secondary
-                label="Select .CSV"
+                label="Select Metadata File"
                 onChange={this._selectFile}
               />
               <Button
