@@ -99,7 +99,7 @@ class Metadata extends PureComponent {
                 id="title"
                 defaultValue="Example of Metadata Sheet:"
               />
-                <a href={API_ROOT + 'api/v0/get_metadata_example'} download='example_metadata.xlsx'>Download</a>
+                <a href='https://raw.githubusercontent.com/superphy/backend/218-metadata/app/static/example_metadata.xlsx' download='example_metadata.xlsx'>Download</a>
               <TextField
                 id="title"
                 defaultValue="File Submission:"
@@ -107,7 +107,7 @@ class Metadata extends PureComponent {
               <FileInput
                 id="inputFile"
                 secondary
-                label="Select .CSV"
+                label="Select Metadata File"
                 onChange={this._selectFile}
               />
               <Button
