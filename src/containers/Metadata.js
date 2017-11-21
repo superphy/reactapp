@@ -4,6 +4,7 @@ import FileInput from 'react-md/lib/FileInputs';
 import TextField from 'react-md/lib/TextFields';
 import Button from 'react-md/lib/Buttons';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import Subheader from 'react-md/lib/Subheaders';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -94,6 +95,15 @@ class Metadata extends PureComponent {
         {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
+              <TextField
+                id="title"
+                defaultValue="Example of Metadata Sheet:"
+              />
+                <a href={API_ROOT + 'api/v0/get_metadata_example'} download='example_metadata.xlsx'>Download</a>
+              <TextField
+                id="title"
+                defaultValue="File Submission:"
+              />
               <FileInput
                 id="inputFile"
                 secondary
