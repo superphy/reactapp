@@ -99,7 +99,7 @@ class Metadata extends PureComponent {
                 id="title"
                 defaultValue="Example of Metadata Sheet:"
               />
-                <a href='https://raw.githubusercontent.com/superphy/backend/218-metadata/app/static/example_metadata.xlsx' download='example_metadata.xlsx'>Download</a>
+                <a href='https://raw.githubusercontent.com/superphy/backend/master/app/static/example_metadata.xlsx' download='example_metadata.xlsx'>Download</a>
               <TextField
                 id="title"
                 defaultValue="File Submission:"
