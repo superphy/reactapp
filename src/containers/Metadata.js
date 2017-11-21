@@ -104,6 +104,7 @@ class Metadata extends PureComponent {
                 id="title"
                 defaultValue="File Submission:"
               />
+              <Subheader primaryText="(Note: Please submit the Subtyping tasks and wait for them to complete first.)" inset />
               <FileInput
                 id="inputFile"
                 secondary
