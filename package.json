@@ -4,10 +4,12 @@
   "private": true,
   "description": "An example usage of react-md and create-react-app.",
   "dependencies": {
+    "auth0-js": "^9.0.2",
     "axios": "^0.16.1",
     "bootstrap": "4.0.0-alpha.6",
     "history": "^4.6.1",
     "immutability-helper": "^2.2.0",
+    "jwt-decode": "^2.2.0",
     "material-ui": "^0.18.0",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
