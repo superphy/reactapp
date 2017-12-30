@@ -17,7 +17,7 @@
     "react-addons-transition-group": "^15.5.2",
     "react-bootstrap-table": "^3.4.0",
     "react-dom": "^15.5.4",
-    "react-md": "*",
+    "react-md": "^1.2.9",
     "react-redux": "^5.0.5",
     "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1",
