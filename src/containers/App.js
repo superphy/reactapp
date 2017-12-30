@@ -6,6 +6,8 @@ import NavLink from '../containers/NavLink'
 // Actual Code
 import Home from '../components/Home'
 // module
+import Login from '../containers/Login'
+import Register from '../containers/Register'
 import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
 import Metadata from '../containers/Metadata'
@@ -19,6 +21,10 @@ import logo from '../spfy.png'
 import { version } from '../middleware/api'
 
 var navItems = [{
+  label: 'Login',
+  to: '/login',
+  icon: 'account_circle'
+},{
   exact: true,
   label: 'Tasks',
   to: '/',
@@ -45,6 +51,8 @@ const App = () => (
           >
             <Switch key={location.key}>
               <Route exact path="/" location={location} component={Home} />
+              <Route exact path="/login" location={location} component={Login} />
+              <Route exact path="/register" location={location} component={Register} />
               <Route path="/fishers" location={location} component={Fishers} />
               <Route path="/subtyping" location={location} component={Subtyping} />
               <Route path="/metadata" location={location} component={Metadata} />
