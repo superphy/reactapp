@@ -16,6 +16,8 @@ import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
+// auth0
+import Auth from '../middleware/Auth.js';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -55,41 +57,10 @@ class Login extends PureComponent {
   };
   render(){
     const { submitted, email, password } = this.state
+    const auth = new Auth();
     return (
       <div>
-        {/* actual form */}
-        {(!submitted)?
-          <div className="md-text-container md-grid">
-            <Subheader primary primaryText="Login" />
-            <div className="md-cell md-cell--12">
-            <form>
-              <TextField
-                id="email"
-                value={email}
-                onChange={this._updateEmail}
-                label='Email'
-              />
-              <TextField
-                id="password"
-                value={password}
-                onChange={this._updatePassword}
-                label='Password'
-              />
-              <Button
-                raised
-                secondary
-                type="submit"
-                label="Submit"
-                onClick={this._handleSubmit}
-              />
-            </form>
-            <Link to={'/register'}>
-              <Button flat primary label="Register">input</Button>
-            </Link>
-            </div>
-          </div> :
-          <Redirect to='/results' />
-        }
+        {auth.login()}
       </div>
     )
   }
