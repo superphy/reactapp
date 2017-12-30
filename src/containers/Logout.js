@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
+class Logout extends Component {
   render(){
     console.log(this.props)
     return (
       <div>
-        {this.props.auth.login()}
+        {this.props.auth.logout()}
       </div>
     )
   }
 }
 
-export default Login
+export default Logout

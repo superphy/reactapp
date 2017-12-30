@@ -6,7 +6,6 @@ import NavLink from '../containers/NavLink'
 // Actual Code
 import Home from '../components/Home'
 // module
-import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Fishers from '../containers/Fishers'
 import Subtyping from '../containers/Subtyping'
@@ -21,8 +20,16 @@ import logo from '../spfy.png'
 import { version } from '../middleware/api'
 // auth0
 import Callback from '../middleware/Callback';
+import Login from '../containers/Login';
+import Logout from '../containers/Logout';
 
 class App extends Component {
+  login() {
+    this.props.auth.login();
+  }
+  logout() {
+    this.props.auth.logout();
+  }
   render(){
     const { isAuthenticated } = this.props.auth;
     const handleAuthentication = (nextState, replace) => {
@@ -49,10 +56,24 @@ class App extends Component {
       to: '/results',
       icon: 'bubble_chart'
     }];
+    const renderMergedProps = (component, ...rest) => {
+      const finalProps = Object.assign({}, ...rest);
+      return (
+        React.createElement(component, finalProps)
+      );
+    }
+
+    const PropsRoute = ({ component, ...rest }) => {
+      return (
+        <Route {...rest} render={routeProps => {
+          return renderMergedProps(component, routeProps, rest);
+        }}/>
+      );
+    }
     return (
       <div>
           <Route
-            render={({ location }) => (
+            render={({ location, auth }) => (
               <NavigationDrawer
                 drawerTitle="spfy"
                 drawerHeaderChildren={
@@ -65,7 +86,8 @@ class App extends Component {
               >
                 <Switch key={location.key}>
                   <Route exact path="/" location={location} component={Home} />
-                  <Route exact path="/login" location={location} component={Login} />
+                  <PropsRoute path="/login" location={location} component={Login} auth={this.props.auth}/>
+                  <PropsRoute path="/logout" location={location} component={Logout} auth={this.props.auth}/>
                   <Route exact path="/register" location={location} component={Register} />
                   <Route path="/fishers" location={location} component={Fishers} />
                   <Route path="/subtyping" location={location} component={Subtyping} />
