@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import Loading from '../components/Loading.js'
+import { LinearProgress } from 'react-md'
 
 class Callback extends Component {
   render() {
 
     return (
-      <Loading />
+      <div>
+          <LinearProgress key="progress" id='contentLoadingProgress' />
+          <p>
+            Handling auth...
+          </p>
+      </div>
     );
   }
 }
