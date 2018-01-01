@@ -10,12 +10,6 @@ import History from '../History';
 import Routes from '../Routes';
 
 class App extends Component {
-  login() {
-    this.props.auth.login();
-  }
-  logout() {
-    this.props.auth.logout();
-  }
   render(){
     const { isAuthenticated } = this.props.auth;
 

@@ -26,6 +26,7 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log('Auth successful')
         this.setSession(authResult);
+        console.log('Auth set')
         // history.replace('/results');
       } else if (err) {
         console.log('Auth failed')

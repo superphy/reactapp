@@ -3,7 +3,8 @@ import { LinearProgress } from 'react-md'
 
 class Callback extends Component {
   render() {
-
+    console.log('Callback has')
+    console.log(this.props)
     return (
       <div>
           <LinearProgress key="progress" id='contentLoadingProgress' />

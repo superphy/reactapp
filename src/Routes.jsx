@@ -22,6 +22,7 @@ const handleAuthentication = (auth, nextState, replace) => {
   console.log(auth)
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.auth.handleAuthentication();
+    console.log(auth)
   }
 }
 
