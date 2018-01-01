@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Auth from './middleware/Auth';
-import history from './history';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import spfyApp from './reducers'
@@ -31,7 +30,7 @@ let store = createStore(spfyApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window._
 
 render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router>
       <App auth={auth} />
     </Router>
   </Provider>,

@@ -1,5 +1,4 @@
 import auth0 from 'auth0-js';
-import history from '../history';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
@@ -27,10 +26,10 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log('Auth successful')
         this.setSession(authResult);
-        history.replace('/results');
+        // history.replace('/results');
       } else if (err) {
         console.log('Auth failed')
-        history.replace('/');
+        // history.replace('/');
         console.log(err);
       }
     });
@@ -43,7 +42,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.replace('/');
+    // history.replace('/');
   }
 
   logout() {
@@ -52,7 +51,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/');
+    // history.replace('/');
   }
 
   isAuthenticated() {
