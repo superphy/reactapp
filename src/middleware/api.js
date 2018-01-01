@@ -7,7 +7,7 @@ const ROOT = 'https://spfy.enchartus.ca/'
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
-export const version = 'v.4.3.3'
+export const version = 'v.6.0.0'
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin',

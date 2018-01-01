@@ -6,6 +6,7 @@ class Logout extends Component {
     return (
       <div>
         {this.props.auth.auth.logout()}
+        Logged out.
       </div>
     )
   }

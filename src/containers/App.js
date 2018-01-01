@@ -11,18 +11,7 @@ import Routes from '../Routes';
 
 class App extends Component {
   render(){
-    const { isAuthenticated } = this.props.auth;
-
-    var navLogin = !isAuthenticated?{
-      label: 'Logout',
-      to: '/logout',
-      icon: 'account_circle'
-    }:{
-      label: 'Login',
-      to: '/login',
-      icon: 'account_circle'
-    }
-    var navItems = [navLogin,{
+    var navItems = [{
       label: 'Account',
       to: '/accounts',
       icon: 'account_circle'

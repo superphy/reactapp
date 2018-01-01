@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Login from '../containers/Login';
-import Logout from '../containers/Logout';
+import { Link } from 'react-router-dom';
+import {
+  Button
+} from 'react-md';
 
 class Accounts extends Component {
   render(){
@@ -12,8 +14,12 @@ class Accounts extends Component {
       <div className="md-text-container md-grid">
         <div className="md-cell md-cell--12">
           {!isAuthenticated()?
-            <p>Login</p>
-            :<p>Logout</p>
+            <Link to={'/login'}>
+              <Button flat primary label="Login">input</Button>
+            </Link>
+            :<Link to={'/logout'}>
+              <Button flat primary label="Logout">input</Button>
+            </Link>
           }
         </div>
       </div>
