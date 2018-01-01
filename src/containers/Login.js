@@ -5,7 +5,7 @@ class Login extends Component {
     console.log(this.props)
     return (
       <div>
-        {this.props.auth.login()}
+        {this.props.auth.auth.login()}
       </div>
     )
   }

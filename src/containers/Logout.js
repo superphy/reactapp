@@ -5,7 +5,7 @@ class Logout extends Component {
     console.log(this.props)
     return (
       <div>
-        {this.props.auth.logout()}
+        {this.props.auth.auth.logout()}
       </div>
     )
   }
