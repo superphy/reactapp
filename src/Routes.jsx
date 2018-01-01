@@ -17,6 +17,7 @@ import VisibleResult from './containers/VisibleResult'
 import Callback from './middleware/Callback';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
+import Accounts from './containers/Accounts';
 
 const handleAuthentication = (auth, nextState, replace) => {
   console.log(auth)
@@ -46,6 +47,7 @@ const Routes = (auth) => (
     <Route exact path="/" component={Home} />
     <PropsRoute path="/login" component={Login} auth={auth}/>
     <PropsRoute path="/logout"  component={Logout} auth={auth}/>
+    <PropsRoute path='/accounts' component={Accounts} auth={auth.auth} />
     <Route exact path="/register" component={Register} />
     <Route path="/fishers" component={Fishers} />
     <Route path="/subtyping" component={Subtyping} />

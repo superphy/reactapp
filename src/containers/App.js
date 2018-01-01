@@ -23,6 +23,10 @@ class App extends Component {
       icon: 'account_circle'
     }
     var navItems = [navLogin,{
+      label: 'Account',
+      to: '/accounts',
+      icon: 'account_circle'
+    },{
       exact: true,
       label: 'Tasks',
       to: '/',
