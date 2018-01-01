@@ -18,9 +18,10 @@ import Callback from './middleware/Callback';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
 
-const handleAuthentication = (nextState, replace) => {
+const handleAuthentication = (auth, nextState, replace) => {
+  console.log(auth)
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    this.props.auth.handleAuthentication();
+    auth.auth.handleAuthentication();
   }
 }
 
@@ -53,7 +54,7 @@ const Routes = (auth) => (
     <Route exact path="/results" component={Results} />
     <Route path="/results/:hash" component={VisibleResult} />
     <Route path="/callback" render={(props) => {
-      handleAuthentication(props);
+      handleAuthentication(auth, props);
       return <Callback {...props} />
     }}/>
   </Switch>
