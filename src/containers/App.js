@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
 // Components from react-md
 import NavigationDrawer from 'react-md/lib/NavigationDrawers'
 import NavLink from '../containers/NavLink'
@@ -42,33 +41,29 @@ class App extends Component {
 
     return (
       <div>
-          <Route
-            render={({ location, auth }) => (
-              <NavigationDrawer
-                drawerTitle="spfy"
-                drawerHeaderChildren={
-                  <Avatar src={logo} alt="logo" />
-                }
-                toolbarStyle={{'visibility':'hidden'}}
-                navItems={
-                  navItems.map(props => <NavLink {...props} key={props.to} />)
-                }
-              >
-                <History />
-                <Routes key={location.key} auth={this.props.auth} />
-                <p style={{
-                  'right': 20,
-                  'top': 20,
-                  'position': 'absolute',
-                  'textAlign': 'right'
-                }}>
-                    For Contact, Email: chadr.laing@canada.ca
-                    <br></br>
-                    {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
-                </p>
-              </NavigationDrawer>
-            )}
-          />
+        <NavigationDrawer
+          drawerTitle="spfy"
+          drawerHeaderChildren={
+            <Avatar src={logo} alt="logo" />
+          }
+          toolbarStyle={{'visibility':'hidden'}}
+          navItems={
+            navItems.map(props => <NavLink {...props} key={props.to} />)
+          }
+        >
+          <History />
+          <Routes key={location.key} auth={this.props.auth} />
+          <p style={{
+            'right': 20,
+            'top': 20,
+            'position': 'absolute',
+            'textAlign': 'right'
+          }}>
+              For Contact, Email: chadr.laing@canada.ca
+              <br></br>
+              {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
+          </p>
+        </NavigationDrawer>
       </div>
     )
   }
