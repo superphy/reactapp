@@ -1,5 +1,5 @@
+import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
-
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
@@ -8,14 +8,10 @@ export default class Auth {
     domain: 'spfy.auth0.com',
     clientID: '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT',
     redirectUri: 'http://localhost:3000/callback',
-    audience: 'https://spfy.auth0.com/userinfo',
+    audience: 'https://lfz.corefacility.ca/superphy/spfyapi/',
     responseType: 'token id_token',
     scope: 'openid'
   });
-
-  login() {
-    this.auth0.authorize();
-  }
 
   constructor() {
     this.login = this.login.bind(this);
@@ -28,6 +24,7 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log('Auth successful')
+        console.log(authResult)
         this.setSession(authResult);
         console.log('Auth set')
         // history.replace('/results');
@@ -49,12 +46,7 @@ export default class Auth {
     // history.replace('/');
   }
 
-  isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  }
+  // Getters & Setters
 
   getAccessToken() {
     return localStorage.getItem(ACCESS_TOKEN_KEY);
@@ -70,6 +62,62 @@ export default class Auth {
 
   clearIdToken() {
     localStorage.removeItem(ID_TOKEN_KEY);
+  }
+
+  getParameterByName(name) {
+    let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+  }
+
+  setAccessToken() {
+    let accessToken = this.getParameterByName('access_token');
+    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+  }
+
+  setIdToken() {
+    let idToken = this.getParameterByName('id_token');
+    localStorage.setItem(ID_TOKEN_KEY, idToken);
+  }
+
+  getTokenExpirationDate(encodedToken) {
+    const token = decode(encodedToken);
+    if (!token.exp) { return null; }
+
+    const date = new Date(0);
+    date.setUTCSeconds(token.exp);
+
+    return date;
+  }
+
+  // Helper Functions
+
+  isAuthenticated() {
+    // Check whether the current time is past the
+    // access token's expiry time
+    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+  }
+
+  isTokenExpired(token) {
+    const expirationDate = this.getTokenExpirationDate(token);
+    return expirationDate < new Date();
+  }
+
+  isLoggedIn() {
+    const idToken = this.getIdToken();
+    return !!idToken && !this.isTokenExpired(idToken);
+  }
+
+  requireAuth(nextState, replace) {
+    if (!this.isLoggedIn()) {
+      replace({pathname: '/'});
+    }
+  }
+
+  // Login & Logout
+
+  login() {
+    this.auth0.authorize();
   }
 
   logout() {

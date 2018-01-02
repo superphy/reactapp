@@ -20,7 +20,8 @@ import Logout from './containers/Logout';
 import Accounts from './containers/Accounts';
 
 const handleAuthentication = (auth, nextState, replace) => {
-  console.log(auth)
+  console.log('Routes sees')
+  console.log(auth, nextState, replace)
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.auth.handleAuthentication();
     console.log(auth)

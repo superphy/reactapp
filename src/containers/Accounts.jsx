@@ -33,6 +33,8 @@ class Accounts extends Component {
   }
   getDbAuthResponse() {
     const url = `${API_ROOT}secured/ping`;
+    console.log('Accounts sees')
+    console.log(this.props.auth.getAccessToken())
     axios.get(url, { headers: { Authorization: `Bearer ${this.props.auth.getAccessToken()}` }})
       .then(response => {
         console.log(response);
