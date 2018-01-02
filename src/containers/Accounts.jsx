@@ -20,24 +20,36 @@ class Accounts extends Component {
 
   getDbResponse() {
     const url = `${API_ROOT}ping`;
-    return axios.get(url).then(response => response.data);
+    axios.get(url)
+      .then(response => {
+        console.log(response);
+        this.setState({dbResponse: response.data})
+        return response.data
+      })
+      .catch(error => {
+        console.log(error);
+        return error
+      });
   }
   getDbAuthResponse() {
     const url = `${API_ROOT}secured/ping`;
-    return axios.get(url, { headers: { Authorization: `Bearer ${this.props.auth.getAccessToken()}` }}).then(response => response.data);
+    axios.get(url, { headers: { Authorization: `Bearer ${this.props.auth.getAccessToken()}` }})
+      .then(response => {
+        console.log(response);
+        this.setState({dbAuthResponse: response.data})
+        return response.data
+      })
+      .catch(error => {
+        console.log(error);
+        return error
+      });
   }
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.auth.isAuthenticated()){
       console.log('accessToken')
       console.log(this.props.auth.getAccessToken())
-      const dbResponse = this.getDbResponse()
-      const dbAuthResponse = this.getDbAuthResponse()
-      console.log(dbResponse)
-      console.log(dbAuthResponse)
-      this.setState([
-        dbResponse,
-        dbAuthResponse
-      ])
+      this.getDbResponse()
+      this.getDbAuthResponse()
     }
   }
   render(){
