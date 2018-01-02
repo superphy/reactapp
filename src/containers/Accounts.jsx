@@ -8,6 +8,8 @@ import {
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
+// redux
+import { connect } from 'react-redux'
 
 class Accounts extends Component {
   constructor(props) {
@@ -80,5 +82,7 @@ class Accounts extends Component {
     )
   }
 }
+
+Accounts = connect()(Accounts)
 
 export default Accounts

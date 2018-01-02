@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 //const ROOT = window.location.protocol + '//' + 'spfy.enchartus.ca' + '/'
 // const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
 // const ROOT = 'http://10.139.14.212:8000/'
@@ -55,4 +56,9 @@ export const createErrorMessage = (jobId, msg='') => {
     </p>
   </div>
   return message
+}
+
+export const saveStore = ( store ) => {
+  console.log('Store is: ')
+  console.log(store)
 }
