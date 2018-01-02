@@ -13,8 +13,8 @@ class Accounts extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dbResponse: 'error',
-      dbAuthResponse: 'error'
+      dbResponse: '',
+      dbAuthResponse: ''
     };
   }
 
