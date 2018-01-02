@@ -1,5 +1,8 @@
 import auth0 from 'auth0-js';
 
+const ID_TOKEN_KEY = 'id_token';
+const ACCESS_TOKEN_KEY = 'access_token';
+
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'spfy.auth0.com',
@@ -46,15 +49,6 @@ export default class Auth {
     // history.replace('/');
   }
 
-  logout() {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    // navigate to the home route
-    // history.replace('/');
-  }
-
   isAuthenticated() {
     // Check whether the current time is past the
     // access token's expiry time
@@ -63,6 +57,27 @@ export default class Auth {
   }
 
   getAccessToken() {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem(ACCESS_TOKEN_KEY);
+  }
+
+  clearAccessToken() {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+  }
+
+  getIdToken() {
+    return localStorage.getItem(ID_TOKEN_KEY);
+  }
+
+  clearIdToken() {
+    localStorage.removeItem(ID_TOKEN_KEY);
+  }
+
+  logout() {
+    // Clear access token and ID token from local storage
+    this.clearIdToken();
+    this.clearAccessToken();
+    localStorage.removeItem('expires_at');
+    // navigate to the home route
+    // history.replace('/');
   }
 }
