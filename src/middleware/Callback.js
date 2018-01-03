@@ -16,8 +16,8 @@ class Callback extends Component {
   }
   async wait() {
     console.log('Taking a break...');
-    await this.sleep(3000);
-    console.log('3 second later');
+    await this.sleep(5000);
+    console.log('5 second later');
     this.setState({sleeping: false})
   }
   componentDidMount(){
