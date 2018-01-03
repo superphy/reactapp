@@ -61,4 +61,26 @@ export const createErrorMessage = (jobId, msg='') => {
 export const saveStore = ( store ) => {
   console.log('Store is: ')
   console.log(store)
+  axios.post(API_ROOT + 'secured/accounts/update', store)
+    .then(response => {
+      console.log(response)
+      return response.data
+    })
+    .catch(error => {
+      console.log(error);
+      return error
+    });
+}
+
+export const fetchStore = ( access_token ) => {
+  const url = `${API_ROOT}secured/accounts/find`;
+  axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
+    .then(response => {
+      console.log(response)
+      return response.data
+    })
+    .catch(error => {
+      console.log(error);
+      return error
+    });
 }

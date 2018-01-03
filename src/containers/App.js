@@ -46,7 +46,7 @@ class App extends Component {
             'position': 'absolute',
             'textAlign': 'right'
           }}>
-              For Contact, Email: chadr.laing@canada.ca
+              For Contact, Email: chad.laing@canada.ca
               <br></br>
               {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
           </p>
