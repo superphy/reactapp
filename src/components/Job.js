@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import { API_ROOT } from '../middleware/api'
 // error msg
 import { createErrorMessage } from '../middleware/api'
-import { RESULTS } from '../routes'
+import { RESULTS } from '../Routes'
 
 class Job extends Component {
   render(){

@@ -20,7 +20,7 @@ import { API_ROOT } from '../middleware/api'
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
 // redirects
-import { RESULTS } from '../routes'
+import { RESULTS } from '../Routes'
 
 class Subtyping extends PureComponent {
   constructor(props) {

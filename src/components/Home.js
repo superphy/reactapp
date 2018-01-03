@@ -9,7 +9,7 @@ import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
 import { analyses } from '../middleware/api'
-import { HOME } from '../routes'
+import { HOME } from '../Routes'
 
 const Home = () => (
   <div>

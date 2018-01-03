@@ -12,7 +12,7 @@ import { API_ROOT, saveStore, fetchStore } from '../middleware/api'
 // redux
 import { connect } from 'react-redux'
 // links
-import { LOGIN, LOGOUT } from '../routes'
+import { LOGIN, LOGOUT } from '../Routes'
 
 class Accounts extends Component {
   constructor(props) {
@@ -73,13 +73,19 @@ class Accounts extends Component {
       for (let i in response){
         console.log('i', i)
         let job = response[i]
-        console.log(response[i])
-        this.props.dispatch(addJob(
-          job.hash,
-          job.analysis,
-          job.date,
-          job.description
-        ))
+        console.log(job)
+        if (job.hash !== undefined){
+          console.log('job has hash, pushing...')
+          this.props.dispatch(addJob(
+            job.hash,
+            job.analysis,
+            job.date,
+            job.description
+          ))
+        } else {
+          console.log('job doesnt have a hash, pass')
+        }
+
       }
     })
   }

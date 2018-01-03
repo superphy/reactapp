@@ -13,7 +13,7 @@ import {
   ACCOUNTS,
   HOME,
   RESULTS
-} from '../routes'
+} from '../Routes'
 
 class App extends Component {
   render(){

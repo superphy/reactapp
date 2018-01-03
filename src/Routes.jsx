@@ -17,21 +17,36 @@ import Callback from './middleware/Callback';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
 import Accounts from './containers/Accounts';
-// dirpath
-import {
-  HOME,
-  LOGIN,
-  LOGOUT,
-  ACCOUNTS,
-  FISHERS,
-  SUBTYPING,
-  METADATA,
-  DATABASE,
-  PANSEQ,
-  RESULTS,
-  VISIBLE_RESULT,
-  CALLBACK
-} from './routes'
+// // dirpath
+// import {
+//   HOME,
+//   LOGIN,
+//   LOGOUT,
+//   ACCOUNTS,
+//   FISHERS,
+//   SUBTYPING,
+//   METADATA,
+//   DATABASE,
+//   PANSEQ,
+//   RESULTS,
+//   VISIBLE_RESULT,
+//   CALLBACK
+// } from './routes'
+
+import { dirpath } from './middleware/api'
+
+export const HOME = dirpath + '/'
+export const LOGIN = dirpath + '/login'
+export const LOGOUT = dirpath + '/logout'
+export const ACCOUNTS = dirpath + '/accounts'
+export const FISHERS = dirpath + '/fishers'
+export const SUBTYPING = dirpath + '/subtyping'
+export const METADATA = dirpath + '/metadata'
+export const DATABASE = dirpath + '/database'
+export const PANSEQ = dirpath + '/panseq'
+export const RESULTS = dirpath + '/results'
+export const VISIBLE_RESULT = dirpath + '/results/:hash'
+export const CALLBACK = dirpath + '/callback'
 
 const handleAuthentication = (auth, nextState, replace) => {
   console.log('Routes sees')

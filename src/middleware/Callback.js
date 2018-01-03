@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { LinearProgress } from 'react-md'
 import { Redirect } from 'react-router'
 // redirects
-import { ACCOUNTS } from '../routes'
+import { ACCOUNTS } from '../Routes'
 
 class Callback extends Component {
   constructor(props) {

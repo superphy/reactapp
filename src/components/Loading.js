@@ -12,7 +12,7 @@ import { API_ROOT } from '../middleware/api'
 // msg defaults
 import { createErrorMessage } from '../middleware/api'
 // redirects
-import { RESULTS } from '../routes'
+import { RESULTS } from '../Routes'
 
 class Loading extends Component {
   render() {
