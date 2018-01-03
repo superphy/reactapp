@@ -75,7 +75,7 @@ export const saveStore = ( store, access_token ) => {
 
 export const fetchStore = ( access_token ) => {
   const url = `${API_ROOT}secured/accounts/find`;
-  axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
+  let promise = axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
     .then(response => {
       console.log(response)
       return response.data
@@ -84,4 +84,5 @@ export const fetchStore = ( access_token ) => {
       console.log(error);
       return error
     });
+  return promise
 }

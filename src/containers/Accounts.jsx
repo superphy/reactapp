@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { addJob } from '../actions'
 // react-router
 import { Link } from 'react-router-dom';
 // react-md
@@ -7,7 +8,7 @@ import {
 } from 'react-md';
 // axios
 import axios from 'axios'
-import { API_ROOT, saveStore } from '../middleware/api'
+import { API_ROOT, saveStore, fetchStore } from '../middleware/api'
 // redux
 import { connect } from 'react-redux'
 
@@ -57,6 +58,24 @@ class Accounts extends Component {
 
     })
   }
+  _handleFetch(access_token){
+    let promise = fetchStore(access_token)
+    promise.then((response) => {
+      console.log('fetch response: ', response)
+      console.log('jobs:')
+      for (let i in response){
+        let job = response[i]
+        console.log(response[i])
+        this.props.dispatch(addJob(
+          job.hash,
+          job.analysis,
+          job.date,
+          job.description
+        ))
+      }
+
+    })
+  }
   componentWillMount() {
     if (this.props.auth.isAuthenticated()){
       // console.log('accessToken')
@@ -86,6 +105,7 @@ class Accounts extends Component {
               <p>dbAuthResponse: {dbAuthResponse}</p>
               <p>store.jobs: {response}</p>
               <Button flat primary onClick={() => this._handleBackup(jobs, this.props.auth.getAccessToken())} label="Backup Results">cloud_upload</Button>
+              <Button flat primary onClick={() => this._handleFetch(this.props.auth.getAccessToken())} label="Fetch Backup">cloud_download</Button>
               <Link to={'/logout'}>
                 <Button flat primary label="Logout">input</Button>
               </Link>
