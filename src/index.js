@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Auth from './middleware/Auth';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import spfyApp from './reducers'
-import createBrowserHistory from 'history/createBrowserHistory'
 import App from './containers/App';
 import './index.css';
 import WebFontLoader from 'webfontloader';
@@ -17,6 +17,9 @@ import './react-bootstrap-table.min.css';
 // Snackbar
 injectTapEventPlugin();
 
+// Auth0
+const auth = new Auth();
+
 WebFontLoader.load({
   google: {
     families: ['Roboto:300,400,500,700', 'Material Icons'],
@@ -24,12 +27,11 @@ WebFontLoader.load({
 });
 
 let store = createStore(spfyApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-const history = createBrowserHistory()
 
 render(
   <Provider store={store}>
-    <Router history={history}>
-      <App />
+    <Router>
+      <App auth={auth} />
     </Router>
   </Provider>,
   document.getElementById('root')

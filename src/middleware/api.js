@@ -1,12 +1,14 @@
 import React from 'react'
+import axios from 'axios'
 //const ROOT = window.location.protocol + '//' + 'spfy.enchartus.ca' + '/'
-const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
+// const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
 // const ROOT = 'http://10.139.14.212:8000/'
-// const ROOT = 'http://192.168.0.16:8000/'
+const ROOT = 'http://192.168.5.19:8000/'
+// const ROOT = 'https://spfy.enchartus.ca/'
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
-export const version = 'v.4.3.3'
+export const version = 'v.6.0.0'
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin',
@@ -54,4 +56,46 @@ export const createErrorMessage = (jobId, msg='') => {
     </p>
   </div>
   return message
+}
+
+// auth0 configs
+
+export const CLIENT_ID = '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT';
+export const CLIENT_DOMAIN = 'spfy.auth0.com';
+export const REDIRECT = 'http://localhost:3000/callback';
+export const SCOPE = 'openid';
+export const AUDIENCE = 'https://lfz.corefacility.ca/superphy/spfyapi/';
+
+export const ID_TOKEN_KEY = 'id_token';
+export const ACCESS_TOKEN_KEY = 'access_token';
+
+// helper functions for auth0
+
+export const saveStore = ( store, access_token ) => {
+  console.log('Store is: ')
+  console.log(store)
+  let promise = axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})
+    .then(response => {
+      console.log(response)
+      return response.data
+    })
+    .catch(error => {
+      console.log(error);
+      return error
+    });
+  return promise
+}
+
+export const fetchStore = ( access_token ) => {
+  const url = `${API_ROOT}secured/accounts/find`;
+  let promise = axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
+    .then(response => {
+      console.log(response)
+      return response.data
+    })
+    .catch(error => {
+      console.log(error);
+      return error
+    });
+  return promise
 }
