@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { LinearProgress } from 'react-md'
 import { Redirect } from 'react-router'
+// redirects
+import { ACCOUNTS } from '../routes'
 
 class Callback extends Component {
   constructor(props) {
@@ -36,7 +38,7 @@ class Callback extends Component {
             </p>
         </div>
         :<div>
-          <Redirect to='/accounts' />
+          <Redirect to={ACCOUNTS} />
         </div>
       }
       </div>
