@@ -81,23 +81,29 @@ class Accounts extends Component {
       }
     })
   }
-  _handleSync(jobs, access_token){
-    let jobs_exist = (jobs.length !== 0)
-    console.log('jobs_length', jobs.length)
-    console.log('jobs_exist: ', jobs_exist)
-    if (!jobs_exist){
-      console.log('no jobs detected, fetching...')
-      this._handleFetch(access_token)
-    } else {
-      console.log('job(s) detecetd, bypassing sync')
-    }
-  }
+  // _handleSync(jobs, access_token){
+  //   let jobs_exist = (jobs.length !== 0)
+  //   console.log('jobs_length', jobs.length)
+  //   console.log('jobs_exist: ', jobs_exist)
+  //   if (!jobs_exist){
+  //     console.log('no jobs detected, fetching...')
+  //     this._handleFetch(access_token)
+  //   } else {
+  //     console.log('job(s) detecetd, bypassing sync')
+  //   }
+  // }
   componentDidMount() {
     if (this.props.auth.isAuthenticated()){
       // console.log('accessToken')
       // console.log(this.props.auth.getAccessToken())
       this.getDbResponse()
       this.getDbAuthResponse()
+      if (this.props !== null){
+        console.log('not null')
+        if (this.props.jobs.length === 0){
+          this._handleFetch(this.props.auth.getAccessToken())
+        }
+      }
     }
   }
   render(){
@@ -117,7 +123,7 @@ class Accounts extends Component {
               <Button flat primary label="Login / Register">input</Button>
             </Link>
             :<div>
-              {this._handleSync(jobs, this.props.auth.getAccessToken())}
+              {/* {this._handleSync(jobs, this.props.auth.getAccessToken())} */}
               <p>Database Connection: {dbResponse}</p>
               <p>Authentication Status: {dbAuthResponse}</p>
               <p>Backup Status: {response}</p>
