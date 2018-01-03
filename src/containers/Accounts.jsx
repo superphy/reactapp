@@ -76,7 +76,7 @@ class Accounts extends Component {
               <p>dbResponse: {dbResponse}</p>
               <p>dbAuthResponse: {dbAuthResponse}</p>
               <p>store.jobs: {jobs.toString()}</p>
-              <Button flat primary onClick={saveStore(this.state)} label="Backup Results">cloud_upload</Button>
+              <Button flat primary onClick={saveStore(jobs)} label="Backup Results">cloud_upload</Button>
               <Link to={'/logout'}>
                 <Button flat primary label="Logout">input</Button>
               </Link>
