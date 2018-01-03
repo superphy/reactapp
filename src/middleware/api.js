@@ -61,7 +61,7 @@ export const createErrorMessage = (jobId, msg='') => {
 export const saveStore = ( store, access_token ) => {
   console.log('Store is: ')
   console.log(store)
-  axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})
+  let promise = axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})
     .then(response => {
       console.log(response)
       return response.data
@@ -70,6 +70,7 @@ export const saveStore = ( store, access_token ) => {
       console.log(error);
       return error
     });
+  return promise
 }
 
 export const fetchStore = ( access_token ) => {

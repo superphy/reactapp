@@ -16,7 +16,8 @@ class Accounts extends Component {
     super(props)
     this.state = {
       dbResponse: '',
-      dbAuthResponse: ''
+      dbAuthResponse: '',
+      response: ''
     };
   }
 
@@ -48,6 +49,14 @@ class Accounts extends Component {
         return error
       });
   }
+  _handleBackup(jobs, access_token){
+    let promise = saveStore(jobs, access_token)
+    promise.then((response) => {
+      console.log('backup response: ', response)
+      this.setState({response: response})
+
+    })
+  }
   componentWillMount() {
     if (this.props.auth.isAuthenticated()){
       // console.log('accessToken')
@@ -58,7 +67,7 @@ class Accounts extends Component {
   }
   render(){
     const { isAuthenticated } = this.props.auth;
-    const { dbResponse, dbAuthResponse } = this.state;
+    const { dbResponse, dbAuthResponse, response } = this.state;
     const { jobs } = this.props;
     // console.log('Accounts')
     // console.log(this.props.auth)
@@ -75,8 +84,8 @@ class Accounts extends Component {
             :<div>
               <p>dbResponse: {dbResponse}</p>
               <p>dbAuthResponse: {dbAuthResponse}</p>
-              <p>store.jobs: {jobs.toString()}</p>
-              <Button flat primary onClick={saveStore(jobs, this.props.auth.getAccessToken())} label="Backup Results">cloud_upload</Button>
+              <p>store.jobs: {response}</p>
+              <Button flat primary onClick={() => this._handleBackup(jobs, this.props.auth.getAccessToken())} label="Backup Results">cloud_upload</Button>
               <Link to={'/logout'}>
                 <Button flat primary label="Logout">input</Button>
               </Link>
