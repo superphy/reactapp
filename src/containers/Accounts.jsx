@@ -54,11 +54,16 @@ class Accounts extends Component {
     let promise = saveStore(jobs, access_token)
     promise.then((response) => {
       console.log('backup response: ', response)
-      this.setState({response: response})
-
+      if (response === 'true'){
+        this.setState({response: 'success!'})
+      }
+      else {
+        this.setState({response: response})
+      }
     })
   }
   _handleFetch(access_token){
+    console.log('fetching...')
     let promise = fetchStore(access_token)
     promise.then((response) => {
       console.log('fetch response: ', response)
@@ -73,8 +78,14 @@ class Accounts extends Component {
           job.description
         ))
       }
-
     })
+  }
+  _handleSync(jobs, access_token){
+    let jobs_exist = (jobs.length !== 0)
+    console.log('jobs: ', jobs_exist)
+    if (!jobs_exist){
+      this._handleFetch(access_token)
+    }
   }
   componentWillMount() {
     if (this.props.auth.isAuthenticated()){
@@ -101,11 +112,12 @@ class Accounts extends Component {
               <Button flat primary label="Login / Register">input</Button>
             </Link>
             :<div>
-              <p>dbResponse: {dbResponse}</p>
-              <p>dbAuthResponse: {dbAuthResponse}</p>
-              <p>store.jobs: {response}</p>
+              {this._handleSync(jobs, this.props.auth.getAccessToken())}
+              <p>Database Connection: {dbResponse}</p>
+              <p>Authentication Status: {dbAuthResponse}</p>
+              <p>Backup Status: {response}</p>
               <Button flat primary onClick={() => this._handleBackup(jobs, this.props.auth.getAccessToken())} label="Backup Results">cloud_upload</Button>
-              <Button flat primary onClick={() => this._handleFetch(this.props.auth.getAccessToken())} label="Fetch Backup">cloud_download</Button>
+              {/* <Button flat primary onClick={() => this._handleFetch(this.props.auth.getAccessToken())} label="Fetch Backup">cloud_download</Button> */}
               <Link to={'/logout'}>
                 <Button flat primary label="Logout">input</Button>
               </Link>

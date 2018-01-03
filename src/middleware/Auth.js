@@ -2,6 +2,10 @@ import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
+// extra items for redirect
+// import React from 'react';
+// import { render } from 'react-dom';
+// import { Redirect } from 'react-router'
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
@@ -27,10 +31,16 @@ export default class Auth {
         console.log(authResult)
         this.setSession(authResult);
         console.log('Auth set')
-        // history.replace('/results');
+        // history.replace('/accounts');
+        // render(
+        //   <Redirect to='/accounts' />
+        // )
       } else if (err) {
         console.log('Auth failed')
         // history.replace('/');
+        // render(
+        //   <Redirect to='/' />
+        // )
         console.log(err);
       }
     });
@@ -43,7 +53,10 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    // history.replace('/');
+    // render(
+    //   <Redirect to='/accounts' />
+    // )
+    // history.replace('/accounts');
   }
 
   // Getters & Setters

@@ -59,7 +59,7 @@ const Routes = (auth) => (
     <Route path="/results/:hash" component={VisibleResult} />
     <Route path="/callback" render={(props) => {
       handleAuthentication(auth, props);
-      return <Callback {...props} />
+      return <Callback {...props} auth={auth.auth}/>
     }}/>
   </Switch>
 )
