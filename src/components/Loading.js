@@ -12,7 +12,7 @@ import { API_ROOT } from '../middleware/api'
 // msg defaults
 import { createErrorMessage } from '../middleware/api'
 // redirects
-import { RESULTS } from '../Routes'
+import { HOME, RESULTS } from '../Routes'
 
 class Loading extends Component {
   render() {
@@ -53,7 +53,7 @@ class Loading extends Component {
           }
         } else {
         return (
-          <Redirect to={RESULTS + this.props.jobId} />
+          <Redirect to={RESULTS + '/' + this.props.jobId} />
         );
       }
     }
@@ -61,5 +61,5 @@ class Loading extends Component {
 }
 
 export default connect(props => ({
-  results: {url: API_ROOT + `results/${props.jobId}`, refreshInterval: 5000 }
+  results: {url: HOME + `results/${props.jobId}`, refreshInterval: 5000 }
 }))(Loading)

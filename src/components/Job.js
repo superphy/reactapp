@@ -59,7 +59,7 @@ class Job extends Component {
         <CardActions>
           {
             complete ?
-              <Link to={RESULTS + this.props.hash}>
+              <Link to={RESULTS + '/' + this.props.hash}>
                 <Button flat primary label="See Result">input</Button>
               </Link> : ''
           }
