@@ -59,6 +59,7 @@ export const createErrorMessage = (jobId, msg='') => {
   return message
 }
 
+// for corefacility directory-based hosting
 export const dirpath = '/superphy/spfy'
 
 // auth0 configs
