@@ -58,6 +58,19 @@ export const createErrorMessage = (jobId, msg='') => {
   return message
 }
 
+// auth0 configs
+
+export const CLIENT_ID = '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT';
+export const CLIENT_DOMAIN = 'spfy.auth0.com';
+export const REDIRECT = 'http://localhost:3000/callback';
+export const SCOPE = 'openid';
+export const AUDIENCE = 'https://lfz.corefacility.ca/superphy/spfyapi/';
+
+export const ID_TOKEN_KEY = 'id_token';
+export const ACCESS_TOKEN_KEY = 'access_token';
+
+// helper functions for auth0
+
 export const saveStore = ( store, access_token ) => {
   console.log('Store is: ')
   console.log(store)

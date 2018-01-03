@@ -1,7 +1,14 @@
 import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
-const ID_TOKEN_KEY = 'id_token';
-const ACCESS_TOKEN_KEY = 'access_token';
+import {
+  CLIENT_ID,
+  CLIENT_DOMAIN,
+  REDIRECT,
+  SCOPE,
+  AUDIENCE,
+  ID_TOKEN_KEY,
+  ACCESS_TOKEN_KEY
+} from '../middleware/api';
 // extra items for redirect
 // import React from 'react';
 // import { render } from 'react-dom';
@@ -9,12 +16,12 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    domain: 'spfy.auth0.com',
-    clientID: '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT',
-    redirectUri: 'http://localhost:3000/callback',
-    audience: 'https://lfz.corefacility.ca/superphy/spfyapi/',
+    domain: CLIENT_DOMAIN,
+    clientID: CLIENT_ID,
+    redirectUri: REDIRECT,
+    audience: AUDIENCE,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: SCOPE
   });
 
   constructor() {
