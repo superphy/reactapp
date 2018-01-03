@@ -69,6 +69,7 @@ class Accounts extends Component {
       console.log('fetch response: ', response)
       console.log('jobs:')
       for (let i in response){
+        console.log('i', i)
         let job = response[i]
         console.log(response[i])
         this.props.dispatch(addJob(
@@ -82,12 +83,16 @@ class Accounts extends Component {
   }
   _handleSync(jobs, access_token){
     let jobs_exist = (jobs.length !== 0)
-    console.log('jobs: ', jobs_exist)
+    console.log('jobs_length', jobs.length)
+    console.log('jobs_exist: ', jobs_exist)
     if (!jobs_exist){
+      console.log('no jobs detected, fetching...')
       this._handleFetch(access_token)
+    } else {
+      console.log('job(s) detecetd, bypassing sync')
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.auth.isAuthenticated()){
       // console.log('accessToken')
       // console.log(this.props.auth.getAccessToken())
