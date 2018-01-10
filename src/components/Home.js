@@ -9,6 +9,7 @@ import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
 import { analyses } from '../middleware/api'
+import { HOME } from '../Routes'
 
 const Home = () => (
   <div>
@@ -20,7 +21,7 @@ const Home = () => (
           subtitle={analysis.description}
         />
         <CardActions expander>
-          <Link to={'/' + analysis.analysis}>
+          <Link to={HOME + analysis.analysis}>
             <Button flat primary label="Go">input</Button>
           </Link>
         </CardActions>

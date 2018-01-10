@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { LinearProgress } from 'react-md'
 import { Redirect } from 'react-router'
+// redirects
+import { ACCOUNTS } from '../Routes'
 
 class Callback extends Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class Callback extends Component {
   }
   async wait() {
     console.log('Taking a break...');
-    await this.sleep(3000);
-    console.log('3 second later');
+    await this.sleep(5000);
+    console.log('5 second later');
     this.setState({sleeping: false})
   }
   componentDidMount(){
@@ -36,7 +38,7 @@ class Callback extends Component {
             </p>
         </div>
         :<div>
-          <Redirect to='/accounts' />
+          <Redirect to={ACCOUNTS} />
         </div>
       }
       </div>

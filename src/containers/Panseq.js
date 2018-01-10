@@ -15,6 +15,8 @@ import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
+// redirects
+import { RESULTS } from '../Routes'
 
 class Panseq extends PureComponent {
   constructor(props) {
@@ -157,7 +159,7 @@ class Panseq extends PureComponent {
           // if results are grouped, display the Loading page
           // else, results are separate and display the JobsList cards page
           (!uploading?(!groupresults?
-            <Redirect to='/results' />:
+            <Redirect to={RESULTS} />:
             <Loading jobId={this.state.jobId} />
           ):"")
 

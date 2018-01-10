@@ -11,6 +11,8 @@ import axios from 'axios'
 import { API_ROOT, saveStore, fetchStore } from '../middleware/api'
 // redux
 import { connect } from 'react-redux'
+// links
+import { LOGIN, LOGOUT } from '../Routes'
 
 class Accounts extends Component {
   constructor(props) {
@@ -71,13 +73,19 @@ class Accounts extends Component {
       for (let i in response){
         console.log('i', i)
         let job = response[i]
-        console.log(response[i])
-        this.props.dispatch(addJob(
-          job.hash,
-          job.analysis,
-          job.date,
-          job.description
-        ))
+        console.log(job)
+        if (job.hash !== undefined){
+          console.log('job has hash, pushing...')
+          this.props.dispatch(addJob(
+            job.hash,
+            job.analysis,
+            job.date,
+            job.description
+          ))
+        } else {
+          console.log('job doesnt have a hash, pass')
+        }
+
       }
     })
   }
@@ -119,7 +127,7 @@ class Accounts extends Component {
       <div className="md-text-container md-grid">
         <div className="md-cell md-cell--12">
           {!isAuthenticated()?
-            <Link to={'/login'}>
+            <Link to={LOGIN}>
               <Button flat primary label="Login / Register">input</Button>
             </Link>
             :<div>
@@ -129,7 +137,7 @@ class Accounts extends Component {
               <p>Backup Status: {response}</p>
               <Button flat primary onClick={() => this._handleBackup(jobs, this.props.auth.getAccessToken())} label="Backup Results">cloud_upload</Button>
               {/* <Button flat primary onClick={() => this._handleFetch(this.props.auth.getAccessToken())} label="Fetch Backup">cloud_download</Button> */}
-              <Link to={'/logout'}>
+              <Link to={LOGOUT}>
                 <Button flat primary label="Logout">input</Button>
               </Link>
             </div>

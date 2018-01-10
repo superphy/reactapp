@@ -8,21 +8,27 @@ import { version } from '../middleware/api'
 // react-router
 import History from '../History';
 import Routes from '../Routes';
+// links
+import {
+  ACCOUNTS,
+  HOME,
+  RESULTS
+} from '../Routes'
 
 class App extends Component {
   render(){
     var navItems = [{
       label: 'Account',
-      to: '/accounts',
+      to: ACCOUNTS,
       icon: 'account_circle'
     },{
       exact: true,
       label: 'Tasks',
-      to: '/',
+      to: HOME,
       icon: 'dashboard'
     }, {
       label: 'Results',
-      to: '/results',
+      to: RESULTS,
       icon: 'bubble_chart'
     }];
 

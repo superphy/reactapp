@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 //const ROOT = window.location.protocol + '//' + 'spfy.enchartus.ca' + '/'
 const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
+// const ROOT = 'https://lfz.corefacility.ca/superphy/spfyapi/'
 // const ROOT = 'http://10.139.14.212:8000/'
 // const ROOT = 'http://192.168.5.19:8000/'
 // const ROOT = 'https://spfy.enchartus.ca/'
@@ -58,10 +59,15 @@ export const createErrorMessage = (jobId, msg='') => {
   return message
 }
 
+// for corefacility directory-based hosting
+// export const dirpath = '/superphy/spfy'
+export const dirpath = ''
+
 // auth0 configs
 
 export const CLIENT_ID = '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT';
 export const CLIENT_DOMAIN = 'spfy.auth0.com';
+// export const REDIRECT = 'https://lfz.corefacility.ca/superphy/spfy/callback';
 export const REDIRECT = 'http://localhost:8090/callback';
 export const SCOPE = 'openid';
 export const AUDIENCE = 'https://lfz.corefacility.ca/superphy/spfyapi/';
