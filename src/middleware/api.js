@@ -67,7 +67,8 @@ export const dirpath = ''
 
 export const CLIENT_ID = '6TNNpuXZmZaQfnd8m5Jm6y1YS6fqKSmT';
 export const CLIENT_DOMAIN = 'spfy.auth0.com';
-export const REDIRECT = 'https://lfz.corefacility.ca/superphy/spfy/callback';
+// export const REDIRECT = 'https://lfz.corefacility.ca/superphy/spfy/callback';
+export const REDIRECT = 'http://localhost:8090/callback';
 export const SCOPE = 'openid';
 export const AUDIENCE = 'https://lfz.corefacility.ca/superphy/spfyapi/';
 
