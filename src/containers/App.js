@@ -8,6 +8,9 @@ import { version } from '../middleware/api'
 // react-router
 import History from '../History';
 import Routes from '../Routes';
+// bearer token
+import { bearer } from '../middleware/bearer'
+import { Redirect } from 'react-router'
 // links
 import {
   ACCOUNTS,
@@ -16,6 +19,18 @@ import {
 } from '../Routes'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      token: ''
+    }
+  }
+  _setToken = (token) => {
+    this.setState({'token': token})
+  }
+  componentWillMount(){
+    bearer(location, this._setToken)
+  }
   render(){
     var navItems = [{
       label: 'Account',
@@ -34,6 +49,9 @@ class App extends Component {
 
     return (
       <div>
+        {this.state.token?
+          <Redirect to={location.pathname + '?token=' + this.state.token}/>
+        :""}
         <NavigationDrawer
           drawerTitle="spfy"
           drawerHeaderChildren={
