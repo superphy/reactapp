@@ -17,8 +17,11 @@ export const bearer = (location, _setToken) => {
   console.log(location)
   let path = location.pathname
   if (path.includes('?token=')){
-    //TODO: read token from path
     console.log('token exists in path')
+    let match = /token=+(.*)/
+    let token = match.exec(path[1])
+    console.log(token)
+    _setToken(token)
   } else {
     // let token = getToken()
     let ptoken = getToken()
