@@ -29,7 +29,7 @@ class App extends Component {
     this.setState({'token': token})
   }
   componentWillMount(){
-    bearer(location, this._setToken)
+    bearer(location, this._setToken, this.props.dispatch)
   }
   render(){
     var navItems = [{

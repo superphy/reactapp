@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
+import { fetchJobs } from '../middleware/accounts'
 
 const getToken = () => {
   let ptoken = axios.get(API_ROOT + 'accounts')
@@ -11,15 +12,15 @@ const getToken = () => {
   return ptoken
 }
 
-export const bearer = (location, _setToken) => {
-  // Retrieves the custom bearer token and updates path.
+export const bearer = (location, _setToken, dispatch) => {
+  // Retrieves the custom bearer token and updates jobs.
   console.log('bearer sees location')
   console.log(location)
   let path = location.pathname
   if (path.includes('?token=')){
     console.log('token exists in path')
     let match = /token=+(.*)/
-    let token = match.exec(path[1])
+    let token = match.exec(path)[1]
     console.log(token)
     _setToken(token)
   } else {
@@ -29,7 +30,10 @@ export const bearer = (location, _setToken) => {
       console.log('bearer sees token')
       console.log(token)
       // let tokenPath = path + '?token=' + token
+      console.log('setting token')
       _setToken(token)
+      console.log('fetching jobs')
+      fetchJobs(token, dispatch)
     })
   }
 }

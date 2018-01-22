@@ -76,32 +76,3 @@ export const ID_TOKEN_KEY = 'id_token';
 export const ACCESS_TOKEN_KEY = 'access_token';
 
 // helper functions for auth0
-
-export const saveStore = ( store, access_token ) => {
-  console.log('Store is: ')
-  console.log(store)
-  let promise = axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})
-    .then(response => {
-      console.log(response)
-      return response.data
-    })
-    .catch(error => {
-      console.log(error);
-      return error
-    });
-  return promise
-}
-
-export const fetchStore = ( access_token ) => {
-  const url = `${API_ROOT}secured/accounts/find`;
-  let promise = axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
-    .then(response => {
-      console.log(response)
-      return response.data
-    })
-    .catch(error => {
-      console.log(error);
-      return error
-    });
-  return promise
-}
