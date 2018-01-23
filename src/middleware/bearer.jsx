@@ -23,6 +23,8 @@ export const bearer = (location, _setToken, dispatch, jobs) => {
     let token = match.exec(path)[1]
     console.log(token)
     _setToken(token)
+    console.log('fetching jobs')
+    fetchJobs(token, dispatch, jobs)
   } else {
     // let token = getToken()
     console.log('requesting token')
