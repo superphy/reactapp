@@ -12,7 +12,7 @@ const getToken = () => {
   return ptoken
 }
 
-export const bearer = (location, _setToken, dispatch) => {
+export const bearer = (location, _setToken, dispatch, jobs) => {
   // Retrieves the custom bearer token and updates jobs.
   console.log('bearer sees location')
   console.log(location)
@@ -34,7 +34,7 @@ export const bearer = (location, _setToken, dispatch) => {
       console.log('setting token')
       _setToken(token)
       console.log('fetching jobs')
-      fetchJobs(token, dispatch)
+      fetchJobs(token, dispatch, jobs)
     })
   }
 }

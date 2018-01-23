@@ -31,18 +31,29 @@ const fetchStore = ( access_token ) => {
   return promise
 }
 
-export const fetchJobs = (access_token, dispatch) => {
+const hashList = ( jobs ) => {
+  // Creates an array of job hashs for comparison.
+  let l = []
+  for (let job in jobs){
+    l.push(job.hash)
+  }
+  return l
+}
+
+export const fetchJobs = (access_token, dispatch, jobs) => {
   console.log('fetching...')
   let promise = fetchStore(access_token)
   promise.then((response) => {
+    // Grab the browser's current jobs store and create an array of job hashes.
+    let currentJobs = hashList(jobs)
     console.log('fetch response: ', response)
     console.log('jobs:')
     for (let i in response){
       console.log('i', i)
       let job = response[i]
       console.log(job)
-      if (job.hash !== undefined){
-        console.log('job has hash, pushing...')
+      if (job.hash !== undefined && !(job.hash in currentJobs)){
+        console.log('job has hash and not currently present, pushing...')
         dispatch(addJob(
           job.hash,
           job.analysis,

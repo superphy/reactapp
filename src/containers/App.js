@@ -11,6 +11,8 @@ import Routes from '../Routes';
 // bearer token
 import { bearer } from '../middleware/bearer'
 import { Redirect } from 'react-router'
+// redux
+import { connect } from 'react-redux'
 // links
 import {
   ACCOUNTS,
@@ -29,7 +31,7 @@ class App extends Component {
     this.setState({'token': token})
   }
   componentWillMount(){
-    bearer(location, this._setToken, this.props.dispatch)
+    bearer(location, this._setToken, this.props.dispatch, this.props.jobs)
   }
   render(){
     var navItems = [{
@@ -79,5 +81,16 @@ class App extends Component {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    jobs: state.jobs,
+    ...ownProps
+  }
+}
+
+App = connect(
+  mapStateToProps
+)(App)
 
 export default App
