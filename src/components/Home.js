@@ -10,6 +10,7 @@ import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
 import { analyses } from '../middleware/api'
 import { HOME } from '../Routes'
+import { tokenPostfix } from '../middleware/bearer'
 
 const Home = () => (
   <div>
@@ -21,7 +22,7 @@ const Home = () => (
           subtitle={analysis.description}
         />
         <CardActions expander>
-          <Link to={HOME + analysis.analysis}>
+          <Link to={HOME + analysis.analysis + tokenPostfix(location.pathname)}>
             <Button flat primary label="Go">input</Button>
           </Link>
         </CardActions>

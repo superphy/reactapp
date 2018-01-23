@@ -2,7 +2,8 @@ import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 import { fetchJobs } from '../middleware/accounts'
 
-const getToken = () => {
+const fetchToken = () => {
+  // Fetches token from the server.
   let ptoken = axios.get(API_ROOT + 'accounts')
     .then(response => {
       console.log(response)
@@ -12,6 +13,19 @@ const getToken = () => {
   return ptoken
 }
 
+const getToken = (pathname) => {
+  // Retrieves token from the uri path.
+  let match = /token=+(.*)/
+  let token = match.exec(pathname)[1]
+  return token
+}
+
+export const tokenPostfix = (pathname) => {
+  // Helper function to create token postfixes for Links & Redirects
+  let token = getToken(pathname)
+  return '?token=' + token
+}
+
 export const bearer = (location, _setToken, dispatch, jobs) => {
   // Retrieves the custom bearer token and updates jobs.
   console.log('bearer sees location')
@@ -19,20 +33,17 @@ export const bearer = (location, _setToken, dispatch, jobs) => {
   let path = location.pathname
   if (path.includes('?token=')){
     console.log('token exists in path')
-    let match = /token=+(.*)/
-    let token = match.exec(path)[1]
+    let token = getToken(path)
     console.log(token)
     _setToken(token)
     console.log('fetching jobs')
     fetchJobs(token, dispatch, jobs)
   } else {
-    // let token = getToken()
     console.log('requesting token')
-    let ptoken = getToken()
+    let ptoken = fetchToken()
     ptoken.then(function(token){
       console.log('bearer sees token')
       console.log(token)
-      // let tokenPath = path + '?token=' + token
       console.log('setting token')
       _setToken(token)
       console.log('fetching jobs')
