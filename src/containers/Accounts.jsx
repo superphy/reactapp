@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { addJob } from '../actions'
-// react-router
-import { Link } from 'react-router-dom';
 // react-md
 import {
   Button
 } from 'react-md';
-// axios
-import axios from 'axios'
 import { saveStore } from '../middleware/accounts'
 // redux
 import { connect } from 'react-redux'
-// links
-import { LOGIN, LOGOUT } from '../Routes'
 
 class Accounts extends Component {
   constructor(props){
@@ -34,7 +27,7 @@ class Accounts extends Component {
     })
   }
   render(){
-    const { token } = this.props;
+    const { token, jobs } = this.props;
     const { response } = this.state;
     console.log('Store')
     console.log(jobs)

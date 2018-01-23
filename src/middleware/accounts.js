@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
+import { addJob } from '../actions'
 
 export const saveStore = ( store, access_token ) => {
   console.log('Store is: ')

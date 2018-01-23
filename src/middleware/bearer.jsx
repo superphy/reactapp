@@ -25,6 +25,7 @@ export const bearer = (location, _setToken, dispatch) => {
     _setToken(token)
   } else {
     // let token = getToken()
+    console.log('requesting token')
     let ptoken = getToken()
     ptoken.then(function(token){
       console.log('bearer sees token')
