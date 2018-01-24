@@ -74,15 +74,15 @@ const PropsRoute = ({ component, ...rest }) => {
 
 const Routes = (token) => (
   <Switch>
-    <Route exact path={HOME} component={Home} />
+    <Route exact path={HOME} component={Home} token={token.token} />
     <PropsRoute path={ACCOUNTS} component={Accounts} token={token.token} />
-    <Route path={FISHERS} component={Fishers} />
-    <Route path={SUBTYPING} component={Subtyping} />
-    <Route path={METADATA} component={Metadata} />
-    <Route path={DATABASE} component={Database} />
-    <Route path={PANSEQ} component={Panseq} />
-    <Route exact path={RESULTS} component={Results} />
-    <Route path={VISIBLE_RESULT} component={VisibleResult} />
+    <Route path={FISHERS} component={Fishers} token={token.token} />
+    <Route path={SUBTYPING} component={Subtyping} token={token.token} />
+    <Route path={METADATA} component={Metadata} token={token.token} />
+    <Route path={DATABASE} component={Database} token={token.token} />
+    <Route path={PANSEQ} component={Panseq} token={token.token} />
+    <Route exact path={RESULTS} component={Results} token={token.token}/>
+    <Route path={VISIBLE_RESULT} component={VisibleResult} token={token.token} />
   </Switch>
 )
 

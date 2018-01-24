@@ -10,7 +10,7 @@ import { withRouter } from 'react-router';
 import History from '../History';
 import Routes from '../Routes';
 // bearer token
-import { bearer } from '../middleware/bearer'
+import { bearer, tokenTo } from '../middleware/bearer'
 import { Redirect } from 'react-router'
 // redux
 import { connect } from 'react-redux'
@@ -35,6 +35,7 @@ class App extends Component {
     bearer(location, this._setToken, this.props.dispatch, this.props.jobs)
   }
   render(){
+    const { token } = this.state;
     var navItems = [{
       label: 'Account',
       to: ACCOUNTS,
@@ -52,8 +53,8 @@ class App extends Component {
 
     return (
       <div>
-        {this.state.token?
-          <Redirect to={location.pathname + '?token=' + this.state.token}/>
+        {token?
+          <Redirect to={tokenTo(location.pathname, token)}/>
         :""}
         <NavigationDrawer
           drawerTitle="spfy"
@@ -66,7 +67,7 @@ class App extends Component {
           }
         >
           <History />
-          <Routes key={location.key} token={this.state.token} />
+          <Routes key={location.key} token={token} />
           <p style={{
             'right': 20,
             'top': 20,

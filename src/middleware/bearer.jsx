@@ -25,10 +25,13 @@ const hasToken = (pathname) => {
   return match.test(pathname)
 }
 
-export const tokenPostfix = (pathname) => {
+const tokenPostfix = (token) => {
   // Helper function to create token postfixes for Links & Redirects
-  let token = getToken(pathname)
   return '?token=' + token
+}
+
+export const tokenTo = (pathname, token) => {
+  return pathname + tokenPostfix(token)
 }
 
 export const bearer = (location, _setToken, dispatch, jobs) => {
