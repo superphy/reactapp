@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 // react-md
 import FileInput from 'react-md/lib/FileInputs';
 import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
@@ -17,12 +17,14 @@ import { phylotyperDescription } from '../middleware/phylotyper'
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 // router
+import { withRouter } from 'react-router';
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
+import { tokenTo } from '../middleware/bearer'
 // redirects
 import { RESULTS } from '../Routes'
 
-class Subtyping extends PureComponent {
+class Subtyping extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -213,9 +215,16 @@ class Subtyping extends PureComponent {
       // })
   };
   render(){
-    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state
+    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state;
+    const { token } = this.props;
     return (
       <div>
+        {console.log('props')}
+        {console.log(this.props)}
+        {console.log(token)}
+        {token?
+          <Redirect to={tokenTo(location.pathname, token)}/>
+        :""}
         {/* uploading bar */}
         {(uploading && !hasResult) ?
           <div>
@@ -361,6 +370,17 @@ class Subtyping extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    jobs: state.jobs,
+    ...ownProps
+  }
+}
+
+Subtyping = withRouter(connect(
+  mapStateToProps
+)(Subtyping))
 
 Subtyping = connect()(Subtyping)
 
