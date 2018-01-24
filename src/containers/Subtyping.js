@@ -345,6 +345,7 @@ class Subtyping extends PureComponent {
                 <TextField
                   key={f.name}
                   defaultValue={f.name}
+                  id={f.name}
                 />
               )) : ''}
             </div>

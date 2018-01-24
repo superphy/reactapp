@@ -72,12 +72,10 @@ const PropsRoute = ({ component, ...rest }) => {
   );
 }
 
-const Routes = (auth) => (
+const Routes = (token) => (
   <Switch>
     <Route exact path={HOME} component={Home} />
-    <PropsRoute path={LOGIN} component={Login} auth={auth}/>
-    <PropsRoute path={LOGOUT}  component={Logout} auth={auth}/>
-    <PropsRoute path={ACCOUNTS} component={Accounts} auth={auth.auth} />
+    <PropsRoute path={ACCOUNTS} component={Accounts} token={token.token} />
     <Route path={FISHERS} component={Fishers} />
     <Route path={SUBTYPING} component={Subtyping} />
     <Route path={METADATA} component={Metadata} />
@@ -85,10 +83,6 @@ const Routes = (auth) => (
     <Route path={PANSEQ} component={Panseq} />
     <Route exact path={RESULTS} component={Results} />
     <Route path={VISIBLE_RESULT} component={VisibleResult} />
-    <Route path={CALLBACK} render={(props) => {
-      handleAuthentication(auth, props);
-      return <Callback {...props} auth={auth.auth}/>
-    }}/>
   </Switch>
 )
 

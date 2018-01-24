@@ -15,6 +15,8 @@ class Accounts extends Component {
     }
   }
   _handleBackup(jobs, access_token){
+    console.log('sending jobs with token ' + access_token)
+    console.log(access_token)
     let promise = saveStore(jobs, access_token)
     promise.then((response) => {
       console.log('backup response: ', response)

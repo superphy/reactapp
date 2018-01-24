@@ -66,7 +66,7 @@ class App extends Component {
           }
         >
           <History />
-          <Routes key={location.key} auth={this.props.auth} />
+          <Routes key={location.key} token={this.state.token} />
           <p style={{
             'right': 20,
             'top': 20,
