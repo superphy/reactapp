@@ -6,6 +6,7 @@ import Avatar from 'react-md/lib/Avatars';
 import logo from '../spfy.png'
 import { version } from '../middleware/api'
 // react-router
+import { withRouter } from 'react-router';
 import History from '../History';
 import Routes from '../Routes';
 // bearer token
@@ -82,15 +83,16 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     jobs: state.jobs,
-//     ...ownProps
-//   }
-// }
-//
-// App = connect(
-//   mapStateToProps
-// )(App)
+const mapStateToProps = (state, ownProps) => {
+  return {
+    jobs: state.jobs,
+    ...ownProps
+  }
+}
+
+App = withRouter(
+  connect(
+  mapStateToProps
+)(App))
 
 export default App
