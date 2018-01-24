@@ -21,6 +21,7 @@ import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
 // redirects
 import { RESULTS } from '../Routes'
+import { tokenPostfix } from '../middleware/bearer'
 
 class Subtyping extends PureComponent {
   constructor(props) {
@@ -352,7 +353,7 @@ class Subtyping extends PureComponent {
           // if results are grouped, display the Loading page
           // else, results are separate and display the JobsList cards page
           (!uploading?(!groupresults?
-            <Redirect to={RESULTS} />:
+            <Redirect to={RESULTS + tokenPostfix(location.pathname)} />:
             <Loading jobId={this.state.jobId} />
           ):"")
         }

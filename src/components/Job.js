@@ -7,6 +7,7 @@ import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
 import { Link } from 'react-router-dom'
+import { tokenPostfix } from '../middleware/bearer'
 // requests
 import { API_ROOT } from '../middleware/api'
 // error msg
@@ -59,7 +60,7 @@ class Job extends Component {
         <CardActions>
           {
             complete ?
-              <Link to={RESULTS + '/' + this.props.hash}>
+              <Link to={RESULTS + '/' + this.props.hash + tokenPostfix(location.pathname)}>
                 <Button flat primary label="See Result">input</Button>
               </Link> : ''
           }

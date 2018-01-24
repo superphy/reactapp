@@ -15,15 +15,25 @@ const fetchToken = () => {
 
 const getToken = (pathname) => {
   // Retrieves token from the uri path.
+  console.log(pathname)
   let match = /token=+(.*)/
-  let token = match.exec(pathname)[1]
-  return token
+  if (match.test(pathname)){
+    let token = match.exec(pathname)[1]
+    return token
+  } else {
+    // Returns blank for App paths.
+    return ''
+  }
 }
 
 export const tokenPostfix = (pathname) => {
   // Helper function to create token postfixes for Links & Redirects
   let token = getToken(pathname)
-  return '?token=' + token
+  if (token !== ''){
+    return '?token=' + token
+  } else {
+    return ''
+  }
 }
 
 export const bearer = (location, _setToken, dispatch, jobs) => {

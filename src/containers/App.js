@@ -14,6 +14,7 @@ import { Redirect } from 'react-router'
 // redux
 import { connect } from 'react-redux'
 // links
+import { tokenPostfix } from '../middleware/bearer'
 import {
   ACCOUNTS,
   HOME,
@@ -36,23 +37,23 @@ class App extends Component {
   render(){
     var navItems = [{
       label: 'Account',
-      to: ACCOUNTS,
+      to: ACCOUNTS + tokenPostfix(location.pathname),
       icon: 'account_circle'
     },{
       exact: true,
       label: 'Tasks',
-      to: HOME,
+      to: HOME + tokenPostfix(location.pathname),
       icon: 'dashboard'
     }, {
       label: 'Results',
-      to: RESULTS,
+      to: RESULTS + tokenPostfix(location.pathname),
       icon: 'bubble_chart'
     }];
 
     return (
       <div>
         {this.state.token?
-          <Redirect to={location.pathname + '?token=' + this.state.token}/>
+          <Redirect to={location.pathname + tokenPostfix(location.pathname)}/>
         :""}
         <NavigationDrawer
           drawerTitle="spfy"

@@ -13,6 +13,7 @@ import { API_ROOT } from '../middleware/api'
 import { createErrorMessage } from '../middleware/api'
 // redirects
 import { RESULTS } from '../Routes'
+import { tokenPostfix } from '../middleware/bearer'
 
 class Loading extends Component {
   render() {
@@ -53,7 +54,7 @@ class Loading extends Component {
           }
         } else {
         return (
-          <Redirect to={RESULTS + '/' + this.props.jobId} />
+          <Redirect to={RESULTS + '/' + this.props.jobId + tokenPostfix(location.pathname)} />
         );
       }
     }
