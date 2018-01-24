@@ -82,15 +82,15 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    jobs: state.jobs,
-    ...ownProps
-  }
-}
-
-App = connect(
-  mapStateToProps
-)(App)
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     jobs: state.jobs,
+//     ...ownProps
+//   }
+// }
+//
+// App = connect(
+//   mapStateToProps
+// )(App)
 
 export default App

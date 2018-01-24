@@ -13,11 +13,16 @@ const fetchToken = () => {
   return ptoken
 }
 
+const match = /token=+(.*)/
+
 const getToken = (pathname) => {
   // Retrieves token from the uri path.
-  let match = /token=+(.*)/
   let token = match.exec(pathname)[1]
   return token
+}
+
+const hasToken = (pathname) => {
+  return match.test(pathname)
 }
 
 export const tokenPostfix = (pathname) => {
@@ -30,8 +35,9 @@ export const bearer = (location, _setToken, dispatch, jobs) => {
   // Retrieves the custom bearer token and updates jobs.
   console.log('bearer sees location')
   console.log(location)
-  let path = location.pathname
-  if (path.includes('?token=')){
+  // We use 'href' instead of 'pathname' as 'href' includes the token signature.
+  let path = location.href
+  if (hasToken(path)){
     console.log('token exists in path')
     let token = getToken(path)
     console.log(token)
