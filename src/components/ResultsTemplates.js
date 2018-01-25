@@ -7,36 +7,24 @@ import ResultDatabase from './ResultDatabase'
 import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
 import ResultPanseq from './ResultsPanseq'
-import RedirectToken from '../components/RedirectToken'
-
-function EmbedToken(props){
-  return (
-    <div>
-    <RedirectToken token={props.token} />
-    {props.children}
-    </div>
-  )
-}
+import { RedirectToken } from '../components/RedirectToken'
 
 const ResultsTemplates = ({ job, ...props }) => {
   {console.log(props)}
   switch (job.analysis) {
     case 'fishers':
       return <ResultFishers jobId={job.hash} />
+    // Fall through cases for the Subtyping card.
     case "Virulence Factors and Serotype":
-      return <EmbedToken token={props.token}>
+    case "Virulence Factors":
+    case "Serotype":
+    case "Antimicrobial Resistance":
+    case "Subtyping":
+      return <RedirectToken token={props.token}>
         <ResultSubtyping jobId={job.hash} />
-      </EmbedToken>
+      </RedirectToken>
     case "Phylotyper":
       return <ResultPhylotyper jobId={job.hash} />
-    case "Virulence Factors":
-      return <ResultSubtyping jobId={job.hash} />
-    case "Serotype":
-      return <ResultSubtyping jobId={job.hash} />
-    case "Antimicrobial Resistance":
-      return <ResultSubtyping jobId={job.hash} />
-    case "Subtyping":
-      return <ResultSubtyping jobId={job.hash} />
     case "Panseq":
       return <ResultPanseq jobId={job.hash} />
     case "bulk":
