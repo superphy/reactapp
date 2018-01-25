@@ -34,7 +34,7 @@ export const tokenTo = (pathname, token) => {
   return pathname + tokenPostfix(token)
 }
 
-export const bearer = (location, _setToken, dispatch, jobs) => {
+export const bearer = (location, _setToken, _setFetched, dispatch, jobs) => {
   // Retrieves the custom bearer token and updates jobs.
   console.log('bearer sees location')
   console.log(location)
@@ -46,7 +46,7 @@ export const bearer = (location, _setToken, dispatch, jobs) => {
     console.log(token)
     _setToken(token)
     console.log('fetching jobs')
-    fetchJobs(token, dispatch, jobs)
+    fetchJobs(token, dispatch, jobs, _setFetched)
   } else {
     console.log('requesting token')
     let ptoken = fetchToken()
@@ -56,7 +56,7 @@ export const bearer = (location, _setToken, dispatch, jobs) => {
       console.log('setting token')
       _setToken(token)
       console.log('fetching jobs')
-      fetchJobs(token, dispatch, jobs)
+      fetchJobs(token, dispatch, jobs, _setFetched)
     })
   }
 }

@@ -7,14 +7,26 @@ import ResultDatabase from './ResultDatabase'
 import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
 import ResultPanseq from './ResultsPanseq'
+import RedirectToken from '../components/RedirectToken'
 
+function EmbedToken(props){
+  return (
+    <div>
+    <RedirectToken token={props.token} />
+    {props.children}
+    </div>
+  )
+}
 
-const ResultsTemplates = ({ job }) => {
+const ResultsTemplates = ({ job, ...props }) => {
+  {console.log(props)}
   switch (job.analysis) {
     case 'fishers':
       return <ResultFishers jobId={job.hash} />
     case "Virulence Factors and Serotype":
-      return <ResultSubtyping jobId={job.hash} />
+      return <EmbedToken token={props.token}>
+        <ResultSubtyping jobId={job.hash} />
+      </EmbedToken>
     case "Phylotyper":
       return <ResultPhylotyper jobId={job.hash} />
     case "Virulence Factors":

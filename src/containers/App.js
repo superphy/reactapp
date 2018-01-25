@@ -25,17 +25,22 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      token: ''
+      token: '',
+      fetched: false
     }
   }
   _setToken = (token) => {
     this.setState({'token': token})
   }
+  _setFetched = (bool) => {
+    // A handler to block render until jobs are fetched.
+    this.setState({'fetched': bool})
+  }
   componentWillMount(){
-    bearer(location, this._setToken, this.props.dispatch, this.props.jobs)
+    bearer(location, this._setToken, this._setFetched, this.props.dispatch, this.props.jobs)
   }
   render(){
-    const { token } = this.state;
+    const { token, fetched } = this.state;
     var navItems = [{
       label: 'Account',
       to: ACCOUNTS,
@@ -56,29 +61,31 @@ class App extends Component {
         {token?
           <Redirect to={tokenTo(location.pathname, token)}/>
         :""}
-        <NavigationDrawer
-          drawerTitle="spfy"
-          drawerHeaderChildren={
-            <Avatar src={logo} alt="logo" />
-          }
-          toolbarStyle={{'visibility':'hidden'}}
-          navItems={
-            navItems.map(props => <NavLink {...props} key={props.to} />)
-          }
-        >
-          <History />
-          <Routes key={location.key} token={token} />
-          <p style={{
-            'right': 20,
-            'top': 20,
-            'position': 'absolute',
-            'textAlign': 'right'
-          }}>
-              For Contact, Email: chad.laing@canada.ca
-              <br></br>
-              {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
-          </p>
-        </NavigationDrawer>
+          <NavigationDrawer
+            drawerTitle="spfy"
+            drawerHeaderChildren={
+              <Avatar src={logo} alt="logo" />
+            }
+            toolbarStyle={{'visibility':'hidden'}}
+            navItems={
+              navItems.map(props => <NavLink {...props} key={props.to} />)
+            }
+          >
+            <History />
+            {fetched?<div>
+              <Routes key={location.key} token={token} />
+              <p style={{
+                'right': 20,
+                'top': 20,
+                'position': 'absolute',
+                'textAlign': 'right'
+              }}>
+                  For Contact, Email: chad.laing@canada.ca
+                  <br></br>
+                  {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
+              </p>
+            </div>:''}
+          </NavigationDrawer>
       </div>
     )
   }

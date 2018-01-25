@@ -40,7 +40,7 @@ const hashList = ( jobs ) => {
   return l
 }
 
-export const fetchJobs = (access_token, dispatch, jobs) => {
+export const fetchJobs = (access_token, dispatch, jobs, _setFetched) => {
   console.log('fetching...')
   let promise = fetchStore(access_token)
   promise.then((response) => {
@@ -65,7 +65,9 @@ export const fetchJobs = (access_token, dispatch, jobs) => {
       }
 
     }
-  })
+    // Release the block on App's render.
+    _setFetched(true)
+  });
 }
 
 export const handleBackup = (jobs, access_token) => {
