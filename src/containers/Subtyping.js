@@ -20,7 +20,6 @@ import { API_ROOT } from '../middleware/api'
 import { withRouter } from 'react-router';
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
-// import { tokenTo } from '../middleware/bearer'
 import { RedirectToken } from '../components/RedirectToken'
 // redirects
 import { RESULTS } from '../Routes'
