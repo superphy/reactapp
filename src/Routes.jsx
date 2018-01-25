@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
 // Actual Code
 import Home from './components/Home'
 // module
@@ -12,32 +11,10 @@ import Panseq from './containers/Panseq'
 // others
 import Results from './containers/Results'
 import VisibleResult from './containers/VisibleResult'
-// auth0
-import Callback from './middleware/Callback';
-import Login from './containers/Login';
-import Logout from './containers/Logout';
 import Accounts from './containers/Accounts';
-// // dirpath
-// import {
-//   HOME,
-//   LOGIN,
-//   LOGOUT,
-//   ACCOUNTS,
-//   FISHERS,
-//   SUBTYPING,
-//   METADATA,
-//   DATABASE,
-//   PANSEQ,
-//   RESULTS,
-//   VISIBLE_RESULT,
-//   CALLBACK
-// } from './routes'
-
 import { dirpath } from './middleware/api'
 
 export const HOME = dirpath + '/'
-export const LOGIN = dirpath + '/login'
-export const LOGOUT = dirpath + '/logout'
 export const ACCOUNTS = dirpath + '/accounts'
 export const FISHERS = dirpath + '/fishers'
 export const SUBTYPING = dirpath + '/subtyping'
@@ -46,16 +23,6 @@ export const DATABASE = dirpath + '/database'
 export const PANSEQ = dirpath + '/panseq'
 export const RESULTS = dirpath + '/results'
 export const VISIBLE_RESULT = dirpath + '/results/:hash'
-export const CALLBACK = dirpath + '/callback'
-
-const handleAuthentication = (auth, nextState, replace) => {
-  console.log('Routes sees')
-  console.log(auth, nextState, replace)
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.auth.handleAuthentication();
-    console.log(auth)
-  }
-}
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);

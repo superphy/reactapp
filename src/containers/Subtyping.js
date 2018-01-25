@@ -20,7 +20,8 @@ import { API_ROOT } from '../middleware/api'
 import { withRouter } from 'react-router';
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
-import { tokenTo } from '../middleware/bearer'
+// import { tokenTo } from '../middleware/bearer'
+import { RedirectToken } from '../components/RedirectToken'
 // redirects
 import { RESULTS } from '../Routes'
 
@@ -219,13 +220,7 @@ class Subtyping extends Component {
     const { token } = this.props;
     return (
       <div>
-        {console.log('props')}
-        {console.log(this.props)}
-        {console.log(token)}
-        {token?
-          <Redirect to={tokenTo(location.pathname, token)}/>
-        :""}
-        {/* uploading bar */}
+        <RedirectToken token={token} />
         {(uploading && !hasResult) ?
           <div>
             <CircularProgress key="progress" id="loading" value={progress} centered={false} />
