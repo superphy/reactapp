@@ -3,6 +3,7 @@ import { API_ROOT } from '../middleware/api'
 import { addJob } from '../actions'
 
 export const saveStore = ( store, access_token ) => {
+  // In all cases, store is actually jobs.
   console.log('Store is: ')
   console.log(store)
   let promise = axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})

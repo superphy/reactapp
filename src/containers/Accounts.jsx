@@ -20,12 +20,7 @@ class Accounts extends Component {
     let promise = saveStore(jobs, access_token)
     promise.then((response) => {
       console.log('backup response: ', response)
-      if (response === 'true'){
-        this.setState({response: 'success!'})
-      }
-      else {
-        this.setState({response: response})
-      }
+      this.setState({response: response})
     })
   }
   render(){

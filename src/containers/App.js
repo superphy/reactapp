@@ -12,6 +12,7 @@ import Routes from '../Routes';
 // bearer token
 import { bearer, tokenTo } from '../middleware/bearer'
 import { Redirect } from 'react-router'
+import { saveStore } from '../middleware/accounts'
 // redux
 import { connect } from 'react-redux'
 // links
@@ -38,6 +39,14 @@ class App extends Component {
   }
   componentWillMount(){
     bearer(location, this._setToken, this._setFetched, this.props.dispatch, this.props.jobs)
+  }
+  componentWillUpdate(){
+    console.log('App will update')
+    // Foces store to sync will any change.
+    if (this.state.token){
+      console.log('Posting store...')
+      saveStore( this.props.jobs, this.state.token)
+    }
   }
   render(){
     const { token, fetched } = this.state;
