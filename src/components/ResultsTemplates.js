@@ -13,7 +13,9 @@ const ResultsTemplates = ({ job, ...props }) => {
   {console.log(props)}
   switch (job.analysis) {
     case 'fishers':
-      return <ResultFishers jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultFishers jobId={job.hash} />
+      </RedirectToken>
     // Fall through cases for the Subtyping card.
     case "Virulence Factors and Serotype":
     case "Virulence Factors":
@@ -24,15 +26,25 @@ const ResultsTemplates = ({ job, ...props }) => {
         <ResultSubtyping jobId={job.hash} />
       </RedirectToken>
     case "Phylotyper":
-      return <ResultPhylotyper jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultPhylotyper jobId={job.hash} />
+      </RedirectToken>
     case "Panseq":
-      return <ResultPanseq jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultPanseq jobId={job.hash} />
+      </RedirectToken>
     case "bulk":
-      return <ResultBulk />
+      return <RedirectToken token={props.token}>
+        <ResultBulk />
+      </RedirectToken>
     case "metadata":
-      return <ResultMetadata />
+      return <RedirectToken token={props.token}>
+        <ResultMetadata />
+      </RedirectToken>
     case "database":
-      return <ResultDatabase jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultDatabase jobId={job.hash} />
+      </RedirectToken>
     default:
       return <div>ERROR: no matching analysis view found.</div>
   }
