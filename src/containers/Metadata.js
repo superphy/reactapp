@@ -12,6 +12,7 @@ import { addJob } from '../actions'
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 import Loading from '../components/Loading'
+import { RedirectToken } from '../components/RedirectToken'
 
 class Metadata extends PureComponent {
   constructor(props) {
@@ -81,8 +82,10 @@ class Metadata extends PureComponent {
   };
   render(){
     const { file, uploading, hasResult, progress } = this.state
+    const { token } = this.props;
     return (
       <div>
+        <RedirectToken token={token} />
         {/* uploading bar */}
         {(uploading && !hasResult) ?
           <div>
