@@ -7,32 +7,43 @@ import ResultDatabase from './ResultDatabase'
 import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
 import ResultPanseq from './ResultsPanseq'
+import { RedirectToken } from '../components/RedirectToken'
 
-
-const ResultsTemplates = ({ job }) => {
+const ResultsTemplates = ({ job, ...props }) => {
   switch (job.analysis) {
     case 'fishers':
-      return <ResultFishers jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultFishers jobId={job.hash} />
+      </RedirectToken>
+    // Fall through cases for the Subtyping card.
     case "Virulence Factors and Serotype":
-      return <ResultSubtyping jobId={job.hash} />
-    case "Phylotyper":
-      return <ResultPhylotyper jobId={job.hash} />
     case "Virulence Factors":
-      return <ResultSubtyping jobId={job.hash} />
     case "Serotype":
-      return <ResultSubtyping jobId={job.hash} />
     case "Antimicrobial Resistance":
-      return <ResultSubtyping jobId={job.hash} />
     case "Subtyping":
-      return <ResultSubtyping jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultSubtyping jobId={job.hash} />
+      </RedirectToken>
+    case "Phylotyper":
+      return <RedirectToken token={props.token}>
+        <ResultPhylotyper jobId={job.hash} />
+      </RedirectToken>
     case "Panseq":
-      return <ResultPanseq jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultPanseq jobId={job.hash} />
+      </RedirectToken>
     case "bulk":
-      return <ResultBulk />
+      return <RedirectToken token={props.token}>
+        <ResultBulk />
+      </RedirectToken>
     case "metadata":
-      return <ResultMetadata />
+      return <RedirectToken token={props.token}>
+        <ResultMetadata />
+      </RedirectToken>
     case "database":
-      return <ResultDatabase jobId={job.hash} />
+      return <RedirectToken token={props.token}>
+        <ResultDatabase jobId={job.hash} />
+      </RedirectToken>
     default:
       return <div>ERROR: no matching analysis view found.</div>
   }

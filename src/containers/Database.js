@@ -10,6 +10,7 @@ import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 // router
 import Loading from '../components/Loading'
+import { RedirectToken } from '../components/RedirectToken'
 
 class Database extends PureComponent {
   constructor(props) {
@@ -41,9 +42,11 @@ class Database extends PureComponent {
       })
   };
   render(){
-    const { hasResult } = this.state
+    const { hasResult } = this.state;
+    const { token } = this.props;
     return (
       <div>
+        <RedirectToken token={token} />
         {/* actual form */}
         {(!hasResult)?
           <form className="md-text-container md-grid">

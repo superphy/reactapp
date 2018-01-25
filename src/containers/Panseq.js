@@ -15,6 +15,7 @@ import { API_ROOT } from '../middleware/api'
 // router
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
+import { RedirectToken } from '../components/RedirectToken'
 // redirects
 import { RESULTS } from '../Routes'
 
@@ -105,8 +106,10 @@ class Panseq extends PureComponent {
   };
   render(){
     const { file, groupresults, uploading, hasResult, progress } = this.state
+    const { token } = this.props;
     return (
       <div>
+        <RedirectToken token={token} />
         {/* uploading bar */}
         {(uploading && !hasResult) ?
           <div>
