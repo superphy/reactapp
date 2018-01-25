@@ -11,26 +11,26 @@ import Avatar from 'react-md/lib/Avatars'
 import { analyses } from '../middleware/api'
 import { HOME } from '../Routes'
 
-const Home = () => (
-  <div>
-    {analyses.map(analysis =>
-      <Card style={{ maxWidth: 600 }} key={analysis.analysis}>
-        <CardTitle
-          avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
-          title={analysis.analysis}
-          subtitle={analysis.description}
-        />
-        <CardActions expander>
-          <Link to={HOME + analysis.analysis}>
-            <Button flat primary label="Go">input</Button>
-          </Link>
-        </CardActions>
-        <CardText expandable>
-          {analysis.text}
-        </CardText>
-      </Card>
-    )}
-  </div>
-)
-
-export default Home
+export function Home(props){
+  return(
+    <div>
+      {analyses.map(analysis =>
+        <Card style={{ maxWidth: 600 }} key={analysis.analysis}>
+          <CardTitle
+            avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
+            title={analysis.analysis}
+            subtitle={analysis.description}
+          />
+          <CardActions expander>
+            <Link to={HOME + analysis.analysis}>
+              <Button flat primary label="Go">input</Button>
+            </Link>
+          </CardActions>
+          <CardText expandable>
+            {analysis.text}
+          </CardText>
+        </Card>
+      )}
+    </div>
+  )
+}

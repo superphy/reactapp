@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // Actual Code
-import Home from './components/Home'
+import { Home } from './components/Home'
 // module
 import Fishers from './containers/Fishers'
 import Subtyping from './containers/Subtyping'
