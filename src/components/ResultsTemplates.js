@@ -10,7 +10,6 @@ import ResultPanseq from './ResultsPanseq'
 import { RedirectToken } from '../components/RedirectToken'
 
 const ResultsTemplates = ({ job, ...props }) => {
-  {console.log(props)}
   switch (job.analysis) {
     case 'fishers':
       return <RedirectToken token={props.token}>
