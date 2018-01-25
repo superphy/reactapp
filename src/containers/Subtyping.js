@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 // react-md
 import FileInput from 'react-md/lib/FileInputs';
 import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
@@ -17,12 +17,14 @@ import { phylotyperDescription } from '../middleware/phylotyper'
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
 // router
+import { withRouter } from 'react-router';
 import { Redirect } from 'react-router'
 import Loading from '../components/Loading'
+import { RedirectToken } from '../components/RedirectToken'
 // redirects
 import { RESULTS } from '../Routes'
 
-class Subtyping extends PureComponent {
+class Subtyping extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -213,10 +215,11 @@ class Subtyping extends PureComponent {
       // })
   };
   render(){
-    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state
+    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state;
+    const { token } = this.props;
     return (
       <div>
-        {/* uploading bar */}
+        <RedirectToken token={token} />
         {(uploading && !hasResult) ?
           <div>
             <CircularProgress key="progress" id="loading" value={progress} centered={false} />
@@ -345,6 +348,7 @@ class Subtyping extends PureComponent {
                 <TextField
                   key={f.name}
                   defaultValue={f.name}
+                  id={f.name}
                 />
               )) : ''}
             </div>
@@ -360,6 +364,17 @@ class Subtyping extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    jobs: state.jobs,
+    ...ownProps
+  }
+}
+
+Subtyping = withRouter(connect(
+  mapStateToProps
+)(Subtyping))
 
 Subtyping = connect()(Subtyping)
 

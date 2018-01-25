@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 //const ROOT = window.location.protocol + '//' + 'spfy.enchartus.ca' + '/'
 const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
 // const ROOT = 'https://lfz.corefacility.ca/superphy/spfyapi/'
@@ -9,7 +8,7 @@ const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
-export const version = 'v.6.0.0'
+export const version = 'v.6.1.0'
 export const analyses = [{
   'analysis':'subtyping',
   'description':'Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin',
@@ -76,32 +75,3 @@ export const ID_TOKEN_KEY = 'id_token';
 export const ACCESS_TOKEN_KEY = 'access_token';
 
 // helper functions for auth0
-
-export const saveStore = ( store, access_token ) => {
-  console.log('Store is: ')
-  console.log(store)
-  let promise = axios.post(API_ROOT + 'secured/accounts/update', store, { headers: { Authorization: `Bearer ${access_token}` }})
-    .then(response => {
-      console.log(response)
-      return response.data
-    })
-    .catch(error => {
-      console.log(error);
-      return error
-    });
-  return promise
-}
-
-export const fetchStore = ( access_token ) => {
-  const url = `${API_ROOT}secured/accounts/find`;
-  let promise = axios.get(url, { headers: { Authorization: `Bearer ${access_token}` }})
-    .then(response => {
-      console.log(response)
-      return response.data
-    })
-    .catch(error => {
-      console.log(error);
-      return error
-    });
-  return promise
-}

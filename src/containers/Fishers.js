@@ -11,6 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
 import { fishersDescription } from '../middleware/fishers'
+import { RedirectToken } from '../components/RedirectToken'
 
 class Fishers extends PureComponent {
   constructor(props) {
@@ -96,17 +97,21 @@ class Fishers extends PureComponent {
     });
   };
   render() {
+    const { token } = this.props;
     return (
-      <div className="md-grid">
-        {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <Loading jobId={this.state.jobId} />}
-        <MuiThemeProvider>
-          <Snackbar
-            open={this.state.open}
-            message={this.state.msg}
-            autoHideDuration={4000}
-            onRequestClose={this.handleRequestClose}
-          />
-        </MuiThemeProvider>
+      <div>
+        <RedirectToken token={token} />
+        <div className="md-grid">
+          {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <Loading jobId={this.state.jobId} />}
+          <MuiThemeProvider>
+            <Snackbar
+              open={this.state.open}
+              message={this.state.msg}
+              autoHideDuration={4000}
+              onRequestClose={this.handleRequestClose}
+            />
+          </MuiThemeProvider>
+        </div>
       </div>
     );
   }
