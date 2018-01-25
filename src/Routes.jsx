@@ -11,11 +11,9 @@ import Panseq from './containers/Panseq'
 // others
 import Results from './containers/Results'
 import VisibleResult from './containers/VisibleResult'
-import Accounts from './containers/Accounts';
 import { dirpath } from './middleware/api'
 
 export const HOME = dirpath + '/'
-export const ACCOUNTS = dirpath + '/accounts'
 export const FISHERS = dirpath + '/fishers'
 export const SUBTYPING = dirpath + '/subtyping'
 export const METADATA = dirpath + '/metadata'
@@ -42,7 +40,6 @@ const PropsRoute = ({ component, ...rest }) => {
 const Routes = (token) => (
   <Switch>
     <PropsRoute exact path={HOME} component={Home} token={token.token} />
-    <PropsRoute path={ACCOUNTS} component={Accounts} token={token.token} />
     <PropsRoute path={FISHERS} component={Fishers} token={token.token} />
     <PropsRoute path={SUBTYPING} component={Subtyping} token={token.token} />
     <PropsRoute path={METADATA} component={Metadata} token={token.token} />

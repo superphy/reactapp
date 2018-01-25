@@ -17,7 +17,6 @@ import { saveStore } from '../middleware/accounts'
 import { connect } from 'react-redux'
 // links
 import {
-  ACCOUNTS,
   HOME,
   RESULTS
 } from '../Routes'
@@ -51,10 +50,6 @@ class App extends Component {
   render(){
     const { token, fetched } = this.state;
     var navItems = [{
-      label: 'Account',
-      to: ACCOUNTS,
-      icon: 'account_circle'
-    },{
       exact: true,
       label: 'Tasks',
       to: HOME,
