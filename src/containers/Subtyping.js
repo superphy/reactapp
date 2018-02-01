@@ -144,11 +144,19 @@ class Subtyping extends Component {
         // handle the return
         for(let job in jobs){
           // console.log(job)
-          // console.log(jobs[job].analysis)-
-          // check filename
-          let f = (this.state.file.length > 1 ?
-          String(this.state.file.length + ' Files')
-          :this.state.file[0].name)
+          // console.log(jobs[job].analysis)
+
+          // If the results are to be grouped and more than one file,
+          // set the job filename to simply the number of files.
+          let f = ''
+          if ((this.state.file.length > 1) && (this.state.groupresults)){
+            f = String(this.state.file.length + ' Files')
+          } else {
+            // Otherwise, retrieve the filename from the response.
+            let fullname = jobs[job].file
+            // Need to strip the prefix spfy generates.
+            f = fullname.substring(38,)
+          }
 
           // for bulk uploading
           if(this.state.bulk){
