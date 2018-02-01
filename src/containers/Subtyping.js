@@ -62,18 +62,27 @@ class Subtyping extends Component {
     this.setState({ amr: value })
   }
   _updateVf = (value) => {
-    this.setState({ vf: value })
+    if (this.state.stx1 ||
+      this.state.stx2 ||
+      this.state.eae){
+        // do nothing
+    } else {
+      this.setState({ vf: value })
+    }
   }
   _updateStx1 = (value) => {
     this.setState({ stx1: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateStx2 = (value) => {
     this.setState({ stx2: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateEae = (value) => {
     this.setState({ eae: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateProb = (value) => {
@@ -144,11 +153,19 @@ class Subtyping extends Component {
         // handle the return
         for(let job in jobs){
           // console.log(job)
-          // console.log(jobs[job].analysis)-
-          // check filename
-          let f = (this.state.file.length > 1 ?
-          String(this.state.file.length + ' Files')
-          :this.state.file[0].name)
+          // console.log(jobs[job].analysis)
+
+          // If the results are to be grouped and more than one file,
+          // set the job filename to simply the number of files.
+          let f = ''
+          if ((this.state.file.length > 1) && (this.state.groupresults)){
+            f = String(this.state.file.length + ' Files')
+          } else {
+            // Otherwise, retrieve the filename from the response.
+            let fullname = jobs[job].file
+            // Need to strip the prefix spfy generates.
+            f = fullname.substring(38,)
+          }
 
           // for bulk uploading
           if(this.state.bulk){
@@ -298,7 +315,7 @@ class Subtyping extends Component {
 
               <h5>Phylotyper Subtyping Analysis</h5>
 
-              <Subheader primaryText="(Group files into single result is not possible with Phylotyper analysis)" inset/>
+              <Subheader primaryText="(Phylotyper requires VF and disables grouping results)" inset/>
 
               <Checkbox
                 id="stx1"
