@@ -62,18 +62,27 @@ class Subtyping extends Component {
     this.setState({ amr: value })
   }
   _updateVf = (value) => {
-    this.setState({ vf: value })
+    if (this.state.stx1 ||
+      this.state.stx2 ||
+      this.state.eae){
+        // do nothing
+    } else {
+      this.setState({ vf: value })
+    }
   }
   _updateStx1 = (value) => {
     this.setState({ stx1: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateStx2 = (value) => {
     this.setState({ stx2: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateEae = (value) => {
     this.setState({ eae: value })
+    this.setState({ vf: true })
     this.setState({groupresults: false})
   }
   _updateProb = (value) => {
@@ -306,7 +315,7 @@ class Subtyping extends Component {
 
               <h5>Phylotyper Subtyping Analysis</h5>
 
-              <Subheader primaryText="(Group files into single result is not possible with Phylotyper analysis)" inset/>
+              <Subheader primaryText="(Phylotyper requires VF and disables grouping results)" inset/>
 
               <Checkbox
                 id="stx1"
