@@ -73,17 +73,17 @@ class Subtyping extends Component {
   _updateStx1 = (value) => {
     this.setState({ stx1: value })
     this.setState({ vf: true })
-    this.setState({groupresults: false})
+    // this.setState({groupresults: false})
   }
   _updateStx2 = (value) => {
     this.setState({ stx2: value })
     this.setState({ vf: true })
-    this.setState({groupresults: false})
+    // this.setState({groupresults: false})
   }
   _updateEae = (value) => {
     this.setState({ eae: value })
     this.setState({ vf: true })
-    this.setState({groupresults: false})
+    // this.setState({groupresults: false})
   }
   _updateProb = (value) => {
     this.setState({ prob: value })
