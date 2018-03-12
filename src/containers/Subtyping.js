@@ -62,27 +62,27 @@ class Subtyping extends Component {
     this.setState({ amr: value })
   }
   _updateVf = (value) => {
-    if (this.state.stx1 ||
-      this.state.stx2 ||
-      this.state.eae){
-        // do nothing
-    } else {
+    // if (this.state.stx1 ||
+    //   this.state.stx2 ||
+    //   this.state.eae){
+    //     // do nothing
+    // } else {
       this.setState({ vf: value })
-    }
+    // }
   }
   _updateStx1 = (value) => {
     this.setState({ stx1: value })
-    this.setState({ vf: true })
+    // this.setState({ vf: true })
     // this.setState({groupresults: false})
   }
   _updateStx2 = (value) => {
     this.setState({ stx2: value })
-    this.setState({ vf: true })
+    // this.setState({ vf: true })
     // this.setState({groupresults: false})
   }
   _updateEae = (value) => {
     this.setState({ eae: value })
-    this.setState({ vf: true })
+    // this.setState({ vf: true })
     // this.setState({groupresults: false})
   }
   _updateProb = (value) => {
@@ -232,14 +232,14 @@ class Subtyping extends Component {
 
               <h5>ECTyper Subtyping Analysis</h5>
 
-              <Switch
+              {/* <Switch
                 id="groupResults"
                 name="groupResults"
                 label="Group files into a single result"
                 checked={groupresults}
                 disabled={stx1 || stx2 || eae}
                 onChange={this._updateGroupResults}
-              />
+              /> */}
               <Switch
                 id="bulk"
                 name="bulk"
@@ -286,7 +286,7 @@ class Subtyping extends Component {
 
               <h5>Phylotyper Subtyping Analysis</h5>
 
-              <Subheader primaryText="(Phylotyper requires VF and disables grouping results)" inset/>
+              {/* <Subheader primaryText="(Phylotyper requires VF and disables grouping results)" inset/> */}
 
               <Checkbox
                 id="stx1"
