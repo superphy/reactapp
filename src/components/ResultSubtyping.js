@@ -29,6 +29,7 @@ class ResultSubtyping extends Component {
           <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Start'>Start</TableHeaderColumn>
           <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Stop'>Stop</TableHeaderColumn>
           <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Cutoff'>Cutoff</TableHeaderColumn>
+          <TableHeaderColumn dataField='probability' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Probability'>Assignment Likelihood</TableHeaderColumn>
         </BootstrapTable>
       );
     }
