@@ -10,7 +10,7 @@ export const subtypingDescription = (file, pi, serotype, vf, amr, pan, prob, stx
     if(amr){s+= ' AMR'}
   }
   // if(pan){s+= ' pan'}
-  if(stx1||stx2||stx3){
+  if(stx1||stx2||eae){
     s += ' with probability: ' + prob
     s += ' for '
     if(stx1){s+= ' Stx1 '}
