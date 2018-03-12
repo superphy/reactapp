@@ -12,7 +12,7 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
 import { subtypingDescription } from '../middleware/subtyping'
-import { phylotyperDescription } from '../middleware/phylotyper'
+// import { phylotyperDescription } from '../middleware/phylotyper'
 // axios
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -162,9 +162,9 @@ class Subtyping extends Component {
             f = String(this.state.file.length + ' Files')
           } else {
             // Otherwise, retrieve the filename from the response.
-            let fullname = jobs[job].file
+            // let fullname = jobs[job].file
             // Need to strip the prefix spfy generates.
-            f = fullname.substring(38,)
+            f = this.state.file[0].name
           }
 
           // for bulk uploading
@@ -179,45 +179,16 @@ class Subtyping extends Component {
             ))
           } else {
             // regular subtyping uploads
-            if(jobs[job].analysis === "Antimicrobial Resistance"){
-              this.props.dispatch(addJob(job,
-                "Antimicrobial Resistance",
-                new Date().toLocaleTimeString(),
-                subtypingDescription(f, this.state.pi, false, false, this.state.amr, this.state.pan)
-              ))
-            } else if (jobs[job].analysis === "Virulence Factors and Serotype") {
-              let descrip = ''
-              if (this.state.vf && this.state.serotype){descrip = "Virulence Factors and Serotype"}
-              else if (this.state.vf && !this.state.serotype) {descrip = "Virulence Factors"}
-              else if (!this.state.vf && this.state.serotype) {descrip = "Serotype"}
-              this.props.dispatch(addJob(job,
-                descrip,
-                new Date().toLocaleTimeString(),
-                subtypingDescription(f, this.state.pi, this.state.serotype, this.state.vf, false, this.state.pan)
-              ))
-            } else if (jobs[job].analysis === "Subtyping") {
-              // set the jobId state so we can use Loading
-              const jobId = job
-              this.setState({jobId})
-              // dispatch
-              this.props.dispatch(addJob(job,
-                "Subtyping",
-                new Date().toLocaleTimeString(),
-                subtypingDescription(
-                  f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan)
-              ))
-            } else if (jobs[job].analysis === "Phylotyper") {
-              // set the jobId state so we can use Loading
-              const jobId = job
-              this.setState({jobId})
-              // dispatch
-              this.props.dispatch(addJob(job,
-                "Phylotyper",
-                new Date().toLocaleTimeString(),
-                phylotyperDescription(
-                  f , this.state.prob, this.state.stx1, this.state.stx2, this.state.eae)
-              ))// end of ifelse for non-bulk uploads
-            }
+            // set the jobId state so we can use Loading
+            const jobId = job
+            this.setState({jobId})
+            // dispatch
+            this.props.dispatch(addJob(job,
+              "Subtyping",
+              new Date().toLocaleTimeString(),
+              subtypingDescription(
+                f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan, this.state.prob, this.state.stx1, this.state.stx2, this.state.eae)
+            ))
           }
         }
         const hasResult = true
