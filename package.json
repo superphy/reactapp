@@ -3,6 +3,7 @@
   "version": "6.0.0",
   "private": true,
   "description": "An online predictive genomics platform for E.coli.",
+  "homepage": "https://lfz.corefacility.ca/superphy/spfy",
   "dependencies": {
     "auth0-js": "^9.0.2",
     "axios": "^0.16.1",
