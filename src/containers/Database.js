@@ -57,7 +57,7 @@ class Database extends PureComponent {
               />
               <TextField
                 key="descrip"
-                defaultValue="Note: Response can be quite large."
+                defaultValue="Note: This might take a bit."
               />
               <Button
                 raised
