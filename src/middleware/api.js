@@ -8,7 +8,7 @@ import React from 'react'
 export const API_ROOT = ROOT + 'api/v0/'
 export const OLD_API = ROOT
 
-export const version = 'v.6.2.0'
+export const version = 'v.6.3.0'
 export const analyses = [
   {
     'analysis':'subtyping',
