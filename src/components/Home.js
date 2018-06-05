@@ -12,26 +12,30 @@ import { analyses } from '../middleware/api'
 import { HOME } from '../Routes'
 import { RedirectToken } from '../components/RedirectToken'
 
+const card = (analysis) => (
+  <Card style={{ maxWidth: 600 }} key={analysis.analysis}>
+    <CardTitle
+      avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
+      title={analysis.analysis}
+      subtitle={analysis.description}
+    />
+    <CardActions expander>
+      <Link to={HOME + analysis.analysis}>
+        <Button flat primary label="Go">input</Button>
+      </Link>
+    </CardActions>
+    <CardText expandable>
+      {analysis.text}
+    </CardText>
+  </Card>
+);
+
 export function Home(props){
   return (
     <RedirectToken token={props.token}>
       <div>
         {analyses.map(analysis =>
-          <Card style={{ maxWidth: 600 }} key={analysis.analysis}>
-            <CardTitle
-              avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
-              title={analysis.analysis}
-              subtitle={analysis.description}
-            />
-            <CardActions expander>
-              <Link to={HOME + analysis.analysis}>
-                <Button flat primary label="Go">input</Button>
-              </Link>
-            </CardActions>
-            <CardText expandable>
-              {analysis.text}
-            </CardText>
-          </Card>
+          card(analysis)
         )}
       </div>
     </RedirectToken>
