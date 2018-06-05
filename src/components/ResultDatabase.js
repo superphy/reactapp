@@ -23,11 +23,7 @@ class ResultDatabase extends Component {
         <div>
           <p># of Genome Files: {results.value.length}</p>
           <BootstrapTable data={results.value} exportCSV search options={options}>
-            <TableHeaderColumn dataField='spfyId' isKey dataSort filter={ { type: 'NumberFilter', placeholder: 'Please enter a value' } } width='180' csvHeader='Spfy ID'>Spfy ID</TableHeaderColumn>
-            <TableHeaderColumn dataField='Genome' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='360' csvHeader='Filename'>Filename</TableHeaderColumn>
-            <TableHeaderColumn dataField='submitted' dataSort filter={ { type: 'DateFilter', placeholder: 'Please enter a value' } } csvHeader='Submitted'>Submitted</TableHeaderColumn>
-            <TableHeaderColumn dataField='otype' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='O-Type'>O-Type</TableHeaderColumn>
-            <TableHeaderColumn dataField='htype' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='H-Type'>H-Type</TableHeaderColumn>
+            <TableHeaderColumn dataField='NumberGenomes' isKey dataSort filter={ { type: 'NumberFilter', placeholder: 'Please enter a value' } } width='180' csvHeader='Spfy ID'># of Genomes</TableHeaderColumn>
           </BootstrapTable>
         </div>
       );
