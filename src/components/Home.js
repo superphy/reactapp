@@ -8,7 +8,7 @@ import CardText from 'react-md/lib/Cards/CardText'
 import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
-import { analyses } from '../middleware/api'
+import { analyses, extra } from '../middleware/api'
 import { HOME } from '../Routes'
 import { RedirectToken } from '../components/RedirectToken'
 
@@ -35,6 +35,9 @@ export function Home(props){
     <RedirectToken token={props.token}>
       <div>
         {analyses.map(analysis =>
+          card(analysis)
+        )}
+        {extra.map(analysis =>
           card(analysis)
         )}
       </div>
