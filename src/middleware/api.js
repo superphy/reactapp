@@ -24,23 +24,24 @@ export const analyses = [
     )
   },{
     'analysis':'fishers',
-    'description':"Group comparisons using Fisher's Exact Test",
+    'pseudonym':'statistical comparison',
+    'description':"Group database nodes and compare them using Fisher's Exact Test",
     'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
   }
 ]
 
 export const extra = [
   {
-    'analysis': 'metadata',
-    'description': 'Submit metadata in the form of a .csv for upload to the database.',
+    'analysis': 'database',
+    'description': 'Status check of database connection',
     'text': ''
   },{
-    'analysis': 'database',
-    'description': 'View all entries currently loaded into the database.',
+    'analysis': 'metadata',
+    'description': 'Submit metadata in the form of a .csv for upload to the database',
     'text': ''
   },{
     'analysis': 'panseq',
-    'description': 'Load a pan-genome into the database for secondary analyses.',
+    'description': 'Load a pan-genome into the database for secondary analyses',
     'text': (
       <p>
         Upload genomes & split into pan-genome regions.

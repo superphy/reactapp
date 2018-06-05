@@ -18,7 +18,7 @@ const card = (analysis) => (
   <Card style={{ maxWidth: maxWidth }} key={analysis.analysis}>
     <CardTitle
       avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
-      title={analysis.analysis}
+      title={analysis.pseudonym? analysis.pseudonym : analysis.analysis}
       subtitle={analysis.description}
     />
     <CardActions expander>
@@ -32,10 +32,15 @@ const card = (analysis) => (
   </Card>
 );
 
+const style = {
+  maxWidth: maxWidth,
+  maxHeight: '4em',
+}
+
 const header = (name) => (
-  <Card style={{ maxWidth: maxWidth }} key={name + 'divider'}>
+  <Card style={style} key={name + 'divider'}>
     <CardTitle
-      title={name}
+      subtitle={name}
     />
   </Card>
 )
