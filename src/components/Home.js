@@ -40,6 +40,7 @@ const style = {
 const header = (name) => (
   <Card style={style} key={name + 'divider'}>
     <CardTitle
+      title=''
       subtitle={name}
     />
   </Card>
