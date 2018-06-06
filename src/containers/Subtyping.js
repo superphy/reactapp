@@ -230,9 +230,37 @@ class Subtyping extends Component {
                 help_outline
               </Button>
               <Collapse collapsed={collapsed}>
-                <p>
-                  feasilkajseklfjaslkefjal
-                </p>
+                <div>
+                  <br />
+                  <h6>Underlying Packages:</h6>
+                  <p>
+                    <li>
+                      ECTyper: <a href='https://github.com/phac-nml/ecoli_serotyping/'>phac-nml/ecoli_serotyping</a>
+                    </li>
+                    <li>
+                      RGI (CARD): <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5210516/'>doi: 10.1093/nar/gkw1004</a>
+                    </li>
+                    <li>
+                      Phylotyper: <a href='https://www.ncbi.nlm.nih.gov/pubmed/29036291'>doi: 10.1093/bioinformatics/btx459</a>
+                    </li>
+                  </p>
+                  <h6>Description:</h6>
+                  <p>
+                    This is the initial analysis step for Spfy. We use the
+                    modules above to analyze submitted genome files
+                    and create graph nodes for storage / downstream analysis
+                    in the graph database.
+                  </p>
+                  <p>
+                    Submit any E. coli genome files and the initial results
+                    will be presented to you in tabular form.
+                  </p>
+                  <p>
+                    To perform statistical comparisons on graph nodes in the
+                    database, please use the 'statistical comparisons' feature
+                    accesible via the home page.
+                  </p>
+                </div>
               </Collapse>
             </div>
             <div className="md-cell md-cell--12">
