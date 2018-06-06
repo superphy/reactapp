@@ -73,7 +73,7 @@ class Metadata extends PureComponent {
         this.setState({jobId})
         this.props.dispatch(addJob(job,
           "metadata",
-          new Date().toLocaleTimeString(),
+          new Date().toLocaleString(),
           String('Metadata Upload: ' + f )
         ))
         const hasResult = true

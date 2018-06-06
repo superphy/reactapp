@@ -94,7 +94,7 @@ class Panseq extends PureComponent {
             if((jobs[job].analysis === "Panseq") && (jobs[job].file.includes('Results'))){
               this.props.dispatch(addJob(job,
               'Panseq',
-              new Date().toLocaleTimeString(),
+              new Date().toLocaleString(),
               panseqDescription(f, this.state.pi, this.state.pan)
               ))
               }

@@ -11,9 +11,6 @@ import {
   CircularProgress,
   Collapse,
 } from 'react-md';
-import {
-  maxWidth,
-} from '../middleware/layout'
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -183,7 +180,7 @@ class Subtyping extends Component {
             this.setState({jobId})
             this.props.dispatch(addJob(job,
               "bulk",
-              new Date().toLocaleTimeString(),
+              new Date().toLocaleString(),
               subtypingDescription(
                 'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan)
             ))
@@ -195,7 +192,7 @@ class Subtyping extends Component {
             // dispatch
             this.props.dispatch(addJob(job,
               "Subtyping",
-              new Date().toLocaleTimeString(),
+              new Date().toLocaleString(),
               subtypingDescription(
                 f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan, this.state.prob, this.state.stx1, this.state.stx2, this.state.eae)
             ))

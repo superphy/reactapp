@@ -80,7 +80,7 @@ class Fishers extends PureComponent {
           // add jobid to redux store
           this.props.dispatch(addJob(jobId,
             'fishers',
-            new Date().toLocaleTimeString(),
+            new Date().toLocaleString(),
             fishersDescription(groups, target)
           ))
         });
