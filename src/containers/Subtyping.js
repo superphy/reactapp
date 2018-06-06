@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 // react-md
-import FileInput from 'react-md/lib/FileInputs';
-import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
-import TextField from 'react-md/lib/TextFields';
-import Button from 'react-md/lib/Buttons';
-import Switch from 'react-md/lib/SelectionControls/Switch';
-import Subheader from 'react-md/lib/Subheaders';
-//import Divider from 'react-md/lib/Dividers';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import {
+  FileInput,
+  Checkbox,
+  TextField,
+  Button,
+  Switch,
+  Subheader,
+  Divider,
+  CircularProgress,
+} from 'react-md';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -243,10 +245,11 @@ class Subtyping extends Component {
               <Switch
                 id="bulk"
                 name="bulk"
-                label="Use bulk uploading (don't display results)"
+                label="Side load for db: don't display results"
                 checked={bulk}
                 onChange={this._updateBulk}
               />
+              {bulk?<Subheader primaryText='WARNING: You wont be able to see any results! This is meant for local use only.' inset/>:''}
               {!groupresults && !bulk ?
                 <Subheader primaryText="(Will split files & subtyping methods into separate results)" inset />
               : ''}
@@ -264,6 +267,16 @@ class Subtyping extends Component {
                 onChange={this._updateVf}
                 label="Virulence Factors"
               />
+              <TextField
+                id="pi"
+                value={pi}
+                onChange={this._updatePi}
+                helpText="Percent Identity for BLAST"
+              />
+
+            </div>
+            <div className="md-cell md-cell--12">
+              <h5>RGI (CARD) Analysis</h5>
               <Checkbox
                 id="amr"
                 name="check amr"
@@ -274,13 +287,7 @@ class Subtyping extends Component {
               {amr ?
                 <Subheader primaryText="(Note: AMR increases run-time by several minutes per file)" inset />
               : ''}
-              <TextField
-                id="pi"
-                value={pi}
-                onChange={this._updatePi}
-                helpText="Percent Identity for BLAST"
-              />
-
+              <Divider />
             </div>
             <div className="md-cell md-cell--12">
 
