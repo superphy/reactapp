@@ -11,8 +11,7 @@ import Avatar from 'react-md/lib/Avatars'
 import { analyses, extra } from '../middleware/api'
 import { HOME } from '../Routes'
 import { RedirectToken } from '../components/RedirectToken'
-
-const maxWidth = 600;
+import { maxWidth } from '../middleware/layout'
 
 const card = (analysis) => (
   <Card style={{ maxWidth: maxWidth }} key={analysis.analysis}>

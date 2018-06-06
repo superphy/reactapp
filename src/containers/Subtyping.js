@@ -9,7 +9,11 @@ import {
   Subheader,
   Divider,
   CircularProgress,
+  Collapse,
 } from 'react-md';
+import {
+  maxWidth,
+} from '../middleware/layout'
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -30,6 +34,7 @@ class Subtyping extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      collapsed: true,
       file: null,
       pi: 90,
       amr: false,
@@ -49,6 +54,9 @@ class Subtyping extends Component {
       pan: true
     }
   }
+  toggle = () => {
+    this.setState({ collapsed: !this.state.collapsed });
+  };
   _selectFile = (file) => {
     console.log(file)
     if (!file) { return; }
@@ -205,7 +213,7 @@ class Subtyping extends Component {
       // })
   };
   render(){
-    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state;
+    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress, collapsed } = this.state;
     const { token } = this.props;
     return (
       <div>
@@ -221,6 +229,16 @@ class Subtyping extends Component {
         {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
+              <Button raised primary swapTheming label='Help' onClick={this.toggle}>
+                help_outline
+              </Button>
+              <Collapse collapsed={collapsed}>
+                <p>
+                  feasilkajseklfjaslkefjal
+                </p>
+              </Collapse>
+            </div>
+            <div className="md-cell md-cell--12">
               <FileInput
                 id="inputFile"
                 secondary
@@ -231,17 +249,7 @@ class Subtyping extends Component {
 
             </div>
             <div className="md-cell md-cell--12">
-
               <h5>ECTyper Subtyping Analysis</h5>
-
-              {/* <Switch
-                id="groupResults"
-                name="groupResults"
-                label="Group files into a single result"
-                checked={groupresults}
-                disabled={stx1 || stx2 || eae}
-                onChange={this._updateGroupResults}
-              /> */}
               <Switch
                 id="bulk"
                 name="bulk"
