@@ -57,7 +57,7 @@ export function Home(props){
           )}
         </div>
         <div>
-          {header('Extra Analyses')}
+          {header('Extra Modules')}
           {extra.map(analysis =>
             card(analysis)
           )}
