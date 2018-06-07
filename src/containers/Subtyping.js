@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 // react-md
-import FileInput from 'react-md/lib/FileInputs';
-import Checkbox from 'react-md/lib/SelectionControls/Checkbox'
-import TextField from 'react-md/lib/TextFields';
-import Button from 'react-md/lib/Buttons';
-import Switch from 'react-md/lib/SelectionControls/Switch';
-import Subheader from 'react-md/lib/Subheaders';
-//import Divider from 'react-md/lib/Dividers';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import {
+  FileInput,
+  Checkbox,
+  TextField,
+  Button,
+  Switch,
+  Subheader,
+  Divider,
+  CircularProgress,
+  Collapse,
+} from 'react-md';
 // redux
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
@@ -28,6 +31,7 @@ class Subtyping extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      collapsed: true,
       file: null,
       pi: 90,
       amr: false,
@@ -47,6 +51,9 @@ class Subtyping extends Component {
       pan: true
     }
   }
+  toggle = () => {
+    this.setState({ collapsed: !this.state.collapsed });
+  };
   _selectFile = (file) => {
     console.log(file)
     if (!file) { return; }
@@ -173,7 +180,7 @@ class Subtyping extends Component {
             this.setState({jobId})
             this.props.dispatch(addJob(job,
               "bulk",
-              new Date().toLocaleTimeString(),
+              new Date().toLocaleString(),
               subtypingDescription(
                 'Bulk Upload: ' + f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan)
             ))
@@ -185,7 +192,7 @@ class Subtyping extends Component {
             // dispatch
             this.props.dispatch(addJob(job,
               "Subtyping",
-              new Date().toLocaleTimeString(),
+              new Date().toLocaleString(),
               subtypingDescription(
                 f , this.state.pi, this.state.serotype, this.state.vf, this.state.amr, this.state.pan, this.state.prob, this.state.stx1, this.state.stx2, this.state.eae)
             ))
@@ -203,7 +210,7 @@ class Subtyping extends Component {
       // })
   };
   render(){
-    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress } = this.state;
+    const { file, pi, amr, serotype, vf, stx1, stx2, eae, prob, groupresults, bulk, uploading, hasResult, progress, collapsed } = this.state;
     const { token } = this.props;
     return (
       <div>
@@ -219,6 +226,44 @@ class Subtyping extends Component {
         {(!hasResult && !uploading)?
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
+              <Button raised primary swapTheming label='Help' onClick={this.toggle}>
+                help_outline
+              </Button>
+              <Collapse collapsed={collapsed}>
+                <div>
+                  <br />
+                  <h6>Underlying Packages:</h6>
+                  <p>
+                    <li>
+                      ECTyper: <a href='https://github.com/phac-nml/ecoli_serotyping/'>phac-nml/ecoli_serotyping</a>
+                    </li>
+                    <li>
+                      RGI (CARD): <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5210516/'>doi: 10.1093/nar/gkw1004</a>
+                    </li>
+                    <li>
+                      Phylotyper: <a href='https://www.ncbi.nlm.nih.gov/pubmed/29036291'>doi: 10.1093/bioinformatics/btx459</a>
+                    </li>
+                  </p>
+                  <h6>Description:</h6>
+                  <p>
+                    This is the initial analysis step for Spfy. We use the
+                    modules above to analyze submitted genome files
+                    and create graph nodes for storage / downstream analysis
+                    in the graph database.
+                  </p>
+                  <p>
+                    Submit any E. coli genome files and the initial results
+                    will be presented to you in tabular form.
+                  </p>
+                  <p>
+                    To perform statistical comparisons on graph nodes in the
+                    database, please use the 'statistical comparisons' feature
+                    accesible via the home page.
+                  </p>
+                </div>
+              </Collapse>
+            </div>
+            <div className="md-cell md-cell--12">
               <FileInput
                 id="inputFile"
                 secondary
@@ -229,24 +274,15 @@ class Subtyping extends Component {
 
             </div>
             <div className="md-cell md-cell--12">
-
               <h5>ECTyper Subtyping Analysis</h5>
-
-              {/* <Switch
-                id="groupResults"
-                name="groupResults"
-                label="Group files into a single result"
-                checked={groupresults}
-                disabled={stx1 || stx2 || eae}
-                onChange={this._updateGroupResults}
-              /> */}
               <Switch
                 id="bulk"
                 name="bulk"
-                label="Use bulk uploading (don't display results)"
+                label="Side load for db: don't display results"
                 checked={bulk}
                 onChange={this._updateBulk}
               />
+              {bulk?<Subheader primaryText='WARNING: You wont be able to see any results! This is meant for local use only.' inset/>:''}
               {!groupresults && !bulk ?
                 <Subheader primaryText="(Will split files & subtyping methods into separate results)" inset />
               : ''}
@@ -264,6 +300,16 @@ class Subtyping extends Component {
                 onChange={this._updateVf}
                 label="Virulence Factors"
               />
+              <TextField
+                id="pi"
+                value={pi}
+                onChange={this._updatePi}
+                helpText="Percent Identity for BLAST"
+              />
+
+            </div>
+            <div className="md-cell md-cell--12">
+              <h5>RGI (CARD) Analysis</h5>
               <Checkbox
                 id="amr"
                 name="check amr"
@@ -274,13 +320,7 @@ class Subtyping extends Component {
               {amr ?
                 <Subheader primaryText="(Note: AMR increases run-time by several minutes per file)" inset />
               : ''}
-              <TextField
-                id="pi"
-                value={pi}
-                onChange={this._updatePi}
-                helpText="Percent Identity for BLAST"
-              />
-
+              <Divider />
             </div>
             <div className="md-cell md-cell--12">
 

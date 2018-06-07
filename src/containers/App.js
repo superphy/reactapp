@@ -86,7 +86,7 @@ class App extends Component {
               }}>
                   For Contact, Email: chad.laing@canada.ca
                   <br></br>
-                  {version} <a href="https://github.com/superphy/backend">superphy/backend</a>
+                  {version} <a href="https://github.com/superphy/spfy">superphy/spfy</a>
               </p>
             </div>:''}
           </NavigationDrawer>

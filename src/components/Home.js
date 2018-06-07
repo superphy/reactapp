@@ -8,31 +8,59 @@ import CardText from 'react-md/lib/Cards/CardText'
 import CardActions from 'react-md/lib/Cards/CardActions'
 import Button from 'react-md/lib/Buttons/Button'
 import Avatar from 'react-md/lib/Avatars'
-import { analyses } from '../middleware/api'
+import { analyses, extra } from '../middleware/api'
 import { HOME } from '../Routes'
 import { RedirectToken } from '../components/RedirectToken'
+import { maxWidth } from '../middleware/layout'
+
+const card = (analysis) => (
+  <Card style={{ maxWidth: maxWidth }} key={analysis.analysis}>
+    <CardTitle
+      avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
+      title={analysis.pseudonym? analysis.pseudonym : analysis.analysis}
+      subtitle={analysis.description}
+    />
+    <CardActions expander>
+      <Link to={HOME + analysis.analysis}>
+        <Button flat primary label="Go">input</Button>
+      </Link>
+    </CardActions>
+    <CardText expandable>
+      {analysis.text}
+    </CardText>
+  </Card>
+);
+
+const style = {
+  maxWidth: maxWidth,
+  maxHeight: '4em',
+}
+
+const header = (name) => (
+  <Card style={style} key={name + 'divider'}>
+    <CardTitle
+      title=''
+      subtitle={name}
+    />
+  </Card>
+)
 
 export function Home(props){
   return (
     <RedirectToken token={props.token}>
       <div>
-        {analyses.map(analysis =>
-          <Card style={{ maxWidth: 600 }} key={analysis.analysis}>
-            <CardTitle
-              avatar={<Avatar random >{analysis.analysis.substring(0,2)}</Avatar>}
-              title={analysis.analysis}
-              subtitle={analysis.description}
-            />
-            <CardActions expander>
-              <Link to={HOME + analysis.analysis}>
-                <Button flat primary label="Go">input</Button>
-              </Link>
-            </CardActions>
-            <CardText expandable>
-              {analysis.text}
-            </CardText>
-          </Card>
-        )}
+        <div>
+          {header('Main Analyses')}
+          {analyses.map(analysis =>
+            card(analysis)
+          )}
+        </div>
+        <div>
+          {header('Extra Modules')}
+          {extra.map(analysis =>
+            card(analysis)
+          )}
+        </div>
       </div>
     </RedirectToken>
   )
