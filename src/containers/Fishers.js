@@ -1,6 +1,16 @@
 import React, { PureComponent } from 'react';
+import {
+  Loading,
+  Button,
+  Card,
+  CardTitle,
+  CardText,
+  Media,
+  MediaOverlay,
+  CardActions,
+} from 'react-md';
 import GroupsForm from '../containers/GroupsForm'
-import Loading from '../components/Loading'
+import ontology from '../images/ontology.png'
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -13,6 +23,59 @@ import { addJob } from '../actions'
 import { fishersDescription } from '../middleware/fishers'
 import { RedirectToken } from '../components/RedirectToken'
 
+const maxStep = 4
+
+const nextButton = (step, next, prev) => (
+  <div className="buttons__group">
+    <h5>Step {step}/{maxStep}</h5>
+    {step>1 ?
+      <Button flat primary label='Previous' onClick={prev}>input</Button>
+    :''}
+    {step<=maxStep ?
+      <Button flat primary label='Next' onClick={next}>input</Button>
+    :''}
+  </div>
+)
+
+const fdescrip = (step, nextStep, prevStep) => (
+  <Card className="cards__example md-cell md-cell--6 md-cell--8-tablet">
+    <Media>
+      <img src={ontology} alt="Nature from lorempixel" />
+      <MediaOverlay>
+        <CardTitle title="Such nature" subtitle="Wow!">
+          <Button className="md-cell--right" icon>star_outline</Button>
+        </CardTitle>
+      </MediaOverlay>
+    </Media>
+    <CardText>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut eleifend odio.
+        Vivamus quis quam eget augue facilisis laoreet. Aliquam egestas turpis pellentesque
+        cursus porta. Vivamus nisl odio, maximus vel lacinia non, suscipit quis nibh. Sed et
+        lacus tempor, interdum nisl ornare, feugiat arcu. Suspendisse aliquam malesuada dui,
+        in dignissim velit maximus vitae. Cras ac mattis libero. Proin feugiat justo nec nisi
+        sodales, et gravida augue faucibus. Maecenas quis porttitor nunc. Suspendisse congue
+        ipsum arcu, id aliquam ante dignissim non. Donec maximus, sapien in faucibus molestie,
+        eros nisi ornare neque, et vulputate augue velit vel ante. Phasellus rhoncus, elit
+        cursus accumsan viverra, mi lectus dictum elit, non vehicula diam nunc non lectus.
+        Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
+        risus velit eu sapien. Nunc vitae pellentesque nisl.
+      </p>
+      <p>
+        Maecenas lacinia enim ut risus pellentesque euismod. Vestibulum gravida, risus non
+        condimentum volutpat, orci elit laoreet elit, in auctor eros orci non quam. Proin ut
+        tellus et est dignissim efficitur. Aliquam erat volutpat. Proin pellentesque metus
+        sit amet libero auctor aliquet. Donec scelerisque erat in magna sagittis hendrerit.
+        Sed pulvinar enim mattis mauris sodales semper. Mauris eu urna at arcu dapibus
+        pretium et in ligula. Sed vel vestibulum nunc.
+      </p>
+    </CardText>
+    <CardActions>
+      {nextButton(step, nextStep, prevStep)}
+    </CardActions>
+  </Card>
+)
+
 class Fishers extends PureComponent {
   constructor(props) {
     super(props);
@@ -20,7 +83,8 @@ class Fishers extends PureComponent {
       jobId: "",
       hasResult: false,
       open: false, //for the snackbar
-      msg: ""
+      msg: "",
+      step: 1,
     }
     this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
   }
@@ -90,6 +154,12 @@ class Fishers extends PureComponent {
       });
     }
   }
+  _next = () => {
+    this.setState({step: this.state.step+1})
+  }
+  _prev = () => {
+    this.setState({step: this.state.step-1})
+  }
   // Snackbar
   handleRequestClose = () => {
     this.setState({
@@ -97,12 +167,22 @@ class Fishers extends PureComponent {
     });
   };
   render() {
-    const { token } = this.props;
+    const {
+      token
+    } = this.props;
+    const {
+      hasResult,
+      jobId,
+      step,
+    } = this.state;
     return (
       <div>
         <RedirectToken token={token} />
         <div className="md-grid">
-          {!this.state.hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} /> : <Loading jobId={this.state.jobId} />}
+          {step===1 ? fdescrip(step, this._next, this._prev):
+              (!hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} />
+              : <Loading jobId={jobId} />)
+          }
           <MuiThemeProvider>
             <Snackbar
               open={this.state.open}
