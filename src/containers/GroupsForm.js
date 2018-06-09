@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react'
 import update from 'immutability-helper'
-import Paper from 'react-md/lib/Papers'
-import Button from 'react-md/lib/Buttons/Button'
+import {
+  Paper,
+  Button,
+  Card,
+} from 'react-md';
 // reactapp's components
+import { maxWidth } from '../middleware/layout'
 import Group from '../components/Group'
 import AddTarget from '../components/AddTarget'
 // axios is a http client lib
@@ -101,21 +105,44 @@ class GroupsForm extends PureComponent {
         this.setState({ o_targets, targets });
       });
   }
+  groupCard = (group, index) => (
+    <Card
+      key={index}
+      style={{ maxWidth: maxWidth }}
+    >
+      {console.log(group)}
+        <Group groupIndex={index} relations={this.state.relations} o_relations={this.state.o_relations} handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
+        numberAttributes={group.length}/>
+    </Card>
+  )
   render() {
+    const {
+      step,
+      nextButton
+    } = this.props;
+    const {
+      groups,
+      targets,
+    } = this.state;
+    console.log(step)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="paper-container">
-          {this.state.groups.map((group, index) =>
-            <Paper key={index}>
-                <Group groupIndex={index} relations={this.state.relations} o_relations={this.state.o_relations} handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
-                numberAttributes={group.length}/>
-            </Paper>
-          )}
-          <Paper>
-            <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
-          </Paper>
-          <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
-          {this.props.nextButton}
+          {step===2?
+            this.groupCard(groups[0], 0)
+          :''}
+          {step===3?
+            this.groupCard(groups[1], 1)
+          :''}
+          {step===4?
+            <div>
+              <Card style={{ width: maxWidth }}>
+                <AddTarget handleChangeTarget={this.handleChangeTarget} targets={targets} />
+              </Card>
+              <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
+            </div>
+          :''}
+          {nextButton}
         </div>
       </form>
     );

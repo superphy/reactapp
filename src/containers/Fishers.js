@@ -11,6 +11,7 @@ import {
 } from 'react-md';
 import GroupsForm from '../containers/GroupsForm'
 import ontology from '../images/ontology.png'
+import { maxWidth } from '../middleware/layout'
 // axios is a http client lib
 import axios from 'axios'
 import { API_ROOT } from '../middleware/api'
@@ -38,7 +39,10 @@ const nextButton = (step, next, prev) => (
 )
 
 const fdescrip = (step, nextStep, prevStep) => (
-  <Card className="cards__example md-cell md-cell--6 md-cell--8-tablet">
+  <Card
+    className="cards__example md-cell md-cell--6 md-cell--8-tablet"
+    style={{ maxWidth: maxWidth }}
+  >
     <Media>
       <img src={ontology} alt="Nature from lorempixel" />
       <MediaOverlay>
@@ -184,6 +188,7 @@ class Fishers extends PureComponent {
                 <GroupsForm
                   handleChangeSubmit={this.handleChangeSubmit}
                   nextButton={nextButton(step, this._next, this._prev)}
+                  step={step}
                 />
               : <Loading jobId={jobId} />)
           }
