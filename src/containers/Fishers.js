@@ -30,10 +30,10 @@ const nextButton = (step, next, prev) => (
   <div className="buttons__group">
     <h5>Step {step}/{maxStep}</h5>
     {step>1 ?
-      <Button flat primary label='Previous' onClick={prev}>input</Button>
+      <Button flat primary label='Previous' onClick={prev}>navigate_before</Button>
     :''}
-    {step<=maxStep ?
-      <Button flat primary label='Next' onClick={next}>input</Button>
+    {step<maxStep ?
+      <Button flat primary label='Next' onClick={next}>navigate_next</Button>
     :''}
   </div>
 )
@@ -44,34 +44,43 @@ const fdescrip = (step, nextStep, prevStep) => (
     style={{ maxWidth: maxWidth }}
   >
     <Media>
-      <img src={ontology} alt="Nature from lorempixel" />
+      <img src={ontology} alt="ontology" />
       <MediaOverlay>
-        <CardTitle title="Such nature" subtitle="Wow!">
-          <Button className="md-cell--right" icon>star_outline</Button>
+        <CardTitle title="Compare Graph Nodes" subtitle="via Fisher's Exact Test">
         </CardTitle>
       </MediaOverlay>
     </Media>
     <CardText>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut eleifend odio.
-        Vivamus quis quam eget augue facilisis laoreet. Aliquam egestas turpis pellentesque
-        cursus porta. Vivamus nisl odio, maximus vel lacinia non, suscipit quis nibh. Sed et
-        lacus tempor, interdum nisl ornare, feugiat arcu. Suspendisse aliquam malesuada dui,
-        in dignissim velit maximus vitae. Cras ac mattis libero. Proin feugiat justo nec nisi
-        sodales, et gravida augue faucibus. Maecenas quis porttitor nunc. Suspendisse congue
-        ipsum arcu, id aliquam ante dignissim non. Donec maximus, sapien in faucibus molestie,
-        eros nisi ornare neque, et vulputate augue velit vel ante. Phasellus rhoncus, elit
-        cursus accumsan viverra, mi lectus dictum elit, non vehicula diam nunc non lectus.
-        Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
-        risus velit eu sapien. Nunc vitae pellentesque nisl.
+        <h5>About:</h5>
+        This is the downstream analysis step of Spfy, after initial data intake
+        via the "Subtyping" feature. The main idea is to determine if there are
+        statistically significant differences in the relation of a target group
+        between two population groups. For example, we can compare all the
+        samples in the database with O-type O157 vs all samples of type O26,
+        for the presence/absence of all known AMR genes in the database. In
+        other words, which AMR genes present in O157 samples are not significantly
+        present in O26, and which are.
       </p>
       <p>
-        Maecenas lacinia enim ut risus pellentesque euismod. Vestibulum gravida, risus non
-        condimentum volutpat, orci elit laoreet elit, in auctor eros orci non quam. Proin ut
-        tellus et est dignissim efficitur. Aliquam erat volutpat. Proin pellentesque metus
-        sit amet libero auctor aliquet. Donec scelerisque erat in magna sagittis hendrerit.
-        Sed pulvinar enim mattis mauris sodales semper. Mauris eu urna at arcu dapibus
-        pretium et in ligula. Sed vel vestibulum nunc.
+        <h5>Steps:</h5>
+        The steps for creating a new comparison are as follows:
+        <li>1. Select a group of nodes or attributes for Group 1.</li>
+        <li>2. Select a group of nodes or attributes for Group 2.</li>
+        <li>3. Select a target group of nodes or attributes.</li>
+        <li>
+          4. Spfy will perform the comparison are return the associated p-values
+          and odds ratios.
+        </li>
+        Help text is available at each step along the way.
+      </p>
+      <p>
+        <h5>Rationale:</h5>
+        Because analysis modules in biology tend to have different result
+        formats, graph storage allows comparisons between the results of
+        different types without explicit joins. As in the above example, our
+        O-type analysis was developed internally whereas the RGI tool was
+        developed by the CARD initiative <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5210516/'>doi: 10.1093/nar/gkw1004</a>.
       </p>
     </CardText>
     <CardActions>

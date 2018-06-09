@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import update from 'immutability-helper'
 import {
-  Paper,
   Button,
   Card,
 } from 'react-md';
@@ -139,10 +138,15 @@ class GroupsForm extends PureComponent {
               <Card style={{ width: maxWidth }}>
                 <AddTarget handleChangeTarget={this.handleChangeTarget} targets={targets} />
               </Card>
-              <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
+              <Card style={{ width: maxWidth }}>
+                <h5>Finished!</h5>
+                <Button flat primary label="Submit" onClick={this.handleSubmit}>send</Button>
+              </Card>
             </div>
           :''}
-          {nextButton}
+          <Card style={{ width: maxWidth }}>
+            {nextButton}
+          </Card>
         </div>
       </form>
     );
