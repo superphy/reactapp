@@ -180,7 +180,11 @@ class Fishers extends PureComponent {
         <RedirectToken token={token} />
         <div className="md-grid">
           {step===1 ? fdescrip(step, this._next, this._prev):
-              (!hasResult ? <GroupsForm handleChangeSubmit={this.handleChangeSubmit} />
+              (!hasResult ?
+                <GroupsForm
+                  handleChangeSubmit={this.handleChangeSubmit}
+                  nextButton={nextButton(step, this._next, this._prev)}
+                />
               : <Loading jobId={jobId} />)
           }
           <MuiThemeProvider>

@@ -115,6 +115,7 @@ class GroupsForm extends PureComponent {
             <AddTarget handleChangeTarget={this.handleChangeTarget} targets={this.state.targets} />
           </Paper>
           <Button raised secondary label="Submit" onClick={this.handleSubmit}>send</Button>
+          {this.props.nextButton}
         </div>
       </form>
     );
