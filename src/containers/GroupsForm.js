@@ -3,6 +3,7 @@ import update from 'immutability-helper'
 import {
   Button,
   Card,
+  CardText,
 } from 'react-md';
 // reactapp's components
 import { maxWidth } from '../middleware/layout'
@@ -44,6 +45,60 @@ const initialState = {
   o_targets: [], // the object containining the 'uri': human-readable mapping
   target: "" // the chosen target to compare against
 }
+
+const gdescrip = () => (
+  <Card
+    style={{ maxWidth: maxWidth }}
+  >
+    <CardText>
+      <p>
+        <h5>Help:</h5>
+        <li>
+          <b>Node/Attribute Types:</b>
+           are classes of nodes or their attributes in the graph database.
+           For example, O-type is a class of nodes/attributes in the graph.
+           Note: for analysis, nodes and attributes are treated the same.
+        </li>
+        <li>
+          <b>Node/Attribute values:</b>
+           are specific instances of a node/attribute type. For example, O157 is
+           an instance of O-Type
+        </li>
+      </p>
+      <p>
+        Groups can be built by selecting single or multiple matching value(s)
+        and joining them through logical connectives (AND/OR/NOT). For example,
+        O-Type 157 can be joined with H-Type H7 by clicking the "Add another
+        value to this group" and joining them with the connective AND.
+      </p>
+      <p>
+        Note: We currently build these values on-the-fly from any and all
+        nodes/attributes in the database. This will be restricted in the future
+        to simplify the choices.
+      </p>
+    </CardText>
+  </Card>
+)
+
+const tdescrip = () => (
+  <Card
+    style={{ maxWidth: maxWidth }}
+  >
+    <CardText>
+      <p>
+        <h5>Help:</h5>
+        <b>Targets</b> are any node/attribute type in addition to any superclass
+        of a node/attribute type. For example, 'Any_Marker' is the superclass
+        to AMR_Genes and Virulence_Factors.
+        <br />
+        There is no need to select specific values for the selected target class
+        as Spfy will compare all instances of that class in their entirety.
+        For example, selecting 'AMR_Gene' will compare all AMR genes in the
+        graph connected to any member of the query groups.
+      </p>
+    </CardText>
+  </Card>
+)
 
 class GroupsForm extends PureComponent {
   constructor(props) {
@@ -105,14 +160,17 @@ class GroupsForm extends PureComponent {
       });
   }
   groupCard = (group, index) => (
-    <Card
-      key={index}
-      style={{ maxWidth: maxWidth }}
-    >
-      {console.log(group)}
-        <Group groupIndex={index} relations={this.state.relations} o_relations={this.state.o_relations} handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
-        numberAttributes={group.length}/>
-    </Card>
+    <div>
+      {gdescrip()}
+      <Card
+        key={index}
+        style={{ maxWidth: maxWidth }}
+      >
+        {console.log(group)}
+          <Group groupIndex={index} relations={this.state.relations} o_relations={this.state.o_relations} handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
+          numberAttributes={group.length}/>
+      </Card>
+    </div>
   )
   render() {
     const {
@@ -135,6 +193,7 @@ class GroupsForm extends PureComponent {
           :''}
           {step===4?
             <div>
+              {tdescrip()}
               <Card style={{ width: maxWidth }}>
                 <AddTarget handleChangeTarget={this.handleChangeTarget} targets={targets} />
               </Card>

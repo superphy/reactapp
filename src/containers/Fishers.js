@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import {
-  Loading,
   Button,
   Card,
   CardTitle,
@@ -10,6 +9,7 @@ import {
   CardActions,
 } from 'react-md';
 import GroupsForm from '../containers/GroupsForm'
+import Loading from '../components/Loading'
 import ontology from '../images/ontology.png'
 import { maxWidth } from '../middleware/layout'
 // axios is a http client lib

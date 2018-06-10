@@ -19,7 +19,7 @@ class Group extends PureComponent {
     return (
       <div>
         <Subheader primary primaryText={"Group: " + this.props.groupIndex} />
-        <Button flat label="Add another relation to this group" secondary onClick={this.onClick}>add</Button>
+        <Button flat label="Add another value to this group" secondary onClick={this.onClick}>add</Button>
       {this.props.group.map((selection, index) =>
         <div className="md-grid" key={index}>
           <AddAttribute
