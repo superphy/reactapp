@@ -1,13 +1,14 @@
-// displays cards for all possible tasks/analysis
-
+// Displays cards for all possible tasks/analysis.
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Card from 'react-md/lib/Cards/Card'
-import CardTitle from 'react-md/lib/Cards/CardTitle'
-import CardText from 'react-md/lib/Cards/CardText'
-import CardActions from 'react-md/lib/Cards/CardActions'
-import Button from 'react-md/lib/Buttons/Button'
-import Avatar from 'react-md/lib/Avatars'
+import {
+  Card,
+  CardTitle,
+  CardText,
+  CardActions,
+  Button,
+  Avatar,
+} from 'react-md';
 import { analyses, extra } from '../middleware/api'
 import { HOME } from '../Routes'
 import { RedirectToken } from '../components/RedirectToken'
