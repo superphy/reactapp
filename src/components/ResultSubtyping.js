@@ -7,9 +7,30 @@ import { API_ROOT } from '../middleware/api'
 // Table
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
+const sidebar = 200;
+
 class ResultSubtyping extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: 0, height: 0 };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  componentWillMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+  calcWidth = ( dec ) => {
+    let workableWidth = this.state.width - sidebar;
+    return workableWidth*dec
+  }
   render() {
-    const { results } = this.props
+    const { results } = this.props;
     const options = {
       searchPosition: 'left'
     };
@@ -21,15 +42,15 @@ class ResultSubtyping extends Component {
       console.log(results)
       return (
         <BootstrapTable data={results.value} exportCSV search options={options}>
-          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='360' csvHeader='Filename'>Filename</TableHeaderColumn>
-          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='180' csvHeader='Contig ID'>Contig ID</TableHeaderColumn>
-          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100' csvHeader='Analysis'>Analysis</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } csvHeader='Hit'>Hit</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='100' csvHeader='Orientation'>Orientation</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstart' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Start'>Start</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='140' csvHeader='Stop'>Stop</TableHeaderColumn>
-          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Cutoff'>Cutoff</TableHeaderColumn>
-          <TableHeaderColumn dataField='probability' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width='80' csvHeader='Probability'>Assignment Likelihood</TableHeaderColumn>
+          <TableHeaderColumn isKey dataField='filename' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.20)} csvHeader='Filename'>Filename</TableHeaderColumn>
+          <TableHeaderColumn dataField='contigid' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.10)} csvHeader='Contig ID'>Contig ID</TableHeaderColumn>
+          <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.10)} csvHeader='Analysis'>Analysis</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.10)} csvHeader='Hit'>Hit</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Orientation'>Orientation</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstart' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Start'>Start</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Stop'>Stop</TableHeaderColumn>
+          <TableHeaderColumn dataField='hitcutoff' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='%Identity'>%Identity</TableHeaderColumn>
+          <TableHeaderColumn dataField='probability' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Probability'>Assignment Likelihood</TableHeaderColumn>
         </BootstrapTable>
       );
     }
