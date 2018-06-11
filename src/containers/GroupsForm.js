@@ -168,7 +168,7 @@ class GroupsForm extends PureComponent {
       >
         {console.log(group)}
           <Group groupIndex={index} relations={this.state.relations} o_relations={this.state.o_relations} handleChange={this.handleChange}  handleChangeAddRelation={this.handleChangeAddRelation} group={group}
-          numberAttributes={group.length}/>
+          numberAttributes={group.length} setQuerying={this.props.setQuerying}/>
       </Card>
     </div>
   )

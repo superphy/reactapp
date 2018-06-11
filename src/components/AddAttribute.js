@@ -23,14 +23,18 @@ class AddAttribute extends Component {
 
     // With the relation type chosen, we can query the backend
     console.log(relation)
+    // Display a CircularProgress for querying.
+    this.props.setQuerying(true);
+    // Query.
     axios.get(API_ROOT + `get_attribute_values/type/` + relation)
       .then(res => {
         const o_attributes = res.data;
         const attributes = Object.keys(o_attributes).sort();
         this.setState({ attributes, o_attributes });
-      });
-
-    // callback to set state in upper level
+        // Stop the CircularProgress.
+        this.props.setQuerying(false);
+    });
+    // Callback to set state in upper level.
     this.props.handleChange(relation, event, this.props.groupIndex, this.props.attributeIndex, "relation");
   }
   setAttribute(newValue, newActiveIndex, event) {
