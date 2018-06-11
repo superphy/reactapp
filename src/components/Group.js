@@ -29,7 +29,9 @@ class Group extends PureComponent {
             o_relations={this.props.o_relations}
             handleChange={this.props.handleChange}
             attributeIndex={index}
-            numberAttributes={this.props.numberAttributes}/>
+            numberAttributes={this.props.numberAttributes}
+            setQuerying={this.props.setQuerying}
+          />
         </div>
       )}
     </div>

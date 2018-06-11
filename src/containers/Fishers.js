@@ -7,6 +7,7 @@ import {
   Media,
   MediaOverlay,
   CardActions,
+  CircularProgress,
 } from 'react-md';
 import GroupsForm from '../containers/GroupsForm'
 import Loading from '../components/Loading'
@@ -98,6 +99,7 @@ class Fishers extends PureComponent {
       open: false, //for the snackbar
       msg: "",
       step: 1,
+      querying: false,
     }
     this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
   }
@@ -173,6 +175,10 @@ class Fishers extends PureComponent {
   _prev = () => {
     this.setState({step: this.state.step-1})
   }
+  _setQuerying = ( bool ) => {
+    console.log('Setting querying')
+    this.setState({querying: bool})
+  }
   // Snackbar
   handleRequestClose = () => {
     this.setState({
@@ -187,6 +193,7 @@ class Fishers extends PureComponent {
       hasResult,
       jobId,
       step,
+      querying,
     } = this.state;
     return (
       <div>
@@ -198,9 +205,16 @@ class Fishers extends PureComponent {
                   handleChangeSubmit={this.handleChangeSubmit}
                   nextButton={nextButton(step, this._next, this._prev)}
                   step={step}
+                  setQuerying={this._setQuerying}
                 />
               : <Loading jobId={jobId} />)
           }
+          {querying?
+            <div>
+              Retrieving values..
+              <CircularProgress key="progress" id='contentLoadingProgress' />
+            </div>
+          :''}
           <MuiThemeProvider>
             <Snackbar
               open={this.state.open}
