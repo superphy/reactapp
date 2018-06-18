@@ -32,18 +32,18 @@ export const analyses = [
         <br/> metadata, using Fisher's Exact Test</p>
     ),
     'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
-  }
-]
-
-export const extra = [
-  {
+  },{
     'analysis': 'search',
     'pseudonym': 'search by accession',
     'description': (
       <p style={{ color: 'gray' }}>Search database results by accession #</p>
     ),
     'text': ''
-  },{
+  },
+]
+
+export const extra = [
+  {
     'analysis': 'database',
     'description': (
       <p style={{color:'gray'}}>Status check of database connection</p>
