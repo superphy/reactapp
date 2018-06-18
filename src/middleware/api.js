@@ -1,7 +1,7 @@
 import React from 'react'
 //const ROOT = window.location.protocol + '//' + 'spfy.enchartus.ca' + '/'
-const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
-// const ROOT = 'https://lfz.corefacility.ca/superphy/spfyapi/'
+// const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
+const ROOT = 'https://lfz.corefacility.ca/superphy/spfyapi/'
 // const ROOT = 'http://10.139.14.212:8000/'
 // const ROOT = 'http://192.168.5.19:8000/'
 // const ROOT = 'https://spfy.enchartus.ca/'
@@ -37,6 +37,13 @@ export const analyses = [
 
 export const extra = [
   {
+    'analysis': 'search',
+    'pseudonym': 'search by accession',
+    'description': (
+      <p style={{ color: 'gray' }}>Search database results by accession #</p>
+    ),
+    'text': ''
+  },{
     'analysis': 'database',
     'description': (
       <p style={{color:'gray'}}>Status check of database connection</p>

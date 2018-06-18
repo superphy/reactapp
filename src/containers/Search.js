@@ -93,7 +93,6 @@ class Search extends Component {
                 secondary
                 type="submit"
                 label="Submit"
-                disabled={!file}
                 onClick={this._handleSubmit}
               />
             </div>
