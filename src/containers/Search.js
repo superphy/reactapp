@@ -74,8 +74,9 @@ class Search extends Component {
                   <h6>Description:</h6>
                   <p>
                     We use the <a href='https://biopython.org/wiki/SeqIO'>SeqIO </a>
-                    library to parse the accession numbers from an isolate.
-                    Specifically, we use the record.id
+                    library to parse the identifiers from an isolate.
+                    Specifically, we use the record.id which uses the combined
+                    gi gb accession numbers.
                   </p>
                   <p>
                     For example, a genbank record:
@@ -94,19 +95,19 @@ class Search extends Component {
                     >gi|1370526529|gb|CP027599.1| Escherichia coli strain 97-3250 chromosome, complete genome
                     <br/>
                     <br/>
-                    Has accession <b>CP027599.1</b>
+                    Would have a record.id of <b>gi|1370526529|gb|CP027599.1|</b>
                   </p>
                 </div>
               </Collapse>
             </div>
             {/* End: Help Text */}
             <div className="md-cell md-cell--12">
-              <h5>Search By Accession</h5>
+              <h5>Search By record.id</h5>
               <TextField
                 id="st"
                 value={st}
                 onChange={this._updateSt}
-                helpText="Accession #"
+                helpText="gi|1370526529|gb|CP027599.1|"
               />
             </div>
             <div className="md-cell md-cell--12">
