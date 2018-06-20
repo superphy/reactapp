@@ -20,7 +20,7 @@ class Search extends Component {
     super(props);
     this.state = {
       st: '',
-      collapsed: true,
+      collapsed: false,
       submitted: false,
       open: false,
       jobId: "",
@@ -65,7 +65,7 @@ class Search extends Component {
           <form className="md-text-container md-grid">
             <div className="md-cell md-cell--12">
               {/* Help Text */}
-              <Button raised primary swapTheming label='Help' onClick={this.toggle}>
+              <Button hidden raised primary swapTheming label='Help' onClick={this.toggle}>
                 help_outline
               </Button>
               <Collapse collapsed={collapsed}>
@@ -73,6 +73,28 @@ class Search extends Component {
                   <br />
                   <h6>Description:</h6>
                   <p>
+                    We use the <a href='https://biopython.org/wiki/SeqIO'>SeqIO </a>
+                    library to parse the accession numbers from an isolate.
+                    Specifically, we use the record.id
+                  </p>
+                  <p>
+                    For example, a genbank record:
+                    <br/>
+                    <br/>
+                    Escherichia coli strain 97-3250 chromosome, complete genome
+                    <br/>
+                    5,942,969 bp circular DNA
+                    <br/>
+                    CP027599.1 GI:1370526529
+                    <br/>
+                    <br/>
+                    With fasta header:
+                    <br/>
+                    <br/>
+                    >gi|1370526529|gb|CP027599.1| Escherichia coli strain 97-3250 chromosome, complete genome
+                    <br/>
+                    <br/>
+                    Has accession <b>CP027599.1</b>
                   </p>
                 </div>
               </Collapse>
