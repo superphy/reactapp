@@ -19,7 +19,7 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      st: '',
+      st: 'gi|1370526529|gb|CP027599.1|',
       collapsed: false,
       submitted: false,
       open: false,

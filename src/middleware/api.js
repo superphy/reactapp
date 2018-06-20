@@ -34,9 +34,9 @@ export const analyses = [
     'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
   },{
     'analysis': 'search',
-    'pseudonym': 'search by accession',
+    'pseudonym': 'search by record.id',
     'description': (
-      <p style={{ color: 'gray' }}>Search database results by accession #</p>
+      <p style={{ color: 'gray' }}>Search database results by record.id</p>
     ),
     'text': ''
   },
