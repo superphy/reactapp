@@ -47,6 +47,7 @@ class ResultSubtyping extends Component {
           <TableHeaderColumn dataField='analysis' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.10)} csvHeader='Analysis'>Analysis</TableHeaderColumn>
           <TableHeaderColumn dataField='hitname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.10)} csvHeader='Hit'>Hit</TableHeaderColumn>
           <TableHeaderColumn dataField='longname' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Long Hitname'>Long Hitname</TableHeaderColumn>
+          <TableHeaderColumn dataField='aro' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='ARO Link'>ARO Link</TableHeaderColumn>
           <TableHeaderColumn dataField='hitorientation' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Orientation'>Orientation</TableHeaderColumn>
           <TableHeaderColumn dataField='hitstart' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Start'>Start</TableHeaderColumn>
           <TableHeaderColumn dataField='hitstop' dataSort filter={ { type: 'TextFilter', placeholder: 'Please enter a value' } } width={this.calcWidth(0.05)} csvHeader='Stop'>Stop</TableHeaderColumn>

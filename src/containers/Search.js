@@ -79,7 +79,7 @@ class Search extends Component {
                     gi gb accession numbers.
                   </p>
                   <p>
-                    For example, a genbank record:
+                    For example, a <b>GenBank</b> record:
                     <br/>
                     <br/>
                     Escherichia coli strain 97-3250 chromosome, complete genome
@@ -96,6 +96,17 @@ class Search extends Component {
                     <br/>
                     <br/>
                     Would have a record.id of <b>gi|1370526529|gb|CP027599.1|</b>
+                    <br/>
+                    <br/>
+                    For <b>shotgun sequences</b>, search is indexed by individual sequence ids.
+                    <br/>
+                    For example, a sequence with header:
+                    <br/>
+                    <br/>
+                    >MOKN01000001.1 Escherichia coli strain 443 BN4_443_1_(paired)_contig_1, whole genome shotgun sequence
+                    <br/>
+                    <br/>
+                    Would have a record.id of <b>MOKN01000001.1</b>
                   </p>
                 </div>
               </Collapse>
