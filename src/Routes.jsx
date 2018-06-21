@@ -8,6 +8,7 @@ import Subtyping from './containers/Subtyping'
 import Metadata from './containers/Metadata'
 import Database from './containers/Database'
 import Panseq from './containers/Panseq'
+import Search from './containers/Search'
 // others
 import Results from './containers/Results'
 import VisibleResult from './containers/VisibleResult'
@@ -20,6 +21,7 @@ export const METADATA = dirpath + '/metadata'
 export const DATABASE = dirpath + '/database'
 export const PANSEQ = dirpath + '/panseq'
 export const RESULTS = dirpath + '/results'
+export const SEARCH = dirpath + '/search'
 export const VISIBLE_RESULT = dirpath + '/results/:hash'
 
 const renderMergedProps = (component, ...rest) => {
@@ -45,6 +47,7 @@ const Routes = (token) => (
     <PropsRoute path={METADATA} component={Metadata} token={token.token} />
     <PropsRoute path={DATABASE} component={Database} token={token.token} />
     <PropsRoute path={PANSEQ} component={Panseq} token={token.token} />
+    <PropsRoute path={SEARCH} component={Search} token={token.token} />
     <PropsRoute exact path={RESULTS} component={Results} token={token.token}/>
     <PropsRoute path={VISIBLE_RESULT} component={VisibleResult} token={token.token} />
   </Switch>

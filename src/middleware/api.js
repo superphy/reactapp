@@ -3,6 +3,7 @@ import React from 'react'
 const ROOT = window.location.protocol + '//' + window.location.hostname + ':8000/'
 // const ROOT = 'https://lfz.corefacility.ca/superphy/spfyapi/'
 // const ROOT = 'http://10.139.14.212:8000/'
+// const ROOT = 'http://192.168.5.19:8090/'
 // const ROOT = 'http://192.168.5.19:8000/'
 // const ROOT = 'https://spfy.enchartus.ca/'
 export const API_ROOT = ROOT + 'api/v0/'
@@ -12,7 +13,9 @@ export const version = 'v.6.3.0'
 export const analyses = [
   {
     'analysis':'subtyping',
-    'description':'Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin',
+    'description':(
+      <p style={{color:'gray'}}>Serotype, Virulence Factors, Antimicrobial Resistance, Shiga-toxin & Intimin</p>
+    ),
     'text':(
       <p>
         Upload genome files & determine associated subtypes.
@@ -25,23 +28,39 @@ export const analyses = [
   },{
     'analysis':'fishers',
     'pseudonym':'statistical comparison',
-    'description':"Group database nodes and compare them using Fisher's Exact Test",
+    'description': (
+      <p style={{color:'gray'}}>Identify predictive markers for groups of bacteria based on genome content or
+        <br/> metadata, using Fisher's Exact Test</p>
+    ),
     'text':'Select groups from uploaded genomes & compare for a chosen target datum.'
-  }
+  },{
+    'analysis': 'search',
+    'pseudonym': 'search by record.id',
+    'description': (
+      <p style={{ color: 'gray' }}>Search database results by record.id</p>
+    ),
+    'text': ''
+  },
 ]
 
 export const extra = [
   {
     'analysis': 'database',
-    'description': 'Status check of database connection',
+    'description': (
+      <p style={{color:'gray'}}>Status check of database connection</p>
+    ),
     'text': ''
   },{
     'analysis': 'metadata',
-    'description': 'Submit metadata in the form of a .csv for upload to the database',
+    'description': (
+      <p style={{color:'gray'}}>Submit metadata in the form of a .csv for upload to the database</p>
+    ),
     'text': ''
   },{
     'analysis': 'panseq',
-    'description': 'Load a pan-genome into the database for secondary analyses',
+    'description': (
+      <p style={{color:'gray'}}>Load a pan-genome into the database for secondary analyses</p>
+    ),
     'text': (
       <p>
         Upload genomes & split into pan-genome regions.

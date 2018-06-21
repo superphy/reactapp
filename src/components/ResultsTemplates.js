@@ -8,6 +8,7 @@ import ResultBulk from './ResultBulk'
 import ResultMetadata from './ResultMetadata'
 import ResultPanseq from './ResultsPanseq'
 import { RedirectToken } from '../components/RedirectToken'
+import ResultSearch from './ResultSearch';
 
 const ResultsTemplates = ({ job, ...props }) => {
   switch (job.analysis) {
@@ -43,6 +44,10 @@ const ResultsTemplates = ({ job, ...props }) => {
     case "database":
       return <RedirectToken token={props.token}>
         <ResultDatabase jobId={job.hash} />
+      </RedirectToken>
+    case "search":
+      return <RedirectToken token={props.token}>
+        <ResultSearch jobId={job.hash} />
       </RedirectToken>
     default:
       return <div>ERROR: no matching analysis view found.</div>

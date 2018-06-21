@@ -47,7 +47,7 @@ const fdescrip = (step, nextStep, prevStep) => (
     <Media>
       <img src={ontology} alt="ontology" />
       <MediaOverlay>
-        <CardTitle title="Compare Graph Nodes" subtitle="via Fisher's Exact Test">
+        <CardTitle title="Statistical Comparison" subtitle="using Fisher's Exact Test">
         </CardTitle>
       </MediaOverlay>
     </Media>
@@ -79,7 +79,8 @@ const fdescrip = (step, nextStep, prevStep) => (
         <h5>Rationale:</h5>
         Because analysis modules in biology tend to have different result
         formats, graph storage allows comparisons between the results of
-        different types without explicit joins. As in the above example, our
+        different types without explicit joins. We treat all nodes in the graph
+        database as available for anlaysis. As in the above example, our
         O-type analysis was developed internally whereas the RGI tool was
         developed by the CARD initiative <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5210516/'>doi: 10.1093/nar/gkw1004</a>.
       </p>
