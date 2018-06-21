@@ -9,7 +9,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 const sidebar = 200;
 
-class ResultSubtyping extends Component {
+class ResultSearch extends Component {
   constructor(props) {
     super(props);
     this.state = { width: 0, height: 0 };
@@ -57,4 +57,4 @@ class ResultSubtyping extends Component {
 
 export default connect(props => ({
   results: {url: API_ROOT + `results/${props.jobId}`}
-}))(ResultSubtyping)
+}))(ResultSearch)
