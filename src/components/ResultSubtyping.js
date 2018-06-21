@@ -27,7 +27,7 @@ class ResultSubtyping extends Component {
   }
   calcWidth = ( dec ) => {
     let workableWidth = this.state.width - sidebar;
-    return workableWidth*dec
+    return String(workableWidth*dec)
   }
   render() {
     const { results } = this.props;

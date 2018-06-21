@@ -98,7 +98,9 @@ class Search extends Component {
                     Would have a record.id of <b>gi|1370526529|gb|CP027599.1|</b>
                     <br/>
                     <br/>
-                    For <b>shotgun sequences</b>, search is indexed by individual sequence ids.
+                    For <b>shotgun sequences</b>, search is indexed by sequence ids.
+                    Seraching for any accession in a shotgun sequence will return results
+                    for all sequences in the isolate (not just for the single sequence).
                     <br/>
                     For example, a sequence with header:
                     <br/>
