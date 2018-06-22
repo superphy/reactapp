@@ -76,7 +76,10 @@ class Search extends Component {
                     We use the <a href='https://biopython.org/wiki/SeqIO'>SeqIO </a>
                     library to parse the identifiers from an isolate.
                     Specifically, we use the record.id which uses the combined
-                    gi gb accession numbers.
+                    gi gb accession numbers. If an isolate is comprised of multiple
+                    contiguous DNA sequences, searching for any accession in the isolate
+                    will return results for all sequences in the isolate along with
+                    the associated contig id.
                   </p>
                   <p>
                     For example, a <b>GenBank</b> record:
@@ -115,7 +118,7 @@ class Search extends Component {
             </div>
             {/* End: Help Text */}
             <div className="md-cell md-cell--12">
-              <h5>Search By record.id</h5>
+              <h5>Search By accession</h5>
               <TextField
                 id="st"
                 value={st}
